@@ -138,10 +138,7 @@ body{
 .btn-green-to-white:hover {
     background-color:#FFFFFF;
     border:0.5vw solid #1BC47D;
-    padding:2vw 10vw;
-    border-radius:2vw;
     color:#333333;
-    transition: 0.2s ease-in-out;
 }
 .btn-green-to-white:hover p{
     color:#333333 !important;
@@ -559,6 +556,9 @@ body{
         padding:0.3vw 5vw;
         border-radius:1vw;
     }
+    .btn-green-to-white:hover {
+        border:0.3vw solid #1BC47D !important;
+    }
     .btn-grey{
         padding:1vw;
         border-radius:1vw;
@@ -660,9 +660,16 @@ body{
         padding:0.3vw 3vw;
         border-radius:1vw;
     }
+    .btn-green-to-white:hover {
+        border:0.3vw solid #1BC47D !important;
+    }
     .btn-grey{
         padding:1vw;
         border-radius:1vw;
+    }
+    .navbar-item{
+        font-size: 2rem !important;
+        margin-top: 1vw !important;
     }
     
 }
@@ -717,6 +724,10 @@ body{
     }
     #nvj-logo-nav{
         margin-bottom: 3vw !important;
+    }
+    .navbar-item{
+        font-size: 2rem !important;
+        margin-top: 1vw !important;
     }
 
 }

@@ -1,7 +1,7 @@
 #experiences_container:before{
     content: '';
     position: absolute;
-    top: 30%;
+    top: 63vw;
     left: 0;
     border-top: 1vw solid #1BC47D;
     background: #1BC47D;

@@ -165,7 +165,6 @@ class HomePage extends React.Component {
             <div className='col-6 ps-0' style={{paddingRight:'4vw'}}>
                 <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'2vw',whiteSpace:'pre-line'}}>Available Tickets</p>
                 <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </p>
-                <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </p>
             </div>
             <div className='col-6 pe-0'  style={{paddingLeft:'4vw'}}>
                 <div className='p-0'>
