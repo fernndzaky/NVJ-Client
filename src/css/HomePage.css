@@ -1,0 +1,75 @@
+
+.carousel-indicators > li {
+    border-radius: 50%;
+    width: 1vw;
+    height: 1vw;
+    background-color: #1D8ECE;
+}
+
+.swiper-slide-active .testimony-outline-wrapper{
+    border:1vw solid #1BC47D !important;
+    transition: 0.3s ease-in-out;
+}
+.swiper-slide-active .testimony-content-wrapper{
+    background-color:#1BC47D !important;
+    transition: 0.3s ease-in-out;
+}
+.swiper-slide-active .testimony-content-wrapper P{
+    color: #FFFFFF !important;
+    transition: 0.3s ease-in-out;
+}
+
+#clamped-content-paragraph-about-us-text{
+    color:#333333;
+    font-family:Roboto Regular;
+    margin-bottom:6vw
+}
+.clamp-lines__button{
+    display: none;
+}
+/* Small devices (phones, 767 and below)*/
+@media only screen and (max-width: 767px) { 
+    
+    .big-image-carousel{
+        height: 60vw !important;
+    }
+    .carousel-indicators > li {
+        border-radius: 50%;
+        width: 2vw;
+        height: 2vw;
+        background-color: #1D8ECE;
+    }
+
+}
+@media (min-width: 768px) and (orientation:portrait) {
+    .big-image-carousel{
+        height: 60vw !important;
+    }
+    .carousel-indicators > li {
+        border-radius: 50%;
+        width: 2vw;
+        height: 2vw;
+        background-color: #1D8ECE;
+    }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .big-image-carousel{
+        height: 45vw !important;
+    }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .big-image-carousel{
+        height: 45vw !important;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .big-image-carousel{
+        height: 50vw !important;
+    }
+}

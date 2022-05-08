@@ -1,0 +1,31 @@
+#experiences_container:before{
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 0;
+    border-top: 1vw solid #1BC47D;
+    background: #1BC47D;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+.experience_detail_container{
+    cursor: pointer;
+}
+
+.experience_detail_active{
+    border: 1vw solid #1BC47D;
+    filter: none !important;
+}
+.experience_detail{
+    border-radius: 50%;
+    filter: grayscale(100%) ;
+}
+
+.experience_detail_container #clamped-content-cart-title-text{
+    color: #9FADBB;
+}
+
+.experience_detail_container_active #clamped-content-cart-title-text{
+    color: #333333 !important;
+}
