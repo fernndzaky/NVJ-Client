@@ -23,6 +23,9 @@ export default class SideBar extends Component {
               <div>
                 <a className="navbar-item mtm-5" href="/cart" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >My Cart</a>    
               </div>
+              <div>
+                <a className="navbar-item mtm-5" href="/about" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >About Us</a>    
+              </div>
             </Menu>
           )
       }
