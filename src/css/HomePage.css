@@ -14,7 +14,7 @@
     background-color:#1BC47D !important;
     transition: 0.3s ease-in-out;
 }
-.swiper-slide-active .testimony-content-wrapper P{
+.swiper-slide-active .testimony-content-wrapper p{
     color: #FFFFFF !important;
     transition: 0.3s ease-in-out;
 }
@@ -58,6 +58,23 @@
     .big-image-carousel{
         height: 45vw !important;
     }
+    .testimony-content-wrapper{
+        border-radius: 1vw !important;
+        padding:7vw 2vw 2vw 2vw !important;
+        margin-top: -5vw !important;
+    }
+    .testimony-outline-wrapper{
+        width: 10vw !important;
+        height: 10vw !important;
+        margin-left: 2vw !important;
+    }
+    .contact-us-wrapper{
+        border-radius: 1vw !important;
+        padding: 2vw !important;
+    }
+    .contact-us-wrapper #contact-us-item-wrapper{
+        margin-top: 4vw !important;
+    }
 }
 
 /* Large devices (desktops, 992px and up)*/
@@ -65,11 +82,45 @@
     .big-image-carousel{
         height: 45vw !important;
     }
+    .testimony-content-wrapper{
+        border-radius: 1vw !important;
+        padding:7vw 2vw 2vw 2vw !important;
+        margin-top: -5vw !important;
+    }
+    .testimony-outline-wrapper{
+        width: 10vw !important;
+        height: 10vw !important;
+        margin-left: 2vw !important;
+    }
+    .contact-us-wrapper{
+        border-radius: 1vw !important;
+        padding: 2vw !important;
+    }
+    .contact-us-wrapper #contact-us-item-wrapper{
+        margin-top: 4vw !important;
+    }
 }
 
 /* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
     .big-image-carousel{
         height: 50vw !important;
+    }
+    .testimony-content-wrapper{
+        border-radius: 1vw !important;
+        padding:7vw 2vw 2vw 2vw !important;
+        margin-top: -5vw !important;
+    }
+    .testimony-outline-wrapper{
+        width: 10vw !important;
+        height: 10vw !important;
+        margin-left: 2vw !important;
+    }
+    .contact-us-wrapper{
+        border-radius: 1vw !important;
+        padding: 2vw !important;
+    }
+    .contact-us-wrapper #contact-us-item-wrapper{
+        margin-top: 2vw !important;
     }
 }
