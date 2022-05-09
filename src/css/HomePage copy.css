@@ -22,6 +22,7 @@
 #clamped-content-paragraph-about-us-text{
     color:#333333;
     font-family:Roboto Regular;
+    margin-bottom:6vw
 }
 .clamp-lines__button{
     display: none;
@@ -55,7 +56,7 @@
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
     .big-image-carousel{
-        height: 35vw !important;
+        height: 45vw !important;
     }
     .testimony-content-wrapper{
         border-radius: 1vw !important;
@@ -74,13 +75,12 @@
     .contact-us-wrapper #contact-us-item-wrapper{
         margin-top: 4vw !important;
     }
-   
 }
 
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
     .big-image-carousel{
-        height: 25vw !important;
+        height: 45vw !important;
     }
     .testimony-content-wrapper{
         border-radius: 1vw !important;
@@ -104,7 +104,7 @@
 /* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
     .big-image-carousel{
-        height: 22vw !important;
+        height: 50vw !important;
     }
     .testimony-content-wrapper{
         border-radius: 1vw !important;

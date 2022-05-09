@@ -59,7 +59,7 @@ body{
     bottom: 0;
     width: 100%;
     max-width: 500px;
-    z-index: 2 !important;
+    z-index: 1 !important;
   }
   
 .bottom-navbar #bottom-navbar-item {
@@ -170,7 +170,7 @@ body{
     transition: 0.2s ease-in-out;
 }
 .btn-outline-grey:hover{
-    border: 0.7vw solid #1D8ECE;
+    border: 1vw solid #1D8ECE;
 }
 .btn-red{
     border: 0.7vw solid #EFBCBD;
@@ -192,7 +192,6 @@ body{
     max-width:500px;
     margin:0 auto;
 }
-
 
 
 
@@ -387,6 +386,7 @@ body{
     .bm-burger-button {
         width: 25px !important;
         height: 15px !important;
+        right:3rem !important
     }
     .upper-page-padding{
         padding-top: 12vw;
@@ -508,7 +508,7 @@ body{
     .bm-burger-button {
         width: 35px !important;
         height: 25px !important;
-        right:11.5rem !important
+        right:3rem !important
     }
     .upper-page-padding{
         padding-top: 12vw;
@@ -568,55 +568,6 @@ body{
         border-radius:1vw;
     }
 
-    .cart-wrapper{
-        padding:2vw !important;
-        border-radius:1vw !important;
-    }
-    
-    .btn-red{
-        border: 0.3vw solid #EFBCBD !important;
-        padding:0.3vw 3vw !important;
-        border-radius:1vw !important 
-    }
-    .btn-red:hover{
-        border: 0.3vw solid #DA3832 !important;
-    }
-    .btn-circle-white{
-        border:0.3vw solid #1BC47D;
-        padding:0.3vw 0.5vw;
-    }
-    .btn-circle-green{
-        border:0.3vw solid #1BC47D;
-        padding:0.3vw 0.5vw;
-    }
-    .cart-qty-wrapper p{
-        padding: 0vw 2vw !important;
-    }
-    .ticket-filter-wrapper{
-        padding-bottom: 3vw !important;
-        border-bottom: 0.4vw solid #9FADBB !important
-    }
-    .input_field_text{
-        border-bottom: 0.2vw solid #9FADBB !important;
-        padding: 0.5vw 1vw !important;
-    }
-    .btn-outline-grey{
-        border: 0.3vw solid #9FADBB;
-        padding:0.5vw 2vw;
-        border-radius:1vw;
-    }
-    .btn-outline-grey:hover{
-        border: 0.3vw solid #1D8ECE;
-    }
-    .bottom-navbar-ticket-detail{
-        border-top: 0.4vw solid #9FADBB !important;
-        padding: 1vw 6vw !important;
-    }
-
-    .payment_status_icon{
-        height:11vw !important;
-        width:11vw !important
-    }
 }
 
 /* Large devices (desktops, 992px and up)*/
@@ -642,8 +593,8 @@ body{
     }
 
     .page-container{
-        padding-left:3rem;
-        padding-right:3rem
+        padding-left:5rem;
+        padding-right:5rem
     }
     .page-container-inner{
         padding-left:10rem;
@@ -665,7 +616,7 @@ body{
     .bm-burger-button {
         width: 30px !important;
         height: 20px !important;
-        right:19.5rem !important
+        right:5rem !important
     }
     .upper-page-padding{
         padding-top: 12vw;
@@ -684,7 +635,7 @@ body{
     .bm-menu-wrap{
         top:0;
         left:0;
-        width:40vw !important;
+        width:35vw !important;
     }
     .bm-cross {
         background: #000000;
@@ -724,71 +675,7 @@ body{
         font-size: 2rem !important;
         margin-top: 1vw !important;
     }
-
-    .bottom-navbar #bottom-navbar-item {
-        padding: 1vw 0.5vw ;
-        border-top: 0.5vw solid #9FADBB;
-        
-    }
-
-    .bottom-navbar-item-active{
-        border-top: 0.5vw solid #1D8ECE !important;
-    }
-
-    .bottom-navbar  #bottom-navbar-item:hover {
-        border-top: 0.5vw solid #1D8ECE;
-    }
-
-    .cart-wrapper{
-        padding:2vw !important;
-        border-radius:1vw !important;
-    }
-    .btn-red{
-        border: 0.3vw solid #EFBCBD !important;
-        padding:0.3vw 2vw !important;
-        border-radius:1vw !important 
-    }
-    .btn-red:hover{
-        border: 0.3vw solid #DA3832 !important;
-    }
-    .btn-circle-white{
-        border:0.3vw solid #1BC47D;
-        padding:0.3vw 0.5vw;
-    }
-    .btn-circle-green{
-        border:0.3vw solid #1BC47D;
-        padding:0.3vw 0.5vw;
-    }
-    .cart-qty-wrapper p{
-        padding: 0vw 2vw !important;
-    }
-    .ticket-filter-wrapper{
-        padding-bottom: 3vw !important;
-        border-bottom: 0.4vw solid #9FADBB !important
-    }
-    .input_field_text{
-        border-bottom: 0.2vw solid #9FADBB !important;
-        padding: 0.5vw 1vw !important;
-    }
-
-    .btn-outline-grey{
-        border: 0.3vw solid #9FADBB;
-        padding:0.5vw 2vw;
-        border-radius:1vw;
-    }
-    .btn-outline-grey:hover{
-        border: 0.3vw solid #1D8ECE;
-    }
-    .bottom-navbar-ticket-detail{
-        border-top: 0.4vw solid #9FADBB !important;
-        padding: 1vw 4vw !important;
-    }
-
-    .payment_status_icon{
-        height:10vw !important;
-        width:10vw !important
-    }
-
+    
 }
 
 /* Extra large devices (large desktops, 1200px and up)*/
@@ -814,13 +701,10 @@ body{
         line-height: 1.9rem;
     }
     .upper-page-padding{
-        padding-top: 6vw;
+        padding-top: 12vw;
     }
     .upper-page-padding-small{
-        padding-top: 4vw;
-    }
-    .page-container-left{
-        padding-left:3rem;
+        padding-top: 7vw;
     }
     .nav-scroll-padding{
         padding-top: 1vw !important;
@@ -833,11 +717,7 @@ body{
     .bm-menu-wrap{
         top:0;
         left:0;
-        width:45vw !important;
-    }
-    .bm-burger-button{
-        right: 36vw !important;
-
+        width:35vw !important;
     }
     .bm-cross {
         background: #000000;
@@ -852,71 +732,6 @@ body{
     .navbar-item{
         font-size: 2rem !important;
         margin-top: 1vw !important;
-    }
-
-        
-    .bottom-navbar #bottom-navbar-item {
-        padding: 1vw 0.5vw ;
-        border-top: 0.5vw solid #9FADBB;
-        
-    }
-
-    .bottom-navbar-item-active{
-        border-top: 0.5vw solid #1D8ECE !important;
-    }
-
-    .bottom-navbar  #bottom-navbar-item:hover {
-        border-top: 0.5vw solid #1D8ECE;
-    }
-
-    .cart-wrapper{
-        padding:2vw !important;
-        border-radius:1vw !important;
-    }
-    .btn-red{
-        border: 0.3vw solid #EFBCBD !important;
-        padding:0.3vw 2vw !important;
-        border-radius:1vw !important 
-    }
-    .btn-red:hover{
-        border: 0.3vw solid #DA3832 !important;
-    }
-    .btn-circle-white{
-        border:0.3vw solid #1BC47D;
-        padding:0.3vw 0.5vw;
-    }
-    .btn-circle-green{
-        border:0.3vw solid #1BC47D;
-        padding:0.3vw 0.5vw;
-    }
-    .cart-qty-wrapper p{
-        padding: 0vw 1vw !important;
-    }
-    .ticket-filter-wrapper{
-        padding-bottom: 3vw !important;
-        border-bottom: 0.5vw solid #9FADBB !important
-    }
-    .input_field_text{
-        border-bottom: 0.2vw solid #9FADBB !important;
-        padding: 0.5vw 1vw !important;
-    }
-    .btn-outline-grey{
-        border: 0.3vw solid #9FADBB;
-        padding:0.5vw 2vw;
-        border-radius:1vw;
-    }
-    .btn-outline-grey:hover{
-        border: 0.3vw solid #1D8ECE;
-    }
-    .bottom-navbar-ticket-detail{
-        border-top: 0.5vw solid #9FADBB !important;
-        padding: 1vw 3vw !important;
-
-    }
-
-    .payment_status_icon{
-        height:10vw !important;
-        width:10vw !important
     }
 
 }
@@ -958,7 +773,7 @@ body{
     width: 2.5vw ;
     height: 25px ;
     position: fixed;
-    right: 32.5rem;
+    right: 5rem;
     top: 2vw;
     transition: 0.2s ease-in-out;
     z-index: 1 !important;

@@ -1,13 +1,15 @@
-#experiences_container:before{
+/*#experiences_container:before{
     content: '';
     position: absolute;
-    top: 63vw;
+    top: 67vw;
     left: 0;
     border-top: 1vw solid #1BC47D;
     background: #1BC47D;
     width: 100%;
     transform: translateY(-50%);
 }
+*/
+
 
 .experience_detail_container{
     cursor: pointer;
@@ -28,4 +30,45 @@
 
 .experience_detail_container_active #clamped-content-cart-title-text{
     color: #333333 !important;
+}
+
+
+
+/* Small devices (phones, 767 and below)*/
+@media only screen and (max-width: 767px) { 
+    
+
+
+}
+@media (min-width: 768px) and (orientation:portrait) {
+
+}
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .experience_detail{
+        height: 13vw !important;
+    }
+    .experience_detail_active{
+        border: 0.5vw solid #1BC47D;
+    }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .experience_detail{
+        height: 9vw !important;
+    }
+    .experience_detail_active{
+        border: 0.5vw solid #1BC47D;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .experience_detail{
+        height: 7vw !important;
+    }
+    .experience_detail_active{
+        border: 0.5vw solid #1BC47D !important;
+    }
 }

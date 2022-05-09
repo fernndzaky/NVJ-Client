@@ -2,6 +2,7 @@ import React from 'react';
 import {Helmet} from 'react-helmet';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import ClampLines from 'react-clamp-lines';
+import {BrowserView, MobileView} from 'react-device-detect';
 import {isMobile} from 'react-device-detect';
 
 import '../css/index.css';
@@ -111,55 +112,94 @@ class HomePage extends React.Component {
                 </a>
             </div>
             {/* END OF TOP CAROUSEL */}
+            <MobileView>
             <div className='row page-container upper-page-padding-small'>
                 <div className='col-xs-12 ps-0 pe-0'>
-                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Dusun Butuh
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>Dusun Butuh
                     On-Site Experience</p>
                 </div>
-                <div className='col-xs-12 ps-0 pe-0 mt-3 mtm-5' >
+                <div className='col-xs-12 ps-0 pe-0' >
                     <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </p>
-                    <div className='mtm-5 mt-5' style={{padding:'0'}}>
-                        <a href="/experiences" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All Experiences</a>
-                    </div>
                 </div>
             </div>
+            </MobileView>
+            <BrowserView>
+            <div className='row page-container-inner upper-page-padding-small'>
+                <div className='col-md-12 ps-0 pe-0' style={{textAlign:'center'}}>
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'2vw',whiteSpace:'pre-line'}}>Dusun Butuh
+                    On-Site Experience</p>
+                </div>
+                <div className='col-md-12 ps-0 pe-0' style={{textAlign:'center'}}>
+                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </p>
+                </div>
+            </div>
+            </BrowserView>
 
         </div>
         {/* END OF TOP CONTENT */}
 
 
         {/* START OF AVAILABLE TICKETS */}
+        <MobileView>
 
         <div className='row upper-page-padding-small page-container'>
             <div className='col-12 p-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Available Tickets</p>
-            </div>
-            <div className='mt-3 mtm-5'>
-
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>Available Tickets</p>
             </div>
             <div className='p-0'>
                 <TicketCard title={'Entrance Ticket to Dusun Butuh'} price={'10,000'} ></TicketCard>
             </div>
-            <div className='p-0 mtm-5 mt-4'>
+            <div className='p-0' style={{marginTop:'6vw'}}>
                 <TicketCard title={'Entrance Ticket to Dusun Butuh Nepal Van Java Lorem Ipsum dolor sit amet quertus'} price={'20,000'} ></TicketCard>
             </div>
             
-            <div className='mtm-5 mt-5' style={{padding:'0'}}>
-                <a href="/tickets" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All Tickets</a>
+            <div style={{marginTop:'6vw',padding:'0'}}>
+                <a href="/" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All Tickets</a>
             </div>
         </div>
+        </MobileView>
 
+        <BrowserView>
+
+        <div className='row upper-page-padding-small page-container-inner'>
+            <div className='col-6 ps-0' style={{paddingRight:'4vw'}}>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'2vw',whiteSpace:'pre-line'}}>Available Tickets</p>
+                <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </p>
+            </div>
+            <div className='col-6 pe-0'  style={{paddingLeft:'4vw'}}>
+                <div className='p-0'>
+                    <TicketCard title={'Entrance Ticket to Dusun Butuh'} price={'10,000'} ></TicketCard>
+                </div>
+                <div className='p-0' style={{marginTop:'2vw'}}>
+                    <TicketCard title={'Entrance Ticket to Dusun Butuh Nepal Van Java Lorem Ipsum dolor sit amet quertus Nepal Van Java Is A Village'} price={'20,000'} ></TicketCard>
+                </div>
+                
+                <div style={{marginTop:'2vw',padding:'0'}}>
+                    <a href="/" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All Tickets</a>
+                </div>
+            </div>
+        </div>
+        </BrowserView>
 
         {/* END OF AVAILABLE TICKETS */}
 
         {/* START OF GALLERIES */}
-        <div className='row upper-page-padding page-container'>
-            <div className='col-12 p-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Galleries</p>
+        <MobileView>
+            <div className='row upper-page-padding page-container'>
+                <div className='col-12 p-0'>
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>Galleries</p>
+                </div>
             </div>
-        </div>
+        </MobileView>
+        <BrowserView>
+            <div className='row upper-page-padding page-container-inner'>
+                <div className='col-12 p-0'>
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>Galleries</p>
+                </div>
+            </div>
+        </BrowserView>
         {/* START OF GALLERY CAROUSEL */}
-        <div id="gallery_carousel" className="carousel slide mtm-5 mt-4" data-ride="carousel">
+        <div id="gallery_carousel" className="carousel slide" data-ride="carousel">
             <ol className="carousel-indicators">
                 <li data-target="#gallery_carousel" data-slide-to={0} className="active" />
                 <li data-target="#gallery_carousel" data-slide-to={1} />
@@ -189,13 +229,20 @@ class HomePage extends React.Component {
 
         {/* START OF TESTIMONIES */}
         <div className='row upper-page-padding'>
+            <MobileView>
                 <div className='col-12 page-container'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Testimonies</p>
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'10vw',whiteSpace:'pre-line'}}>Testimonies</p>
                 </div>
-            <div className='col-12 page-container-left pe-0 mt-4 mtm-5'>
+            </MobileView>
+            <BrowserView>
+                <div className='col-12 page-container-inner'>
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>Testimonies</p>
+                </div>
+            </BrowserView>
+            <div className='col-12 page-container-left-inner pe-0'>
                 <Swiper
-                    slidesPerView={1.3}
-                    spaceBetween={35}
+                    slidesPerView={isMobile ? 1.3: 2.5}
+                    spaceBetween={isMobile ? 35: 30}
                     pagination={{
                     clickable: true,
                     }}
@@ -258,9 +305,9 @@ class HomePage extends React.Component {
 
 
         {/* START OF ABOUT US */}
-        <div  className='row upper-page-padding page-container' >
-            <div className='col-12 ps-0 prm-0'  >
-                <p className={isMobile ? 'px-36' : 'px-36 mb-4'} style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>About Us</p>
+        <div  className={isMobile ? 'row upper-page-padding page-container' : 'row upper-page-padding page-container-inner'} >
+            <div className='col-xl-6 col-xs-12 ps-0 prm-0' style={{paddingRight:'5vw'}}>
+                <p className={isMobile ? 'px-36' : 'px-36 mb-4'} style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>About Us</p>
                 <ClampLines
                     text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text of something Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text of something "
                     id="paragraph-about-us-text"
@@ -269,29 +316,33 @@ class HomePage extends React.Component {
                     moreText="Expand"
                     lessText="Collapse"
                     innerElement="p"
-                    className="px-18 mtm-5"
+                    className="px-18"
                 />
-                <div className='mtm-5 mt-5' style={{padding:'0'}}>
-                    <a href="/about" className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View More</a>
+                <div className='mtm-5' style={{padding:'0'}}>
+                    <a href="/about" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View More</a>
                 </div>
             </div>
             {/* START OF CONTACT US */}
-            <div className='col-12 pe-0 plm-0 upper-page-padding-small mt-4'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Contact Us</p>
-                <div className='contact-us-wrapper mtm-5' style={{padding:'5vw',boxShadow: '1px 1px 4px rgba(0, 0, 0, 0.25)',borderRadius:'4vw'}}>
+            <div className='col-xl-6 col-xs-12 pe-0 plm-0 mtm-5'>
+                {isMobile &&
+                    <div className='upper-page-padding-small'>
+                    </div>
+                }
+                <p className={isMobile ? 'px-36 mtm-5' : 'px-36 mb-4'} style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>Contact Us</p>
+                <div className='contact-us-wrapper' style={{padding:'5vw',boxShadow: '1px 1px 4px rgba(0, 0, 0, 0.25)',borderRadius:'4vw'}}>
                     <div style={{display:'flex',alignItems:'flex-start'}}>
                         <FontAwesomeIcon icon="envelope" className='px-24' style={{color:'#9FADBB'}} />
-                        <p className='px-18 ms-3' style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>nepalvanjava@gmail.com</p>
+                        <p className='px-18' style={{fontFamily:'Roboto Regular',marginBottom:'0px',marginLeft:'5vw'}}>nepalvanjava@gmail.com</p>
                     </div>
                     <div id="contact-us-item-wrapper" style={{display:'flex',alignItems:'flex-start',marginTop:'8vw'}}>
                         <FontAwesomeIcon icon="phone" className='px-24' style={{color:'#9FADBB'}} />
-                        <p className='px-18 ms-3' style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>+628111377893</p>
+                        <p className='px-18' style={{fontFamily:'Roboto Regular',marginBottom:'0px',marginLeft:'5vw'}}>+628111377893</p>
                     </div>
                     <div id="contact-us-item-wrapper" style={{display:'flex',alignItems:'flex-start',marginTop:'8vw'}}>
                         <FontAwesomeIcon icon="search-location" className='px-24' style={{color:'#9FADBB'}} />
-                        <div className='ms-3'>
-                            <p className={isMobile ?'px-18':'px-18 mb-3'} style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>Dusun, Butuh, Temanggung, Kec. Kaliangkrik, Kabupaten Magelang, Jawa Tengah 56153</p>
-                            <a className='px-18 pt-3' target="_blank" href="https://goo.gl/maps/NS7WP7hdqjAH1cNdA" style={{fontFamily:'Roboto Regular',marginBottom:'0px',textDecoration:'none',color:'#0D51D6',display:'inline-block'}}>View in Google Map</a>
+                        <div style={{marginLeft:'5vw'}}>
+                            <p className={isMobile ?'px-18':'px-18 mb-3'} style={{fontFamily:'Roboto Regular',marginBottom:'0px',marginBottom:'5vw'}}>Dusun, Butuh, Temanggung, Kec. Kaliangkrik, Kabupaten Magelang, Jawa Tengah 56153</p>
+                            <a className='px-18' target="_blank" href="https://goo.gl/maps/NS7WP7hdqjAH1cNdA" style={{fontFamily:'Roboto Regular',marginBottom:'0px',textDecoration:'none',color:'#0D51D6'}}>View in Google Map</a>
 
                         </div>
                     </div>
@@ -303,8 +354,14 @@ class HomePage extends React.Component {
         {/* END OF ABOUT US */}
 
 
-      
-        <BottomNavbar></BottomNavbar>
+        <BrowserView>
+            <div className='upper-page-padding-small'>
+
+            </div>
+        </BrowserView>
+        <MobileView>
+            <BottomNavbar></BottomNavbar>
+        </MobileView>
 
 
 

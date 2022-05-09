@@ -73,17 +73,17 @@ class TicketDetail extends React.Component {
         <Navbar></Navbar>
         
         {/* START OF TOP SECTION*/}
-        <div className='row page-container' style={{marginTop:'4vw',background: `url('/assets/images/BG_Image.png') no-repeat center`,
+        <div className='row page-container mtm-5 ' style={{background: `url('/assets/images/BG_Image.png') no-repeat center`,
                                                     backgroundSize: '90%'}}>
             <div className='col-12 ps-0 pe-0'>
-                <a href="/tickets" className='px-18 btn-outline-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',marginBottom:'8vw'}}>
-                    <FontAwesomeIcon icon="chevron-left" className='px-18' style={{marginRight:'2vw'}} />
+                <a href="/tickets" className='px-18 btn-outline-grey mb-2 mt-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block'}}>
+                    <FontAwesomeIcon icon="chevron-left" className='px-18 me-2' />
 
                     Back</a>
 
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw'}}>Entrance Ticket to Dusun Butuh</p>
-                <p className='px-28' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw'}}>Rp10,000</p>
-                <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
+                <p className='px-36 mt-3 mtm-5' style={{color:'#333333',fontFamily:'Nunito Bold'}}>Entrance Ticket to Dusun Butuh</p>
+                <p className='px-28' style={{color:'#333333',fontFamily:'Nunito Bold'}}>Rp10,000</p>
+                <p className='px-18 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
                 <br></br>
                 <br></br>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
@@ -95,12 +95,12 @@ class TicketDetail extends React.Component {
 
         <BottomNavbar></BottomNavbar>
 
-        <div className="bottom-navbar" style={{padding:'4vw',
+        <div className="bottom-navbar bottom-navbar-ticket-detail" style={{padding:'4vw',
             borderTop: '1.5vw solid #9FADBB'
         }} >
               <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
                 <button className='px-18 btn-outline-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',background:'#FFFFFF'}}>
-                    <FontAwesomeIcon icon="plus" className='px-18' style={{marginRight:'2vw'}} />
+                    <FontAwesomeIcon icon="plus" className='px-18 me-2' />
                     Add to cart</button>
                 <BuyNowButton></BuyNowButton>
               </div>

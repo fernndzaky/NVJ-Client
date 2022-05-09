@@ -69,12 +69,12 @@ class PaymentExpired extends React.Component {
         <Navbar></Navbar>
         
         {/* START OF TOP SECTION*/}
-        <div className='row page-container upper-page-padding-small' style={{borderBottom:'0.5vw solid #DBE2E9',paddingBottom:'5vw'}}>
+        <div className='row page-container upper-page-padding-small pb-4' style={{borderBottom:'0.5vw solid #DBE2E9'}}>
             <div className='col-12' style={{textAlign:'center'}}>
-              <img className="img-fluid" style={{width:'25vw'}} src="/assets/images/Payment_Expired.png" alt="Payment Expired" />
+              <img className="img-fluid payment_status_icon" style={{width:'25vw',height:'25vw',objectFit:'contain'}} src="/assets/images/Payment_Expired.png" alt="Payment Expired" />
 
-              <p className='px-28' style={{color:'#DA3832',fontFamily:'Roboto Bold',marginTop:'5vw'}}>Order Expired..</p>
-              <a href="/tickets" className='px-18 btn-outline-grey w-100' style={{fontFamily:'Roboto Bold',marginTop:'4vw',textDecoration:'none',display:'inline-block',backgroundColor:'#FFFFFF'}}>
+              <p className='px-28 mtm-5 m-4' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>Order Expired..</p>
+              <a href="/tickets" className='px-18 btn-outline-grey w-100' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',backgroundColor:'#FFFFFF'}}>
               Back to Tiket List
               </a>
             </div>
@@ -84,9 +84,9 @@ class PaymentExpired extends React.Component {
         {/* START OF BOOKINNG DETAILS SECTION*/}
         <div className='row page-container upper-page-padding-small pb-5'>
           <div className='col-12 ps-0 pe-0'>
-            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'5vw'}}>Booking Details</p>
+            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Booking Details</p>
 
-            <table className="table">
+            <table className="table mt-4">
               <thead>
                 <tr>
                   <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold'}}>Ticket</th>

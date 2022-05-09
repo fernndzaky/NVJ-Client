@@ -71,7 +71,7 @@ class Cart extends React.Component {
         <Navbar></Navbar>
         <div className='row page-container' style={{marginTop:'4vw'}}>
             <div className='col-md-6 col-xs-12 ps-0 pe-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>Your Cart</p>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Your Cart</p>
             </div>
         </div>
 
@@ -79,9 +79,9 @@ class Cart extends React.Component {
 
         <form action='/checkout'>
         <div className='row page-container'>
-            <div className='col-md-6 col-xs-12 ps-0 pe-0'>
+            <div className='col-12 ps-0 pe-0'>
                 {/* START OF ONE ITEM */}
-                <div style={{padding:'4vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw',marginTop:'6vw',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+                <div className='cart-wrapper mtm-5 mt-4' style={{padding:'4vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw',display:'flex',flexDirection:'column',justifyContent:'space-between',width:'100%'}}>
 
                     <div>
                         <ClampLines
@@ -101,7 +101,7 @@ class Cart extends React.Component {
                         <button className='btn-red px-18' style={{fontFamily:'Roboto Bold'}}>
                             Delete
                         </button>
-                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                        <div className='cart-qty-wrapper' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                             <button className='btn-circle-white'>
                                 <FontAwesomeIcon icon="minus" className='px-24' style={{cursor:'pointer'}} />
                             </button>
@@ -114,11 +114,11 @@ class Cart extends React.Component {
                 </div>
                 {/* END OF ONE ITEM */}
                 {/* START OF ONE ITEM */}
-                <div style={{padding:'4vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw',marginTop:'6vw',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+                <div className='cart-wrapper mtm-5 mt-4' style={{padding:'4vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw',display:'flex',flexDirection:'column',justifyContent:'space-between',width:'100%'}}>
 
                     <div>
                         <ClampLines
-                            text="Entrance Ticket to Dusun Butuh"
+                            text="Entrance Ticket to Dusun Butuh Nepal Van Java Di Magelang Jogjakarta Di sebelahnya ada"
                             id="cart-title-text"
                             lines={2}
                             ellipsis=".."
@@ -134,7 +134,7 @@ class Cart extends React.Component {
                         <button className='btn-red px-18' style={{fontFamily:'Roboto Bold'}}>
                             Delete
                         </button>
-                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                        <div className='cart-qty-wrapper' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                             <button className='btn-circle-white'>
                                 <FontAwesomeIcon icon="minus" className='px-24' style={{cursor:'pointer'}} />
                             </button>
@@ -150,7 +150,7 @@ class Cart extends React.Component {
         </div>
         {/* END OF CART SECTION*/}
         {/* START OF BOTTOM SECTION*/}
-        <div className='row page-container' style={{marginTop:'6vw'}}>
+        <div className='row page-container mtm-5 mt-5'>
             <div className='col-12 ps-0 pe-0'>
                 <p className='px-24' style={{color:'#333333',fontFamily:'Nunito Semi Bold'}}>Total:
                 <span className='px-28'style={{fontFamily:'Roboto Bold',marginLeft:'2vw'}} >

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
 import '../css/index.css';
 
@@ -100,11 +99,11 @@ class Tickets extends React.Component {
             </div>
             {/* END OF TOP CAROUSEL */}
 
-            <div className='row page-container' style={{paddingTop:'8vw'}}>
-                <div className='col-md-6 col-xs-12 ps-0 pe-0'>
-                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>Available Tickets</p>
+            <div className='row page-container mt-5 mtm-5'>
+                <div className='col-12 ps-0 pe-0'>
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Available Tickets</p>
                 </div>
-                <div className='col-md-6 col-xs-12 ps-0 pe-0' >
+                <div className='col-12 ps-0 pe-0 mt-4 mtm-5' >
                     <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </p>
                 </div>
             </div>
@@ -113,12 +112,12 @@ class Tickets extends React.Component {
         {/* END OF TOP CONTENT */}
 
         {/* START OF FILTER SECTION */}
-        <div className='row page-container' style={{marginTop:'6vw',paddingBottom:'6vw',borderBottom:'1vw solid #9FADBB'}}>
+        <div className='row page-container mt-3 mtm-5 ticket-filter-wrapper' style={{paddingBottom:'6vw',borderBottom:'1vw solid #9FADBB'}}>
             <div className='col-6 ps-0 '>
-                <input  name="ticket_name" type="text" class="px-18" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Search Ticket" />
+                <input name="ticket_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Search Ticket" />
             </div>            
             <div className='col-6 pe-0'>
-                <select name="filter"  className="px-18"  style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}}>
+                <select name="filter"  className="px-18 input_field_text"  style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}}>
                     <option value="" disabled selected>Show All</option>
                     <option value="SMP">SMP</option>
                     <option value="SMA">SMA</option>
@@ -129,14 +128,17 @@ class Tickets extends React.Component {
         </div>
         {/* END OF FILTER SECTION */}
         {/* START OF AVAILABLE TICKETS */}
-        <div className='row page-container' style={{paddingTop:'8vw'}}>
-            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px',padding:'0px'}}>Showing 3 results</p>
+        <div className='row page-container mt-5 mtm-5'>
+            <p className='px-18 mtm-5 pb-3' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px',padding:'0px'}}>Showing 3 results</p>
 
-            <TicketCard title={'Entrance Ticket to Dusun Butuh'} price={'10,000'} ></TicketCard>
-            <TicketCard title={'Entrance Ticket to Dusun Butuh'} price={'20,000'} ></TicketCard>
-            
-            <div style={{marginTop:'6vw',padding:'0'}}>
-                <a href="/" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All Tickets</a>
+            <div className='p-0'>
+                <TicketCard title={'Entrance Ticket to Dusun Butuh'} price={'10,000'} ></TicketCard>
+            </div>
+            <div className='p-0 mtm-5 mt-4'>
+                <TicketCard title={'Entrance Ticket to Dusun Butuh Nepal Van Java Lorem Ipsum dolor sit amet quertus'} price={'20,000'} ></TicketCard>
+            </div>
+            <div className='p-0 mtm-5 mt-4'>
+                <TicketCard title={'Entrance Ticket to Dusun Butuh Nepal Van Java Lorem Ipsum dolor sit amet quertus'} price={'15,000'} ></TicketCard>
             </div>
         </div>
         {/* END OF AVAILABLE TICKETS */}

@@ -84,14 +84,14 @@ class Experiences extends React.Component {
         <Navbar></Navbar>
         {/* START OF TOP SECTION*/}
         <div className='row page-container'>
-            <div className='col-12 ps-0 pe-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'8vw',marginTop:'4vw'}}>On-Site <br></br> Experience List </p>
+            <div className='col-12 ps-0 pe-0 mtm-5'>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold'}}>On-Site <br></br> Experience List </p>
             </div>
         </div>
         {/* END OF TOP SECTION */}
 
         {/* START OF EXPERIENCES SECTION*/}
-        <div style={{borderBottom:'0.8vw solid #9FADBB',paddingBottom:'5vw'}}>
+        <div className='mtm-5 mt-4 pb-4' style={{borderBottom:'0.5vw solid #9FADBB'}}>
             <div className='row page-container-left'>
                 <div id="experiences_container" className='p-0'>
                     <Swiper
@@ -108,7 +108,7 @@ class Experiences extends React.Component {
                                 <div className='experience_detail experience_detail_active' style={{width:'100%',height:'22vw'}}>
                                     <img src="/assets/images/Dummy_Image_2.png" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
                                 </div> 
-                                <div style={{textAlign:'center',marginTop:'2vw'}}>
+                                <div className='mt-2' style={{textAlign:'center'}}>
                                     <ClampLines
                                         text="Entrance Gate"
                                         id="cart-title-text"
@@ -127,7 +127,7 @@ class Experiences extends React.Component {
                                 <div className='experience_detail ' style={{width:'100%',height:'22vw'}}>
                                     <img src="/assets/images/Navbar.png" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
                                 </div> 
-                                <div style={{textAlign:'center',marginTop:'2vw'}}>
+                                <div className='mt-2' style={{textAlign:'center'}}>
                                     <ClampLines
                                         text="Jembatan Kaca"
                                         id="cart-title-text"
@@ -146,7 +146,7 @@ class Experiences extends React.Component {
                                 <div className='experience_detail ' style={{width:'100%',height:'22vw'}}>
                                     <img src="/assets/images/Dummy_Image_1.png" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
                                 </div> 
-                                <div style={{textAlign:'center',marginTop:'2vw'}}>
+                                <div className='mt-2' style={{textAlign:'center'}}>
                                     <ClampLines
                                         text="Saung Jawa"
                                         id="cart-title-text"
@@ -165,7 +165,7 @@ class Experiences extends React.Component {
                                 <div className='experience_detail ' style={{width:'100%',height:'22vw'}}>
                                     <img src="/assets/images/Dummy_Image_2.png" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
                                 </div> 
-                                <div style={{textAlign:'center',marginTop:'2vw'}}>
+                                <div className='mt-2' style={{textAlign:'center'}}>
                                     <ClampLines
                                         text="Masjid Umum"
                                         id="cart-title-text"
@@ -189,11 +189,11 @@ class Experiences extends React.Component {
         {/*  START OF EXPERIENCE DETAIL SECTION*/}
         <div className='row page-container mtm-5'>
             <div className='col-12 ps-0 pe-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'8vw',marginTop:'4vw'}}>Entrance Gate</p>
+                <p className='px-36 mt-5 mtm-5' style={{color:'#333333',fontFamily:'Nunito Bold'}}>Entrance Gate</p>
             </div>
         </div>
          {/* START OF EXPERIENCE DETAIL CAROUSEL */}
-         <div id="experience_detail_carousel" className="carousel slide" data-ride="carousel">
+         <div id="experience_detail_carousel" className="carousel slide mt-4 mtm-5" data-ride="carousel">
             <ol className="carousel-indicators">
                 <li data-target="#experience_detail_carousel" data-slide-to={0} className="active" />
                 <li data-target="#experience_detail_carousel" data-slide-to={1} />
@@ -218,7 +218,7 @@ class Experiences extends React.Component {
             </a>
         </div>
         {/* END OF EXPERIENCE DETAIL CAROUSEL */}
-        <div className='row page-container mtm-5'>
+        <div className='row page-container mtm-5 mt-4'>
             <div className='col-12 ps-0 pe-0'>
                 <ClampLines
                     text="Lorem Ipsum is simply dummy text of 
@@ -229,7 +229,7 @@ class Experiences extends React.Component {
                     a galley of type and scrambled it to
                     make a type specimen book"
                     id="cart-title-text"
-                    lines={3}
+                    lines={4}
                     ellipsis="..."
                     moreText="Expand"
                     lessText="Collapse"

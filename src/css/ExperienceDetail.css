@@ -28,20 +28,54 @@
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
     .extra-big-image-carousel{
-        height: 95vw !important;
+        height: 30vw !important;
+    }
+    .experience-card-wrapper img{
+        border-radius: 1vw 1vw 0vw 0vw !important;
+        height: 20vw !important;
+    }
+    .experience-card-bottom-section{
+        border-radius: 0vw 0vw 1vw 1vw !important;
+        padding: 2vw !important;
+    }
+    .experience-card-bottom-section button{
+        padding: 0.8vw 1.5vw !important;  
     }
 }
 
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
     .extra-big-image-carousel{
-        height: 95vw !important;
+        height: 30vw !important;
+    }
+    .experience-card-wrapper img{
+        border-radius: 1vw 1vw 0vw 0vw !important;
+        height: 15vw !important;
+    }
+    .experience-card-bottom-section{
+        border-radius: 0vw 0vw 1vw 1vw !important;
+        padding: 1vw 2vw !important;
+    }
+    .experience-card-bottom-section button{
+        padding: 0.5vw 1vw !important;  
     }
 }
 
 /* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
     .extra-big-image-carousel{
-        height: 50vw !important;
+        height: 30vw !important;
+    }
+    .experience-card-wrapper img{
+        border-radius: 1vw 1vw 0vw 0vw !important;
+        height: 15vw !important;
+    }
+    .experience-card-bottom-section{
+        border-radius: 0vw 0vw 1vw 1vw !important;
+        padding: 1vw 2vw !important;
+
+    }
+    .experience-card-bottom-section button{
+        padding: 0.5vw 1vw !important;  
     }
 }

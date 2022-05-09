@@ -1,8 +1,5 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
-import {BrowserView, MobileView} from 'react-device-detect';
-import {isMobile} from 'react-device-detect';
-
 import '../css/index.css';
 
 // Components Import
@@ -70,15 +67,14 @@ class AboutUs extends React.Component {
         </Helmet>
         <Navbar></Navbar>
         {/* START OF TOP SECTION*/}
-        <MobileView>
-        <div className='row page-container' style={{marginTop:'4vw',
+        <div className='row page-container mt-4' style={{
                                                     background: `url('/assets/images/BG_Image.png') no-repeat center`,
                                                     backgroundSize: '90%'}}>
-            <div className='col-md-6 col-xs-12 ps-0 pe-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>Dusun Butuh
+            <div className='col-12 ps-0 pe-0'>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Dusun Butuh
 Nepal Van Java</p>
             </div>
-            <div className='col-md-6 col-xs-12 ps-0 pe-0' >
+            <div className='col-12 ps-0 pe-0 mt-4 mtm-5' >
                 <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. 
                 <br></br>
                 <br></br>
@@ -86,50 +82,9 @@ Nepal Van Java</p>
                 </p>
             </div>
         </div>
-        </MobileView>
-        <BrowserView>
-        <div className='row page-container' style={{marginTop:'4vw'}}>
-            <div className='col-xl-5 ps-0 '>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'2vw',whiteSpace:'pre-line'}}>Dusun Butuh
-Nepal Van Java</p>
-                <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. 
-
-                </p>
-            </div>
-            <div className='col-md-7 pe-0' >
-                {/* START OF TOP CAROUSEL */}
-                <div id="top_carousel" className="carousel slide" data-ride="carousel">
-                    <ol className="carousel-indicators">
-                        <li data-target="#top_carousel" data-slide-to={0} className="active" />
-                        <li data-target="#top_carousel" data-slide-to={1} />
-                        <li data-target="#top_carousel" data-slide-to={2} />
-                    </ol>
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                        <img className="d-block w-100" style={{objectFit:'cover',height:'30vw'}} src="/assets/images/Dummy_Image_1.png" alt="First slide" />
-                        </div>
-                        <div className="carousel-item">
-                        <img className="d-block w-100" style={{objectFit:'cover',height:'30vw'}} src="/assets/images/Dummy_Image_2.png" alt="Second slide" />
-                        </div>
-                        <div className="carousel-item">
-                        <img className="d-block w-100" style={{objectFit:'cover',height:'30vw'}} src="/assets/images/Dummy_Image_1.png" alt="Third slide" />
-                        </div>
-                    </div>
-                    <a className="carousel-control-prev" href="#top_carousel" role="button" data-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true" />
-                    </a>
-                    <a className="carousel-control-next" href="#top_carousel" role="button" data-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true" />
-                    </a>
-                </div>
-                {/* END OF TOP CAROUSEL */}
-            </div>
-        </div>
-        </BrowserView>
         {/* END OF TOP SECTION*/}
-        <MobileView>
         {/* START OF TOP CAROUSEL */}
-        <div id="top_carousel" style={{marginTop:'8vw'}} className="carousel slide" data-ride="carousel">
+        <div id="top_carousel"  className="carousel slide mt-4 mtm-5" data-ride="carousel">
             <ol className="carousel-indicators">
                 <li data-target="#top_carousel" data-slide-to={0} className="active" />
                 <li data-target="#top_carousel" data-slide-to={1} />
@@ -154,16 +109,14 @@ Nepal Van Java</p>
             </a>
         </div>
         {/* END OF TOP CAROUSEL */}
-        </MobileView>
 
-        <MobileView>
 
         {/* START OF HISTORY SECTION*/}
-        <div className='row page-container upper-page-padding-small' style={{marginTop:'4vw'}}>
-            <div className='col-md-6 col-xs-12 ps-0 pe-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'5vw',whiteSpace:'pre-line'}}>History of Dusun Butuh</p>
+        <div className='row page-container upper-page-padding-small mtm-5' >
+            <div className='col-12 ps-0 pe-0'>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>History of Dusun Butuh</p>
             </div>
-            <div className='col-md-6 col-xs-12 ps-0 pe-0' >
+            <div className='col-12 ps-0 pe-0 mt-4 mtm-5' >
                 <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. 
                 <br></br>
                 <br></br>
@@ -175,7 +128,7 @@ Nepal Van Java</p>
         {/* END OF HISTORY SECTION*/}
 
         {/* START OF BOTTOM CAROUSEL */}
-        <div id="bottom_carousel" style={{marginTop:'8vw'}} className="carousel slide" data-ride="carousel">
+        <div id="bottom_carousel" className="carousel slide mt-4 mtm-5" data-ride="carousel">
             <ol className="carousel-indicators">
                 <li data-target="#bottom_carousel" data-slide-to={0} className="active" />
                 <li data-target="#bottom_carousel" data-slide-to={1} />
@@ -200,54 +153,7 @@ Nepal Van Java</p>
             </a>
         </div>
         {/* END OF BOTTOM CAROUSEL */}
-        </MobileView>
-        <BrowserView>
-        <div className='row page-container upper-page-padding-small' style={{marginTop:'4vw'}}>
-            <div className='col-xl-5 ps-0 '>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',marginBottom:'2vw',whiteSpace:'pre-line'}}>History of Dusun Butuh Nepal Van Java</p>
-                <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. 
-
-                </p>
-            </div>
-            <div className='col-md-7 pe-0' >
-                {/* START OF TOP CAROUSEL */}
-                <div id="history_carousel" className="carousel slide" data-ride="carousel">
-                    <ol className="carousel-indicators">
-                        <li data-target="#history_carousel" data-slide-to={0} className="active" />
-                        <li data-target="#history_carousel" data-slide-to={1} />
-                        <li data-target="#history_carousel" data-slide-to={2} />
-                    </ol>
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                        <img className="d-block w-100" style={{objectFit:'cover',height:'30vw'}} src="/assets/images/Dummy_Image_2.png" alt="First slide" />
-                        </div>
-                        <div className="carousel-item">
-                        <img className="d-block w-100" style={{objectFit:'cover',height:'30vw'}} src="/assets/images/Dummy_Image_1.png" alt="Second slide" />
-                        </div>
-                        <div className="carousel-item">
-                        <img className="d-block w-100" style={{objectFit:'cover',height:'30vw'}} src="/assets/images/Dummy_Image_2.png" alt="Third slide" />
-                        </div>
-                    </div>
-                    <a className="carousel-control-prev" href="#history_carousel" role="button" data-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true" />
-                    </a>
-                    <a className="carousel-control-next" href="#history_carousel" role="button" data-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true" />
-                    </a>
-                </div>
-                {/* END OF TOP CAROUSEL */}
-            </div>
-        </div>
-        </BrowserView>
-        
-        <BrowserView>
-            <div className='upper-page-padding-small'>
-
-            </div>
-        </BrowserView>
-        <MobileView>
             <BottomNavbar></BottomNavbar>
-        </MobileView>
 
 
       </div>

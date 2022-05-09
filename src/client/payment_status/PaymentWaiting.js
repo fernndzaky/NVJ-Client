@@ -70,35 +70,35 @@ class PaymentWaiting extends React.Component {
         <Navbar></Navbar>
         
         {/* START OF TOP SECTION*/}
-        <div className='row page-container upper-page-padding-small' style={{borderBottom:'0.5vw solid #DBE2E9',paddingBottom:'5vw'}}>
+        <div className='row page-container upper-page-padding-small pb-4' style={{borderBottom:'0.5vw solid #DBE2E9'}}>
             <div className='col-12' style={{textAlign:'center'}}>
-              <img className="img-fluid" style={{width:'25vw'}} src="/assets/images/Payment_Waiting.png" alt="Payment Waiting" />
+              <img className="img-fluid payment_status_icon" style={{width:'25vw',height:'25vw',objectFit:'contain'}} src="/assets/images/Payment_Waiting.png" alt="Payment Waiting" />
 
-              <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold',marginTop:'5vw'}}>Waiting for payment..</p>
-              <a href="/payment-waiting" className='px-18 btn-outline-grey w-100' style={{fontFamily:'Roboto Bold',marginTop:'4vw',textDecoration:'none',display:'inline-block',backgroundColor:'#FFFFFF'}}>
+              <p className='px-28 mt-5 mtm-4' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Waiting for payment..</p>
+              <a href="/payment-waiting" className='px-18 btn-outline-grey w-100 mtm-5 mt-4' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',backgroundColor:'#FFFFFF'}}>
               Refresh payment status
               </a>
-              <p className='px-18' style={{color:'#ED4747',fontFamily:'Roboto Bold',marginTop:'5vw'}}>Please do not close this page until you complete the payment.</p>
+              <p className='px-18 mtm-5 mt-4' style={{color:'#ED4747',fontFamily:'Roboto Bold'}}>Please do not close this page until you complete the payment.</p>
 
             </div>
         </div>
         {/* END OF TOP SECTION*/}
 
         {/* START OF PAYMENT INSTRUCTION SECTION*/}
-        <div className='row page-container' style={{marginTop:'6vw'}}>
+        <div className='row page-container mt-5'>
           <div className='col-12 ps-0 pe-0'>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>The payment details and instruction has been sent to the email</p>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold'}}>fernandhadzaky@hotmail.com</p>
-            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginTop:'5vw'}}>Please complete the payment to the bank details down below :</p>
-            <div className='p-0' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+            <p className='px-18 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Please complete the payment to the bank details down below :</p>
+            <div className='p-0 mt-4' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
               <p className='px-24' style={{color:'#1BC47D',fontFamily:'Nunito Semi Bold'}}>Grand Total</p>
               <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Rp30,000</p>
 
             </div>
-            <div style={{padding:'5vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw'}}>
+            <div className='cart-wrapper' style={{padding:'5vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw'}}>
               <p className='px-24' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>BCA Virtual Account</p>
-              <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>a/n PT. Venidici Indonesia</p>
-              <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Account No:</p>
+              <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>a/n PT. Venidici Indonesia</p>
+              <p className='px-18 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Account No:</p>
               <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px'}}>206823119718804</p>
               
             </div>   
@@ -110,9 +110,9 @@ class PaymentWaiting extends React.Component {
         {/* START OF BOOKINNG DETAILS SECTION*/}
         <div className='row page-container upper-page-padding-small' style={{borderBottom:'0.5vw solid #DBE2E9'}}>
           <div className='col-12 ps-0 pe-0'>
-            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'5vw'}}>Booking Details</p>
+            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Booking Details</p>
 
-            <table className="table">
+            <table className="table mt-4 mtm-5">
               <thead>
                 <tr>
                   <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold'}}>Ticket</th>
@@ -165,11 +165,11 @@ class PaymentWaiting extends React.Component {
         {/* END OF BOOKING DETAILS SECTION*/}
 
         {/* START OF RESEND EMAIL SECTION*/}
-        <div className='row page-container pb-5' style={{marginTop:'6vw'}}>
+        <div className='row page-container pb-5 mt-5'>
           <div className='col-12 ps-0 pe-0'>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Have not received any email? </p>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Click the button down below to resend to the previously filled email</p>
-            <button className='px-18 btn-outline-grey w-100' style={{fontFamily:'Roboto Bold',marginTop:'4vw',backgroundColor:'#FFFFFF'}}>
+            <button className='px-18 btn-outline-grey w-100 mt-4' style={{fontFamily:'Roboto Bold',backgroundColor:'#FFFFFF'}}>
             Resend Email
             </button>
           </div>
