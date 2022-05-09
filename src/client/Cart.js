@@ -69,7 +69,7 @@ class Cart extends React.Component {
             />
         </Helmet>
         <Navbar></Navbar>
-        <div className='row page-container' style={{marginTop:'4vw'}}>
+        <div className='row page-container mtm-5 mt-3'>
             <div className='col-md-6 col-xs-12 ps-0 pe-0'>
                 <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Your Cart</p>
             </div>

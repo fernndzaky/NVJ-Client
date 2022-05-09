@@ -70,7 +70,7 @@ class PaymentWaiting extends React.Component {
         <Navbar></Navbar>
         
         {/* START OF TOP SECTION*/}
-        <div className='row page-container upper-page-padding-small pb-4' style={{borderBottom:'0.5vw solid #DBE2E9'}}>
+        <div className='row page-container upper-page-padding-small pb-4 mtm-5 mt-5' style={{borderBottom:'0.5vw solid #DBE2E9'}}>
             <div className='col-12' style={{textAlign:'center'}}>
               <img className="img-fluid payment_status_icon" style={{width:'25vw',height:'25vw',objectFit:'contain'}} src="/assets/images/Payment_Waiting.png" alt="Payment Waiting" />
 
