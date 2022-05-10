@@ -1,5 +1,6 @@
 {
-  "name": "stuja-fe",
+  "homepage": "https://fernndzaky.github.io/NVJ-Client",
+  "name": "nvj-fe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
