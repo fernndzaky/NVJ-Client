@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/NVJ-Client/static/css/main.36ebeabe.chunk.css",
+    "main.js": "/NVJ-Client/static/js/main.8a185d04.chunk.js",
+    "main.js.map": "/NVJ-Client/static/js/main.8a185d04.chunk.js.map",
+    "runtime-main.js": "/NVJ-Client/static/js/runtime-main.11f1493f.js",
+    "runtime-main.js.map": "/NVJ-Client/static/js/runtime-main.11f1493f.js.map",
+    "static/css/2.de3252e1.chunk.css": "/NVJ-Client/static/css/2.de3252e1.chunk.css",
+    "static/js/2.c2427704.chunk.js": "/NVJ-Client/static/js/2.c2427704.chunk.js",
+    "static/js/2.c2427704.chunk.js.map": "/NVJ-Client/static/js/2.c2427704.chunk.js.map",
+    "static/js/3.1efc9639.chunk.js": "/NVJ-Client/static/js/3.1efc9639.chunk.js",
+    "static/js/3.1efc9639.chunk.js.map": "/NVJ-Client/static/js/3.1efc9639.chunk.js.map",
+    "index.html": "/NVJ-Client/index.html",
+    "static/css/2.de3252e1.chunk.css.map": "/NVJ-Client/static/css/2.de3252e1.chunk.css.map",
+    "static/css/main.36ebeabe.chunk.css.map": "/NVJ-Client/static/css/main.36ebeabe.chunk.css.map",
+    "static/js/2.c2427704.chunk.js.LICENSE.txt": "/NVJ-Client/static/js/2.c2427704.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/NVJ-Client/static/media/Navbar.c9b8c6fe.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.11f1493f.js",
+    "static/css/2.de3252e1.chunk.css",
+    "static/js/2.c2427704.chunk.js",
+    "static/css/main.36ebeabe.chunk.css",
+    "static/js/main.8a185d04.chunk.js"
+  ]
+}
