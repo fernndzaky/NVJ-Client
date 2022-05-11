@@ -72,8 +72,8 @@ class Tickets extends React.Component {
         
         {/* START OF TOP CONTENT */}
         <div >
-            {/* START OF TOP CAROUSEL */}
-            <div id="banner_carousel" className="carousel slide" data-ride="carousel">
+             {/* START OF TOP CAROUSEL */}
+             <div id="banner_carousel" className="carousel slide" data-ride="carousel">
                 <ol className="carousel-indicators">
                     <li data-target="#banner_carousel" data-slide-to={0} className="active" />
                     <li data-target="#banner_carousel" data-slide-to={1} />

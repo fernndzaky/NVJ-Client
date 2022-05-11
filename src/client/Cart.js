@@ -81,9 +81,9 @@ class Cart extends React.Component {
         <div className='row page-container'>
             <div className='col-12 ps-0 pe-0'>
                 {/* START OF ONE ITEM */}
-                <div className='cart-wrapper mtm-5 mt-4' style={{padding:'4vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw',display:'flex',flexDirection:'column',justifyContent:'space-between',width:'100%'}}>
+                <div  className='cart-wrapper mtm-5 mt-4' style={{padding:'4vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw',display:'flex',flexDirection:'column',justifyContent:'space-between',width:'100%'}}>
 
-                    <div>
+                    <div onClick={()=> window.open("/ticket/1", "_self")} >
                         <ClampLines
                             text="Entrance Ticket to Dusun Butuh Nepal Van Java Di Magelang Jogjakarta Di sebelahnya ada"
                             id="cart-title-text"
@@ -114,9 +114,9 @@ class Cart extends React.Component {
                 </div>
                 {/* END OF ONE ITEM */}
                 {/* START OF ONE ITEM */}
-                <div className='cart-wrapper mtm-5 mt-4' style={{padding:'4vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw',display:'flex',flexDirection:'column',justifyContent:'space-between',width:'100%'}}>
+                <div  className='cart-wrapper mtm-5 mt-4' style={{padding:'4vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw',display:'flex',flexDirection:'column',justifyContent:'space-between',width:'100%'}}>
 
-                    <div>
+                    <div onClick={()=> window.open("/ticket/1", "_self")} >
                         <ClampLines
                             text="Entrance Ticket to Dusun Butuh Nepal Van Java Di Magelang Jogjakarta Di sebelahnya ada"
                             id="cart-title-text"

@@ -16,6 +16,17 @@ class TicketDetail extends React.Component {
     }
   }
 
+  listenerMidtransSnap = () => {
+      // For example trigger on button clicked, or any time you need
+      var payButton = document.getElementById('pay-button');
+      console.log('pay button', payButton)
+      payButton.addEventListener('click', function () {
+        // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+        window.snap.pay('50b31b3d-eb9b-4dbf-a756-5fbceaf67187');
+        // customer will be redirected after completing payment pop-up
+      }); 
+  }
+
 
 
 
@@ -46,6 +57,7 @@ class TicketDetail extends React.Component {
 
   componentDidMount(){
     this.addNavbarBorder()
+    this.listenerMidtransSnap()
   }
 
   componentDidUpdate(){
@@ -137,7 +149,7 @@ class TicketDetail extends React.Component {
         </div>
         {/* END OF BOOKING DETAILS SECTION*/}
 
-        <form>
+
 
         {/* START OF PERSONAL INFORMATION SECTION*/}
         <div className='page-container upper-page-padding-small'>  
@@ -168,11 +180,13 @@ class TicketDetail extends React.Component {
         {/* END OF PERSONAL INFORMATION SECTION*/}
 
         <div className='row page-container mtm-5 mt-5 pb-5'>
-          <button type="submit" className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Confirm Order</button>
-
+          <button  className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Confirm Order</button>
+          <button id="pay-button">Pay!</button>
         </div>
-        </form>
 
+
+
+       
       </div>
       )
   }

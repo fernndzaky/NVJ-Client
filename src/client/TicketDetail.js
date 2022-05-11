@@ -73,13 +73,18 @@ class TicketDetail extends React.Component {
         <Navbar></Navbar>
         
         {/* START OF TOP SECTION*/}
-        <div className='row page-container mtm-5 ' style={{background: `url('/assets/images/BG_Image.png') no-repeat center`,
-                                                    backgroundSize: '90%'}}>
+        <div className='row page-container' style={{marginTop:'4vw'}}>
             <div className='col-12 ps-0 pe-0'>
-                <a href="/tickets" className='px-18 btn-outline-grey mb-2 mt-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block'}}>
+              <a href="/cart" className='px-18 btn-outline-grey mb-2 mt-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block'}}>
                     <FontAwesomeIcon icon="chevron-left" className='px-18 me-2' />
 
                     Back</a>
+            </div>
+        </div>
+        <div className='row page-container mtm-5 ' style={{background: `url('/assets/images/BG_Image.png') no-repeat center`,
+                                                    backgroundSize: '90%'}}>
+            <div className='col-12 ps-0 pe-0'>
+              
 
                 <p className='px-36 mt-3 mtm-5' style={{color:'#333333',fontFamily:'Nunito Bold'}}>Entrance Ticket to Dusun Butuh</p>
                 <p className='px-28' style={{color:'#333333',fontFamily:'Nunito Bold'}}>Rp10,000</p>
