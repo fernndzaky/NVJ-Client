@@ -6,8 +6,8 @@ import '../css/index.css';
 import '../css/Experiences.css';
 
 // import Swiper core and required modules
-import { Swiper, SwiperSlide, FreeMode } from "swiper/react";
-import SwiperCore, {
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
     Pagination
   } from 'swiper/core';
 
@@ -19,9 +19,6 @@ import "swiper/components/pagination/pagination.min.css"
 // Components Import
 import Navbar from './components/Navbar';
 import BottomNavbar from './components/BottomNavbar';
-import ExperienceCard from './components/ExperienceCard';
-import TicketCard from './components/TicketCard';
-
 
 class Experiences extends React.Component {
   constructor(){
@@ -37,7 +34,6 @@ class Experiences extends React.Component {
     var myNav = document.getElementById('nvj-navbar');
     var burgerButton = document.getElementsByClassName('bm-burger-button');
     window.onscroll = function () { 
-        "use strict";
         if (document.body.scrollTop >= 10 || document.documentElement.scrollTop >= 10 ){
             myNav.classList.add("nav-colored");
             myNav.classList.add("nav-scroll-padding");

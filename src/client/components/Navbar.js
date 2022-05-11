@@ -35,14 +35,14 @@ export default class Navbar extends Component {
             {this.state.showNavbar ?
             <div className="col-12 page-container" style={{position:'fixed',paddingTop:'2vw',paddingBottom:'2vw',zIndex:'99',maxWidth:'500px',display:'flex'}}  id="nvj-navbar">
                 <a href="/">
-                  <img id="nvj-logo" className="img-fluid" src="/assets/images/Icon_NVJ.png" style={{width:'7vw'}} />
+                  <img id="nvj-logo" className="img-fluid" src="/assets/images/Icon_NVJ.png" style={{width:'7vw'}} alt="NVJ LOGO" />
                 </a>
                 <SideBar pageWrapId={"page-wrap"}  />
             </div>
               :
             <div className="col-12 page-container" style={{paddingTop:'2vw',paddingBottom:'2vw',zIndex:'99',maxWidth:'500px'}}  id="nvj-navbar">
                 <a href="/">
-                  <img id="nvj-logo" className="img-fluid" src="/assets/images/Icon_NVJ.png" style={{width:'7vw'}} />
+                  <img id="nvj-logo" className="img-fluid" src="/assets/images/Icon_NVJ.png" style={{width:'7vw'}}  alt="NVJ LOGO" />
                 </a>
                 <SideBar pageWrapId={"page-wrap"}  />
             </div>

@@ -8,8 +8,8 @@ import '../css/index.css';
 import '../css/HomePage.css';
 
 // import Swiper core and required modules
-import { Swiper, SwiperSlide, FreeMode } from "swiper/react";
-import SwiperCore, {
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
     Pagination
   } from 'swiper/core';
 
@@ -37,7 +37,6 @@ class HomePage extends React.Component {
     var myNav = document.getElementById('nvj-navbar');
     var burgerButton = document.getElementsByClassName('bm-burger-button');
     window.onscroll = function () { 
-        "use strict";
         if (document.body.scrollTop >= 10 || document.documentElement.scrollTop >= 10 ){
             myNav.classList.add("nav-colored");
             myNav.classList.add("nav-scroll-padding");
@@ -205,7 +204,7 @@ class HomePage extends React.Component {
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/Dummy_Testimony_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} />
+                            <img className='img-fluid' src="/assets/images/Dummy_Testimony_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
                             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Lorem Ipsum is simply dummy text of the printing and typeset industry. Lorem Ipsum has been the industry's standard.”</p>
@@ -216,7 +215,7 @@ class HomePage extends React.Component {
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/Dummy_Image_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="First Testimony" />
+                            <img className='img-fluid' src="/assets/images/Dummy_Image_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
                             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Lorem Ipsum is simply dummy text of the printing and typeset industry. Lorem Ipsum has been the industry's standard.”</p>
@@ -227,7 +226,7 @@ class HomePage extends React.Component {
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/Dummy_Testimony_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} />
+                            <img className='img-fluid' src="/assets/images/Dummy_Testimony_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
                             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Lorem Ipsum is simply dummy text of the printing and typeset industry. Lorem Ipsum has been the industry's standard.”</p>
@@ -238,7 +237,7 @@ class HomePage extends React.Component {
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/Dummy_Testimony_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} />
+                            <img className='img-fluid' src="/assets/images/Dummy_Testimony_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}}  alt="Testimony"/>
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
                             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Lorem Ipsum is simply dummy text of the printing and typeset industry. Lorem Ipsum has been the industry's standard.”</p>
@@ -291,7 +290,7 @@ class HomePage extends React.Component {
                         <FontAwesomeIcon icon="search-location" className='px-24' style={{color:'#9FADBB'}} />
                         <div className='ms-3'>
                             <p className={isMobile ?'px-18':'px-18 mb-3'} style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>Dusun, Butuh, Temanggung, Kec. Kaliangkrik, Kabupaten Magelang, Jawa Tengah 56153</p>
-                            <a className='px-18 pt-3' target="_blank" href="https://goo.gl/maps/NS7WP7hdqjAH1cNdA" style={{fontFamily:'Roboto Regular',marginBottom:'0px',textDecoration:'none',color:'#0D51D6',display:'inline-block'}}>View in Google Map</a>
+                            <a className='px-18 pt-3' target="_blank" rel="noreferrer" href="https://goo.gl/maps/NS7WP7hdqjAH1cNdA" style={{fontFamily:'Roboto Regular',marginBottom:'0px',textDecoration:'none',color:'#0D51D6',display:'inline-block'}}>View in Google Map</a>
 
                         </div>
                     </div>

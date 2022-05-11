@@ -35,7 +35,7 @@ export default class BottomNavbar extends Component {
             <div className="bottom-navbar">
               <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
                 {/* START OF HOME*/}
-                { (window.location.pathname == '/' || window.location.pathname == '/about' ) ?
+                { (window.location.pathname === '/' || window.location.pathname === '/about' ) ?
                   
                 <div id="bottom-navbar-item"  className="bottom-navbar-item-active">
                     <a href="/" style={{textDecoration:'none'}}>

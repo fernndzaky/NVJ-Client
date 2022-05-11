@@ -25,7 +25,6 @@ class ExperienceDetail extends React.Component {
     var myNav = document.getElementById('nvj-navbar');
     var burgerButton = document.getElementsByClassName('bm-burger-button');
     window.onscroll = function () { 
-        "use strict";
         if (document.body.scrollTop >= 10 || document.documentElement.scrollTop >= 10 ){
             myNav.classList.add("nav-colored");
             myNav.classList.add("nav-scroll-padding");

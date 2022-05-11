@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { slide as Menu } from "react-burger-menu";
-import {isMobile} from 'react-device-detect';
 
 
 export default class SideBar extends Component {
@@ -8,7 +7,7 @@ export default class SideBar extends Component {
         return(
             <Menu>
               <a href="/">
-                <img id="nvj-logo-nav" className="img-fluid" src="/assets/images/Icon_NVJ.png" style={{width:'8vw'}} />
+                <img id="nvj-logo-nav" className="img-fluid" src="/assets/images/Icon_NVJ.png" style={{width:'8vw'}} alt="NVJ LOGO" />
               </a>
               
               <div >
