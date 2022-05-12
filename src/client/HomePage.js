@@ -27,6 +27,7 @@ class HomePage extends React.Component {
   constructor(){
     super()
     this.state = {
+        tickets : []
     }
   }
 
@@ -59,9 +60,32 @@ class HomePage extends React.Component {
 
   componentDidMount(){
     this.addNavbarBorder()
+    this.getAllTickets()
   }
 
   componentDidUpdate(){
+  }
+
+  getAllTickets(){
+    this.setState({
+        tickets : [
+            {
+                ticket_id   : 1,
+                title       : 'Entrance Ticket to Dusun Butuh',
+                price       : 10000,
+            },
+            {
+                ticket_id   : 2,
+                title       : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
+                price       : 15000,
+            },
+            {
+                ticket_id   : 3,
+                title       : 'Exit Ticket from NVJ',
+                price       : 30000,
+            },
+        ]
+    })
   }
 
 
@@ -136,13 +160,26 @@ class HomePage extends React.Component {
             <div className='mt-3 mtm-5'>
 
             </div>
-            <div className='p-0'>
-                <TicketCard title={'Entrance Ticket to Dusun Butuh'} price={'10,000'} ></TicketCard>
-            </div>
-            <div className='p-0 mtm-5 mt-4'>
-                <TicketCard title={'Entrance Ticket to Dusun Butuh Nepal Van Java Lorem Ipsum dolor sit amet quertus'} price={'20,000'} ></TicketCard>
-            </div>
-            
+
+            {
+                this.state.tickets.map( (e , index) => {
+                return(
+                    <React.Fragment>
+                        {
+                        index === 0 ?
+                        <div  className='p-0'>
+                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} ></TicketCard>
+                        </div>
+                        :
+                        <div  className='p-0 mtm-5 mt-4'>
+                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} ></TicketCard>
+                        </div>
+                        }
+                    </React.Fragment>
+
+                    )
+                })              
+            } 
             <div className='mtm-5 mt-5' style={{padding:'0'}}>
                 <a href="/tickets" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All Tickets</a>
             </div>

@@ -14,13 +14,14 @@ class Tickets extends React.Component {
   constructor(){
     super()
     this.state = {
+        tickets : []
     }
   }
 
 
 
 
-  addNavbarBorder = () => {
+  addNavbarBorder() {
     var myNav = document.getElementById('nvj-navbar');
     var burgerButton = document.getElementsByClassName('bm-burger-button');
     window.onscroll = function () { 
@@ -40,16 +41,37 @@ class Tickets extends React.Component {
     };
   }
 
-  
-
-
-
   componentDidMount(){
     this.addNavbarBorder()
+    this.getAllTickets()
   }
 
   componentDidUpdate(){
   }
+
+  getAllTickets(){
+    this.setState({
+        tickets : [
+            {
+                ticket_id   : 1,
+                title       : 'Entrance Ticket to Dusun Butuh',
+                price       : 10000,
+            },
+            {
+                ticket_id   : 2,
+                title       : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
+                price       : 15000,
+            },
+            {
+                ticket_id   : 3,
+                title       : 'Exit Ticket from NVJ',
+                price       : 30000,
+            },
+        ]
+    })
+  }
+
+
 
 
 
@@ -129,16 +151,25 @@ class Tickets extends React.Component {
         {/* START OF AVAILABLE TICKETS */}
         <div className='row page-container mt-5 mtm-5'>
             <p className='px-18 mtm-5 pb-3' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px',padding:'0px'}}>Showing 3 results</p>
+            {
+                this.state.tickets.map( (e , index) => {
+                return(
+                    <React.Fragment>
+                        {
+                        index === 0 ?
+                        <div  className='p-0'>
+                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} ></TicketCard>
+                        </div>
+                        :
+                        <div  className='p-0 mtm-5 mt-4'>
+                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} ></TicketCard>
+                        </div>
+                        }
+                    </React.Fragment>
 
-            <div className='p-0'>
-                <TicketCard title={'Entrance Ticket to Dusun Butuh'} price={'10,000'} ></TicketCard>
-            </div>
-            <div className='p-0 mtm-5 mt-4'>
-                <TicketCard title={'Entrance Ticket to Dusun Butuh Nepal Van Java Lorem Ipsum dolor sit amet quertus'} price={'20,000'} ></TicketCard>
-            </div>
-            <div className='p-0 mtm-5 mt-4'>
-                <TicketCard title={'Entrance Ticket to Dusun Butuh Nepal Van Java Lorem Ipsum dolor sit amet quertus'} price={'15,000'} ></TicketCard>
-            </div>
+                    )
+                })              
+            } 
         </div>
         {/* END OF AVAILABLE TICKETS */}
         

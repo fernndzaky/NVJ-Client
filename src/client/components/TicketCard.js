@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import ClampLines from 'react-clamp-lines';
+import NumberFormat from 'react-number-format';
+
+
 
 import AtcButton from './AtcButton';
 import BuyNowButton from './BuyNowButton';
 
 
+
 export default class TicketCard extends Component {
+    
     render(){
         return(
           <div style={{padding:'0px'}}>
@@ -22,10 +27,12 @@ export default class TicketCard extends Component {
                         className="px-18"
                         
                     />
-                    <p onClick={()=> window.open("/ticket/1", "_self")} className='px-28' style={{color:'#333333',fontFamily:'Nunito Bold',cursor:'pointer'}}>Rp{this.props.price}</p>
+                    <p onClick={()=> window.open("/ticket/1", "_self")} className='px-28' style={{color:'#333333',fontFamily:'Nunito Bold',cursor:'pointer'}}>
+                        <NumberFormat value={this.props.price} displayType={'text'} thousandSeparator={true} prefix={'Rp'} />
+                    </p>
                 </div>
                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-                    <AtcButton></AtcButton>
+                    <AtcButton ticket_id={this.props.ticket_id}></AtcButton>
                     <BuyNowButton></BuyNowButton>
                 </div>
             </div>
