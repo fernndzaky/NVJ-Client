@@ -81,7 +81,7 @@ class Cart extends React.Component {
       
   }
 
-  updateTicketStateQty(ticket_id,new_qty){   
+  updateTicketStateQty = async(ticket_id,new_qty) =>{  
     // 1. Make a shallow copy of the items
     let tickets = [...this.state.tickets];
     // 2. find the index from the state tickets
@@ -93,7 +93,7 @@ class Cart extends React.Component {
     // 5. Put it back into our array
     tickets[index] = ticket;
     // 6. Set the state to our new copy
-    this.setState({tickets});
+    await this.setState({tickets});
     
   }
 
@@ -126,7 +126,6 @@ class Cart extends React.Component {
     let current_cart = JSON.parse(localStorage.getItem('cart')) || [];
     for(var x in current_cart){
         this.updateTicketStateQty(current_cart[x]['ticket_id'], current_cart[x]['qty'] )
-        this.updateTotalPrice('plus',0)
     }
 
     for(var i in this.state.tickets){

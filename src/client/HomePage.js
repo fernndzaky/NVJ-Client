@@ -66,26 +66,51 @@ class HomePage extends React.Component {
   componentDidUpdate(){
   }
 
-  getAllTickets(){
-    this.setState({
+  updateTicketStateQty = async(ticket_id,new_qty) =>{  
+    // 1. Make a shallow copy of the items
+    let tickets = [...this.state.tickets];
+    // 2. find the index from the state tickets
+    var index = tickets.findIndex(p => p.ticket_id === ticket_id);
+    // 3. Make a shallow copy of the item you want to mutate
+    let ticket = {...tickets[index]}
+    // 4. Replace the property you're intested in
+    ticket.qty = new_qty
+    // 5. Put it back into our array
+    tickets[index] = ticket;
+    // 6. Set the state to our new copy
+    await this.setState({tickets});
+
+  }
+
+  getAllTickets = async() =>{
+    await this.setState({
         tickets : [
             {
                 ticket_id   : 1,
                 title       : 'Entrance Ticket to Dusun Butuh',
                 price       : 10000,
+                qty         : 0
             },
             {
                 ticket_id   : 2,
                 title       : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
                 price       : 15000,
+                qty         : 0
             },
             {
                 ticket_id   : 3,
                 title       : 'Exit Ticket from NVJ',
                 price       : 30000,
+                qty         : 0
             },
         ]
     })
+
+    //update the qty based on local storage
+    let current_cart = JSON.parse(localStorage.getItem('cart')) || [];
+    for(var x in current_cart){
+        this.updateTicketStateQty(current_cart[x]['ticket_id'], current_cart[x]['qty'] )
+    }
   }
 
 
@@ -168,11 +193,19 @@ class HomePage extends React.Component {
                         {
                         index === 0 ?
                         <div  className='p-0'>
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} ></TicketCard>
+                            {e.qty === 0 ?
+                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty} ></TicketCard>
+                            :
+                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
+                            }
                         </div>
                         :
                         <div  className='p-0 mtm-5 mt-4'>
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} ></TicketCard>
+                            {e.qty === 0 ?
+                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty} ></TicketCard>
+                            :
+                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
+                            }
                         </div>
                         }
                     </React.Fragment>

@@ -51,7 +51,7 @@ export default class AtcButton extends Component {
     render(){
         return(
           <div >
-            <button onClick={()=> this.addToCart(this.props.ticket_id)} className='btn-circle-grey-to-blue'>
+            <button className='btn-circle-grey-to-blue'>
                 <FontAwesomeIcon icon="plus" className='px-24' style={{cursor:'pointer'}} />
             </button>
 
