@@ -98,7 +98,7 @@ class TicketDetail extends React.Component {
 
     this.notify('Succesfully added to cart!')
 
-}
+  }
 
 
 
