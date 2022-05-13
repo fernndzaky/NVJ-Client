@@ -83,7 +83,7 @@ class TicketDetail extends React.Component {
         {/* START OF TOP SECTION*/}
         <div className='row page-container' style={{marginTop:'4vw'}}>
             <div className='col-12 ps-0 pe-0'>
-              <a href="/cart" className='px-18 btn-outline-grey mb-2 mt-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block'}}>
+              <a href="javascript:history.back()" className='px-18 btn-outline-grey mb-2 mt-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block'}}>
                     <FontAwesomeIcon icon="chevron-left" className='px-18 me-2' />
 
                     Back</a>
