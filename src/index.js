@@ -23,8 +23,8 @@ ReactDOM.render(
     <Switch>
       <Route path="/" exact={true} component={HomePage} />
       <Route path="/experiences" exact={true} component={Experiences} />
-      <Route path="/experience/1" exact={true} component={ExperienceDetail} />
-      <Route path="/ticket/1" exact={true} component={TicketDetail} />
+      <Route path="/experience/:id" exact={true} component={ExperienceDetail} />
+      <Route path="/ticket/:id" exact={true} component={TicketDetail} />
       <Route path="/about" exact={true} component={AboutUs} />
       <Route path="/tickets" exact={true} component={Tickets} />
       <Route path="/cart" exact={true} component={Cart} />

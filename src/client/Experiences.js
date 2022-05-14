@@ -24,6 +24,12 @@ class Experiences extends React.Component {
   constructor(){
     super()
     this.state = {
+        experiences : [],
+        active_experience_id : null,
+        active_experience_title : null,
+        active_experience_thumbnail : null,
+        active_experience_images : null,
+        active_experience_description : null,
     }
   }
 
@@ -50,15 +56,76 @@ class Experiences extends React.Component {
     };
   }
 
-  
-
-
-
   componentDidMount(){
     this.addNavbarBorder()
+    this.getAllExperiences()
   }
 
   componentDidUpdate(){
+  }
+  
+  getAllExperiences = async() =>{
+    await this.setState({
+        experiences : [
+            {
+                experience_id   : 1,
+                thumbnail       : '/assets/images/Dummy_Image_2.png',
+                images          : [
+                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
+                                    {image_carousel :  '/assets/images/Dummy_Image_1.png'},
+                                    {image_carousel :  '/assets/images/Navbar.png'},
+                                  ],
+                title           : 'Entrance Gate',
+                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
+            },
+            {
+                experience_id   : 2,
+                thumbnail       : '/assets/images/Dummy_Image_1.png',
+                images          : [
+                                    {image_carousel :  '/assets/images/Dummy_Image_1.png'},
+                                    {image_carousel :  '/assets/images/Navbar.png'},
+                                  ],             
+                title           : 'Saung Jawa',
+                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
+            },
+            {
+                experience_id   : 3,
+                thumbnail       : '/assets/images/Navbar.png',
+                images          : [
+                                    {image_carousel :  '/assets/images/Navbar.png'},
+                                    {image_carousel :  '/assets/images/Dummy_Image_1.png'},
+                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
+                                  ],                    
+                title           : 'Jembatan Kaca',
+                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
+            },
+            {
+                experience_id   : 4,
+                thumbnail       : '/assets/images/Dummy_Image_2.png',
+                images          : [
+                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
+                                    {image_carousel :  '/assets/images/Navbar.png'},
+                                  ],                 
+                title           : 'Masjid Umum',
+                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
+            },
+        ]
+    })
+
+    if(this.state.experiences)
+        await this.changeExperience(this.state.experiences[0].experience_id,this.state.experiences[0].title,this.state.experiences[0].thumbnail,this.state.experiences[0].images,this.state.experiences[0].description)
+
+
+  }
+
+  changeExperience = async(experience_id, experience_title, experience_thumbnail, experience_images, experience_description) =>{
+    await this.setState({
+        active_experience_id : experience_id,
+        active_experience_title :  experience_title,
+        active_experience_thumbnail :  experience_thumbnail,
+        active_experience_images :  experience_images,
+        active_experience_description :  experience_description,
+    })
   }
 
 
@@ -66,6 +133,7 @@ class Experiences extends React.Component {
 
 
   render(){
+    const shortened_description = this.state.active_experience_description ? this.state.active_experience_description.substring(0, 250) : ''
     return(
       <div className="">
         <Helmet>
@@ -99,82 +167,38 @@ class Experiences extends React.Component {
                         modules={[Pagination]}
                         className="mySwiper"
                     >
-                        <SwiperSlide>
-                            <div className='experience_detail_container experience_detail_container_active'>
-                                <div className='experience_detail experience_detail_active' style={{width:'100%',height:'22vw'}}>
-                                    <img src="/assets/images/Dummy_Image_2.png" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
-                                </div> 
-                                <div className='mt-2' style={{textAlign:'center'}}>
-                                    <ClampLines
-                                        text="Entrance Gate"
-                                        id="cart-title-text"
-                                        lines={2}
-                                        ellipsis="..."
-                                        moreText="Expand"
-                                        lessText="Collapse"
-                                        innerElement="p"
-                                        className="px-18"
-                                    />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className='experience_detail_container'>
-                                <div className='experience_detail ' style={{width:'100%',height:'22vw'}}>
-                                    <img src="/assets/images/Navbar.png" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
-                                </div> 
-                                <div className='mt-2' style={{textAlign:'center'}}>
-                                    <ClampLines
-                                        text="Jembatan Kaca"
-                                        id="cart-title-text"
-                                        lines={2}
-                                        ellipsis="..."
-                                        moreText="Expand"
-                                        lessText="Collapse"
-                                        innerElement="p"
-                                        className="px-18"
-                                    />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className='experience_detail_container'>
-                                <div className='experience_detail ' style={{width:'100%',height:'22vw'}}>
-                                    <img src="/assets/images/Dummy_Image_1.png" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
-                                </div> 
-                                <div className='mt-2' style={{textAlign:'center'}}>
-                                    <ClampLines
-                                        text="Saung Jawa"
-                                        id="cart-title-text"
-                                        lines={2}
-                                        ellipsis="..."
-                                        moreText="Expand"
-                                        lessText="Collapse"
-                                        innerElement="p"
-                                        className="px-18"
-                                    />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className='experience_detail_container'>
-                                <div className='experience_detail ' style={{width:'100%',height:'22vw'}}>
-                                    <img src="/assets/images/Dummy_Image_2.png" style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
-                                </div> 
-                                <div className='mt-2' style={{textAlign:'center'}}>
-                                    <ClampLines
-                                        text="Masjid Umum"
-                                        id="cart-title-text"
-                                        lines={2}
-                                        ellipsis="..."
-                                        moreText="Expand"
-                                        lessText="Collapse"
-                                        innerElement="p"
-                                        className="px-18"
-                                    />
-                                </div>
-                            </div>
-                        </SwiperSlide>
+                    {
+                    this.state.experiences.map( (e , index) => {
+                    return(
+                        <React.Fragment>
+                            {
+                                <SwiperSlide>
+                                    <div  onClick={()=> this.changeExperience(e.experience_id, e.title, e.thumbnail, e.images, e.description)}
+                                     className={e.experience_id === this.state.active_experience_id ? 'experience_detail_container experience_detail_container_active' : 'experience_detail_container' } >
+                                        <div className={e.experience_id === this.state.active_experience_id ? 'experience_detail experience_detail_active': 'experience_detail'} style={{width:'100%',height:'22vw'}}>
+                                            <img src={e.thumbnail} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
+                                        </div> 
+                                        <div className='mt-2' style={{textAlign:'center'}}>
+                                            <ClampLines
+                                                text={e.title}
+                                                id="cart-title-text"
+                                                lines={2}
+                                                ellipsis="..."
+                                                moreText="Expand"
+                                                lessText="Collapse"
+                                                innerElement="p"
+                                                className="px-18"
+                                            />
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            }
+                            </React.Fragment>
+        
+                            )
+                        })              
+                    } 
+                        
                     </Swiper>
 
                 </div>
@@ -185,26 +209,46 @@ class Experiences extends React.Component {
         {/*  START OF EXPERIENCE DETAIL SECTION*/}
         <div className='row page-container mtm-5'>
             <div className='col-12 ps-0 pe-0'>
-                <p className='px-36 mt-5 mtm-5' style={{color:'#333333',fontFamily:'Nunito Bold'}}>Entrance Gate</p>
+                <p className='px-36 mt-5 mtm-5' style={{color:'#333333',fontFamily:'Nunito Bold'}}>{this.state.active_experience_title}</p>
             </div>
         </div>
          {/* START OF EXPERIENCE DETAIL CAROUSEL */}
          <div id="experience_detail_carousel" className="carousel slide mt-4 mtm-5" data-ride="carousel">
             <ol className="carousel-indicators">
-                <li data-target="#experience_detail_carousel" data-slide-to={0} className="active" />
-                <li data-target="#experience_detail_carousel" data-slide-to={1} />
-                <li data-target="#experience_detail_carousel" data-slide-to={2} />
+            {
+                this.state.active_experience_images &&
+
+                    this.state.active_experience_images &&
+                        this.state.active_experience_images.map( (e , index) => {
+                        return(
+                            <React.Fragment>
+                                {
+                                    <li data-target="#experience_detail_carousel" data-slide-to={index} className={index > 0 ? "" : "active"} />
+
+                                }
+                                </React.Fragment>
+            
+                                )
+                            })              
+            } 
             </ol>
             <div className="carousel-inner">
-                <div className="carousel-item active">
-                <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_1.png" alt="First slide" />
-                </div>
-                <div className="carousel-item">
-                <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_2.png" alt="Second slide" />
-                </div>
-                <div className="carousel-item">
-                <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_1.png" alt="Third slide" />
-                </div>
+              
+            {
+                this.state.active_experience_images &&
+                    this.state.active_experience_images.map( (e , index) => {
+                    return(
+                        <React.Fragment>
+                            {
+                                <div className={index === 0 ? "carousel-item active" : "carousel-item"}>
+                                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src={e.image_carousel} alt="First slide" />
+                                </div>
+                            }
+                            </React.Fragment>
+        
+                            )
+                        })              
+            } 
             </div>
             <a className="carousel-control-prev" href="#experience_detail_carousel" role="button" data-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true" />
@@ -217,13 +261,7 @@ class Experiences extends React.Component {
         <div className='row page-container mtm-5 mt-4'>
             <div className='col-12 ps-0 pe-0'>
                 <ClampLines
-                    text="Lorem Ipsum is simply dummy text of 
-                    the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's
-                    standard dummy text ever since the
-                    1500s,  when an unknown printer took
-                    a galley of type and scrambled it to
-                    make a type specimen book"
+                    text={shortened_description}
                     id="cart-title-text"
                     lines={4}
                     ellipsis="..."

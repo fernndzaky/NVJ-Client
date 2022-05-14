@@ -18,14 +18,26 @@
 .experience_detail_active{
     border: 1vw solid #1BC47D;
     filter: none !important;
+    transition: 0.2s ease-in-out;
+
 }
 .experience_detail{
     border-radius: 50%;
     filter: grayscale(100%) ;
 }
+.experience_detail:hover{
+    border-radius: 50%;
+    filter: grayscale(50%) ;
+}
+
 
 .experience_detail_container #clamped-content-cart-title-text{
     color: #9FADBB;
+    transition: 0.2s ease-in-out;
+
+}
+.experience_detail_container:hover #clamped-content-cart-title-text{
+    color: #333333 !important;
 }
 
 .experience_detail_container_active #clamped-content-cart-title-text{

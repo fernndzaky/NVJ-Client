@@ -125,7 +125,7 @@ export default class TicketCard extends Component {
         return(
           <div style={{padding:'0px'}}>
             <div className='ticket-card-wrapper' style={{padding:'4vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw',height:'55vw',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
-                <div onClick={()=> window.open("/ticket/1", "_self")} >
+                <div onClick={()=> window.open("/ticket/"+this.props.ticket_id, "_self")} >
                     <ClampLines
                         text={this.props.title}
                         id="cart-title-text"
@@ -137,7 +137,7 @@ export default class TicketCard extends Component {
                         className="px-18"
                         
                     />
-                    <p onClick={()=> window.open("/ticket/1", "_self")} className='px-28' style={{color:'#333333',fontFamily:'Nunito Bold',cursor:'pointer'}}>
+                    <p onClick={()=> window.open("/ticket/"+this.props.ticket_id, "_self")} className='px-28' style={{color:'#333333',fontFamily:'Nunito Bold',cursor:'pointer'}}>
                         <NumberFormat value={this.props.price} displayType={'text'} thousandSeparator={true} prefix={'Rp'} />
                     </p>
                 </div>

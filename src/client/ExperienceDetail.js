@@ -15,7 +15,13 @@ class ExperienceDetail extends React.Component {
   constructor(){
     super()
     this.state = {
-        tickets : []
+        tickets : [],
+        other_experiences : [],
+        experience_id : null,
+        experience_title : null,
+        experience_thumbnail : null,
+        experience_images : null,
+        experience_description : null,
     }
   }
 
@@ -45,9 +51,55 @@ class ExperienceDetail extends React.Component {
   componentDidMount(){
     this.addNavbarBorder()
     this.getAllTickets()
+    this.getExperienceDetail()
+    this.getOtherExperiences()
   }
 
   componentDidUpdate(){
+  }
+
+
+  getExperienceDetail = async() =>{
+    await this.setState({
+        experience_id           : 1,
+        experience_title        : 'Teras Nepal',
+        experience_thumbnail    : '/assets/images/Dummy_Image_1.png',
+        experience_images       : [
+                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
+                                    {image_carousel :  '/assets/images/Dummy_Image_1.png'},
+                                    {image_carousel :  '/assets/images/Navbar.png'},
+                                  ],
+        experience_description  : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
+        
+    })
+  }
+
+  getOtherExperiences = async() =>{
+    await this.setState({
+        other_experiences : [
+            {
+                experience_id   : 1,
+                thumbnail       : '/assets/images/Dummy_Image_2.png',
+                images          : [
+                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
+                                    {image_carousel :  '/assets/images/Dummy_Image_1.png'},
+                                    {image_carousel :  '/assets/images/Navbar.png'},
+                                  ],
+                title           : 'Entrance Gate',
+                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
+            },
+            {
+                experience_id   : 2,
+                thumbnail       : '/assets/images/Navbar.png',
+                images          : [
+                                    {image_carousel :  '/assets/images/Navbar.png'},
+                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
+                                  ],             
+                title           : 'Saung Jawa',
+                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
+            },
+        ]
+    })
   }
 
   updateTicketStateQty = async(ticket_id,new_qty) =>{  
@@ -96,7 +148,7 @@ class ExperienceDetail extends React.Component {
       <div className="">
         <Helmet>
             <title>
-            Teras Nepal - Dusun Butuh Nepal Van Java
+            {this.state.experience_title}
             </title>
             <meta
                 name="description"
@@ -107,24 +159,44 @@ class ExperienceDetail extends React.Component {
         {/* START OF TOP SECTION*/}
         <div className='row'>
             <div className='col-12 ps-0 pe-0' style={{textAlign:'center'}}>
-                <p className='px-36 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Nunito Bold'}}>Teras Nepal</p>
+                <p className='px-36 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Nunito Bold'}}>{this.state.experience_title}</p>
                 {/* START OF TOP CAROUSEL */}
                 <div id="banner_carousel" className="carousel slide ps-0 pe-0 mt-5 mtm-5" data-ride="carousel">
                     <ol className="carousel-indicators">
-                        <li data-target="#banner_carousel" data-slide-to={0} className="active" />
-                        <li data-target="#banner_carousel" data-slide-to={1} />
-                        <li data-target="#banner_carousel" data-slide-to={2} />
+                    {
+                    this.state.active_experience_images &&
+
+                        this.state.active_experience_images &&
+                            this.state.active_experience_images.map( (e , index) => {
+                            return(
+                                <React.Fragment>
+                                    {
+                                        <li data-target="#banner_carousel" data-slide-to={index} className={index > 0 ? "" : "active"} />
+
+                                    }
+                                    </React.Fragment>
+                
+                                    )
+                                })              
+                    } 
                     </ol>
                     <div className="carousel-inner">
-                        <div className="carousel-item active">
-                        <img className="d-block w-100 extra-big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_1.png" alt="First slide" />
-                        </div>
-                        <div className="carousel-item">
-                        <img className="d-block w-100 extra-big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_2.png" alt="Second slide" />
-                        </div>
-                        <div className="carousel-item">
-                        <img className="d-block w-100 extra-big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_1.png" alt="Third slide" />
-                        </div>
+                    {
+                    this.state.experience_images &&
+                        this.state.experience_images.map( (e , index) => {
+                        return(
+                            <React.Fragment>
+                                {
+                                    <div className={index === 0 ? "carousel-item active" : "carousel-item"}>
+                                        <img className="d-block w-100 extra-big-image-carousel" style={{objectFit:'cover'}} src={e.image_carousel} alt="First slide" />
+                                    </div>
+                                }
+                            </React.Fragment>
+
+                            )
+                        })              
+                    } 
+
                     </div>
                     <a className="carousel-control-prev" href="#banner_carousel" role="button" data-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true" />
@@ -140,21 +212,7 @@ class ExperienceDetail extends React.Component {
         <div className='row page-container mtm-5 mt-5'>
             <div className='col-12 ps-0 pe-0'>
                 <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',whiteSpace:'pre-wrap'}}>Lorem Ipsum is simply dummy text of 
-                    the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's
-                    standard dummy text
-
-                    <br></br>
-                    <br></br>
-
-
-                    Lorem Ipsum is simply dummy text of 
-                    the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's
-                    standard dummy text ever since the
-                    1500s,  when an unknown printer took
-                    a galley of type and scrambled it to
-                    make a type specimen book
+                    {this.state.experience_description}
                 </p>
 
             </div>
@@ -210,9 +268,20 @@ class ExperienceDetail extends React.Component {
             <div className='mt-3 mtm-5'>
 
             </div>
-            <ExperienceCard title={'Jembatan Lembah Nepal Yang Indah'} image={'/assets/images/Dummy_Image_1.png'} ></ExperienceCard>
-            <ExperienceCard title={'Jembatan Lembah Nepal Yang Indah'} image={'/assets/images/Dummy_Image_2.png'} ></ExperienceCard>
+            {
+                this.state.other_experiences &&
+                    this.state.other_experiences.map( (e , index) => {
+                    return(
+                        <React.Fragment>
+                            {
+                                <ExperienceCard experience_id={e.experience_id} title={e.title} image={e.thumbnail} ></ExperienceCard>
+                            }
+                            </React.Fragment>
 
+                            )
+                        })              
+            } 
+          
             <div className='mtm-5 mt-5' style={{padding:'0'}}>
                 <a href="/experiences" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All On-Site List</a>
             </div>
