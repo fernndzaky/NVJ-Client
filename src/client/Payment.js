@@ -140,7 +140,7 @@ class TicketDetail extends React.Component {
 
           </div>
           <div className='p-0' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-            <p className='px-24' style={{color:'#1BC47D',fontFamily:'Nunito Semi Bold'}}>Booking Details</p>
+            <p className='px-24' style={{color:'#1BC47D',fontFamily:'Nunito Semi Bold'}}>Grand Total</p>
             <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Rp30,000</p>
 
           </div>
