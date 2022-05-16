@@ -69,9 +69,9 @@ class Experiences extends React.Component {
         experiences : [
             {
                 experience_id   : 1,
-                thumbnail       : '/assets/images/Dummy_Image_2.png',
+                thumbnail       : '/assets/images/Dummy_Image_3.JPG',
                 images          : [
-                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
+                                    {image_carousel :  '/assets/images/Dummy_Image_3.JPG'},
                                     {image_carousel :  '/assets/images/Dummy_Image_1.png'},
                                     {image_carousel :  '/assets/images/Navbar.png'},
                                   ],
