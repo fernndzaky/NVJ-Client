@@ -29,7 +29,7 @@ export default class FreeTicketCard extends Component {
                         className="px-18"
                         
                     />
-                    <a  className='px-14 pt-2 pb-2 pe-4 ps-4' style={{color:'#333333',fontFamily:'Roboto Bold',backgroundColor:'#9FADBB',borderRadius:'5px',color:'#FFFFFF',textDecoration:'none'}}>
+                    <a  className='px-14 pt-2 pb-2 pe-4 ps-4' style={{color:'#333333',fontFamily:'Roboto Bold',backgroundColor:'#1D8ECE',borderRadius:'5px',color:'#FFFFFF',textDecoration:'none'}}>
                         Pre Order
                     </a>
 
