@@ -7,6 +7,7 @@ import '../css/index.css';
 import Navbar from './components/Navbar';
 import BottomNavbar from './components/BottomNavbar';
 import TicketCard from './components/TicketCard';
+import FreeTicketCard from './components/FreeTicketCard';
 
 
 
@@ -69,22 +70,35 @@ class Tickets extends React.Component {
     await this.setState({
         tickets : [
             {
-                ticket_id   : 1,
-                title       : 'Entrance Ticket to Dusun Butuh',
-                price       : 10000,
-                qty         : 0
+                ticket_id    : 1,
+                title        : 'Entrance Ticket to Dusun Butuh',
+                price        : 10000,
+                qty          : 0,
+                purchaseAble : true
             },
             {
-                ticket_id   : 2,
-                title       : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
-                price       : 15000,
-                qty         : 0
+                ticket_id    : 2,
+                title        : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
+                price        : 15000,
+                qty          : 0,
+                purchaseAble : true
+
             },
             {
-                ticket_id   : 3,
-                title       : 'Exit Ticket from NVJ',
-                price       : 30000,
-                qty         : 0
+                ticket_id    : 3,
+                title        : 'Exit Ticket from NVJ',
+                price        : 30000,
+                qty          : 0,
+                purchaseAble : true
+
+            },
+            {
+                ticket_id    : 4,
+                title        : 'Home Stay at Dusun Butuh',
+                price        : null,
+                qty          : 0,
+                purchaseAble : false
+
             },
         ]
     })
@@ -183,16 +197,16 @@ class Tickets extends React.Component {
                         {
                         index === 0 ?
                         <div  className='p-0'>
-                            {e.qty === 0 ?
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty} ></TicketCard>
+                            {!e.purchaseAble ?
+                            <FreeTicketCard ticket_id={e.ticket_id} title={e.title} ></FreeTicketCard>
                             :
                             <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
                             }
                         </div>
                         :
                         <div  className='p-0 mtm-5 mt-4'>
-                            {e.qty === 0 ?
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty} ></TicketCard>
+                            {!e.purchaseAble ?
+                            <FreeTicketCard ticket_id={e.ticket_id} title={e.title} ></FreeTicketCard>
                             :
                             <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
                             }

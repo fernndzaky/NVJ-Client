@@ -19,6 +19,7 @@ import "swiper/components/pagination/pagination.min.css"
 
 // Components Import
 import TicketCard from './components/TicketCard';
+import FreeTicketCard from './components/FreeTicketCard';
 import Navbar from './components/Navbar';
 import BottomNavbar from './components/BottomNavbar';
 
@@ -86,22 +87,35 @@ class HomePage extends React.Component {
     await this.setState({
         tickets : [
             {
-                ticket_id   : 1,
-                title       : 'Entrance Ticket to Dusun Butuh',
-                price       : 10000,
-                qty         : 0
+                ticket_id    : 1,
+                title        : 'Entrance Ticket to Dusun Butuh',
+                price        : 10000,
+                qty          : 0,
+                purchaseAble : true
             },
             {
-                ticket_id   : 2,
-                title       : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
-                price       : 15000,
-                qty         : 0
+                ticket_id    : 2,
+                title        : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
+                price        : 15000,
+                qty          : 0,
+                purchaseAble : true
+
             },
             {
-                ticket_id   : 3,
-                title       : 'Exit Ticket from NVJ',
-                price       : 30000,
-                qty         : 0
+                ticket_id    : 3,
+                title        : 'Exit Ticket from NVJ',
+                price        : 30000,
+                qty          : 0,
+                purchaseAble : true
+
+            },
+            {
+                ticket_id    : 4,
+                title        : 'Home Stay at Dusun Butuh',
+                price        : null,
+                qty          : 0,
+                purchaseAble : false
+
             },
         ]
     })
@@ -193,16 +207,16 @@ class HomePage extends React.Component {
                         {
                         index === 0 ?
                         <div  className='p-0'>
-                            {e.qty === 0 ?
+                            {!e.purchaseAble ?
+                            <FreeTicketCard ticket_id={e.ticket_id} title={e.title} ></FreeTicketCard>
+                                :
                             <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty} ></TicketCard>
-                            :
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
                             }
                         </div>
                         :
                         <div  className='p-0 mtm-5 mt-4'>
-                            {e.qty === 0 ?
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty} ></TicketCard>
+                            {!e.purchaseAble ?
+                            <FreeTicketCard ticket_id={e.ticket_id} title={e.title} ></FreeTicketCard>
                             :
                             <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
                             }
@@ -213,6 +227,7 @@ class HomePage extends React.Component {
                     )
                 })              
             } 
+
             <div className='mtm-5 mt-5' style={{padding:'0'}}>
                 <a href="/tickets" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All Tickets</a>
             </div>

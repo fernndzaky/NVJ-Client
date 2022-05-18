@@ -18,10 +18,13 @@ class TicketDetail extends React.Component {
   constructor(){
     super()
     this.state = {
-      title : null,
-      price : null,
-      description : null,
-      ticket_id : null
+      title         : null,
+      price         : null,
+      description   : null,
+      ticket_id     : null,
+      purchaseAble  : null,
+      phoneNumber   : null,
+      contactName   : null
     }
   }
 
@@ -55,10 +58,13 @@ class TicketDetail extends React.Component {
 
   getTicketDetail = async() =>{
     await this.setState({
-      title : 'Entrance Ticket to Dusun Butuh',
-      price : 10000,
-      description : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text.',
-      ticket_id : 1
+      title         : 'Entrance Ticket to Dusun Butuh',
+      price         : 10000,
+      description   : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text.',
+      ticket_id     : 1,
+      purchaseAble  : true,
+      phoneNumber   : '+628111377893',
+      contactName   : 'Pak Lilik Setiyawan',
     })
   }
 
@@ -136,7 +142,26 @@ class TicketDetail extends React.Component {
               
 
                 <p className='px-36 mt-3 mtm-5' style={{color:'#333333',fontFamily:'Nunito Bold'}}>{this.state.title}</p>
+                {this.state.purchaseAble &&                
                 <p className='px-28' style={{color:'#333333',fontFamily:'Nunito Bold'}}>Rp{this.state.price}</p>
+                }
+                {/* START OF CONTACT US */}
+                {!this.state.purchaseAble &&                
+                <div className='col-12 pe-0 plm-0  mt-4' style={{backgroundColor:'white'}}>
+                    <div className='contact-us-wrapper mtm-5' style={{padding:'5vw',boxShadow: '1px 1px 4px rgba(0, 0, 0, 0.25)',borderRadius:'4vw'}}>
+                        <div style={{display:'flex',alignItems:'flex-start'}}>
+                            <FontAwesomeIcon icon="user" className='px-24' style={{color:'#9FADBB'}} />
+                            <p className='px-18 ms-3' style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>{this.state.contactName}</p>
+                        </div>
+                        <div id="contact-us-item-wrapper" style={{display:'flex',alignItems:'flex-start',marginTop:'8vw'}}>
+                            <FontAwesomeIcon icon="phone" className='px-24' style={{color:'#9FADBB'}} />
+                            <p className='px-18 ms-3' style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>{this.state.phoneNumber}</p>
+                        </div>
+
+                    </div>
+                </div>
+                }
+                {/* END OF CONTACT US */}
                 <p className='px-18 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Roboto Regular',whiteSpace:'pre-wrap'}}>{this.state.description}
                 </p>
 
@@ -145,10 +170,10 @@ class TicketDetail extends React.Component {
         {/* END OF TOP SECTION*/}
 
         <BottomNavbar></BottomNavbar>
+        {this.state.purchaseAble ?               
 
         <div className="bottom-navbar bottom-navbar-ticket-detail" style={{padding:'4vw',
-            borderTop: '1.5vw solid #9FADBB'
-        }} >
+            borderTop: '1.5vw solid #9FADBB' }} >
               <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
                 <button onClick={()=> this.addToCart(this.state.ticket_id)}  className='px-18 btn-outline-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',background:'#FFFFFF'}}>
                     <FontAwesomeIcon icon="plus" className='px-18 me-2' />
@@ -156,6 +181,22 @@ class TicketDetail extends React.Component {
                 <BuyNowButton></BuyNowButton>
               </div>
         </div>
+
+        :
+
+        <div className="bottom-navbar bottom-navbar-ticket-detail" style={{padding:'4vw',
+            borderTop: '1.5vw solid #9FADBB' }} >
+              <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+                
+                <button onClick={()=> window.open("https://api.whatsapp.com/send?phone="+this.state.phoneNumber+"&text=Hello%2C%20World!", "_blank")} className='btn-green-to-white' style={{width:'100%'}}>
+                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>
+                    <FontAwesomeIcon icon="phone" className='px-18 me-2' />
+                    Contact Via Whatsapp
+                    </p>
+                </button>
+              </div>
+        </div>
+        }
 
 
         <ToastContainer
