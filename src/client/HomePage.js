@@ -28,7 +28,8 @@ class HomePage extends React.Component {
   constructor(){
     super()
     this.state = {
-        tickets : []
+        tickets     : [],
+        ticketType  : 'tickets'
     }
   }
 
@@ -100,23 +101,7 @@ class HomePage extends React.Component {
                 qty          : 0,
                 purchaseAble : true
 
-            },
-            {
-                ticket_id    : 3,
-                title        : 'Exit Ticket from NVJ',
-                price        : 30000,
-                qty          : 0,
-                purchaseAble : true
-
-            },
-            {
-                ticket_id    : 4,
-                title        : 'Home Stay at Dusun Butuh',
-                price        : null,
-                qty          : 0,
-                purchaseAble : false
-
-            },
+            }
         ]
     })
 
@@ -125,6 +110,54 @@ class HomePage extends React.Component {
     for(var x in current_cart){
         this.updateTicketStateQty(current_cart[x]['ticket_id'], current_cart[x]['qty'] )
     }
+  }
+
+
+  changeTicketType = async(type) =>{
+        if(type === 'tickets'){
+            await this.setState({
+                tickets : [
+                    {
+                        ticket_id    : 1,
+                        title        : 'Entrance Ticket to Dusun Butuh',
+                        price        : 10000,
+                        qty          : 0,
+                        purchaseAble : true
+                    },
+                    {
+                        ticket_id    : 2,
+                        title        : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
+                        price        : 15000,
+                        qty          : 0,
+                        purchaseAble : true
+        
+                    }
+                ],
+                ticketType : 'tickets'
+            })
+        }
+        else if(type === 'packages'){
+            await this.setState({
+                tickets : [
+                    {
+                        ticket_id    : 4,
+                        title        : 'Home Stay at Dusun Butuh',
+                        price        : 10000,
+                        qty          : 0,
+                        purchaseAble : false
+                    },
+                    {
+                        ticket_id    : 5,
+                        title        : 'Agri Culture at Teras Nepal',
+                        price        : 15000,
+                        qty          : 0,
+                        purchaseAble : false
+        
+                    }
+                ],
+                ticketType : 'packages'
+            })
+        }
   }
 
 
@@ -195,8 +228,18 @@ class HomePage extends React.Component {
         <div className='row upper-page-padding-small page-container'>
             <div className='col-12 p-0'>
                 <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Available Tickets</p>
+                {/* START OF TOGGLE */}
+                <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                    <div onClick={()=> this.changeTicketType("tickets")} className={this.state.ticketType === 'tickets' ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"}  style={{borderRadius:'10px 0px 0px 10px',width:'50%'}}>
+                        <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Tickets</p>
+                    </div>
+                    <div onClick={()=> this.changeTicketType("packages")} className={this.state.ticketType === 'packages' ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"} style={{borderRadius:'0px 10px 10px 0px',width:'50%'}}>
+                        <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Packages</p>
+                    </div>
+                </div>
+                {/* END OF TOGGLE */}
             </div>
-            <div className='mt-3 mtm-5'>
+            <div className='mt-5 mtm-5'>
 
             </div>
 
