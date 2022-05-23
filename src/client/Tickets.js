@@ -213,7 +213,11 @@ class Tickets extends React.Component {
 
             <div className='row page-container mt-5 mtm-5'>
                 <div className='col-12 ps-0 pe-0'>
+                {this.state.ticketType === 'tickets' ?
                     <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Available Tickets</p>
+                    :
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Available Packages</p>
+                }
                     {/* START OF TOGGLE */}
                     <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
                         <div onClick={()=> this.changeTicketType("tickets")} className={this.state.ticketType === 'tickets' ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"}  style={{borderRadius:'10px 0px 0px 10px',width:'50%'}}>
