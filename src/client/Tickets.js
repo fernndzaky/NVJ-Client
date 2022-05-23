@@ -190,16 +190,28 @@ class Tickets extends React.Component {
                     <li data-target="#banner_carousel" data-slide-to={0} className="active" />
                     <li data-target="#banner_carousel" data-slide-to={1} />
                     <li data-target="#banner_carousel" data-slide-to={2} />
+                    <li data-target="#banner_carousel" data-slide-to={3} />
+                    <li data-target="#banner_carousel" data-slide-to={4} />
+                    <li data-target="#banner_carousel" data-slide-to={5} />
                 </ol>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_1.png" alt="First slide" />
+                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-1.JPG" alt="First slide" />
                     </div>
                     <div className="carousel-item">
-                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_2.png" alt="Second slide" />
+                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-2.JPG" alt="Second slide" />
                     </div>
                     <div className="carousel-item">
-                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_1.png" alt="Third slide" />
+                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-3.JPG" alt="Third slide" />
+                    </div>
+                    <div className="carousel-item">
+                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-4.JPG" alt="Third slide" />
+                    </div>
+                    <div className="carousel-item">
+                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-5.JPG" alt="Third slide" />
+                    </div>
+                    <div className="carousel-item">
+                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-6.JPG" alt="Third slide" />
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#banner_carousel" role="button" data-slide="prev">
@@ -214,23 +226,23 @@ class Tickets extends React.Component {
             <div className='row page-container mt-5 mtm-5'>
                 <div className='col-12 ps-0 pe-0'>
                 {this.state.ticketType === 'tickets' ?
-                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Available Tickets</p>
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Tiket Dusun Butuh</p>
                     :
-                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Available Packages</p>
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Paket Wisata</p>
                 }
                     {/* START OF TOGGLE */}
                     <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
                         <div onClick={()=> this.changeTicketType("tickets")} className={this.state.ticketType === 'tickets' ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"}  style={{borderRadius:'10px 0px 0px 10px',width:'50%'}}>
-                            <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Tickets</p>
+                            <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Tiket</p>
                         </div>
                         <div onClick={()=> this.changeTicketType("packages")} className={this.state.ticketType === 'packages' ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"} style={{borderRadius:'0px 10px 10px 0px',width:'50%'}}>
-                            <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Packages</p>
+                            <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Paket Wisata</p>
                         </div>
                     </div>
                     {/* END OF TOGGLE */}
                 </div>
                 <div className='col-12 ps-0 pe-0 mt-4 mtm-5' >
-                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </p>
+                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',textAlign:'justify'}}>Ingin memesan tiket untuk wisata-wisata di Dusun Butuh? Silahkan jelajhi halamann ini untuk melihat semua tiket dan juga paket wisata yang ditawarkan oleh Dusun Butuh Nepal Van Java</p>
                 </div>
             </div>
 
@@ -240,22 +252,20 @@ class Tickets extends React.Component {
         {/* START OF FILTER SECTION */}
         <div className='row page-container mt-3 mtm-5 ticket-filter-wrapper' style={{paddingBottom:'6vw',borderBottom:'1vw solid #9FADBB'}}>
             <div className='col-6 ps-0 '>
-                <input name="ticket_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Search Ticket" />
+                <input name="ticket_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Cari Tiket" />
             </div>            
             <div className='col-6 pe-0'>
                 <select name="filter"  className="px-18 input_field_text"  style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}}>
-                    <option value="" disabled selected>Show All</option>
-                    <option value="SMP">SMP</option>
-                    <option value="SMA">SMA</option>
-                    <option value="S1">S1</option>
-                    <option value="S2">S2</option>
+                    <option value="" disabled selected>Semua</option>
+                    <option value="SMP">Harga Termurah</option>
+                    <option value="SMA">Harga Termahal</option>
                 </select>   
             </div>            
         </div>
         {/* END OF FILTER SECTION */}
         {/* START OF AVAILABLE TICKETS */}
         <div className='row page-container mt-5 mtm-5'>
-            <p className='px-18 mtm-5 pb-3' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px',padding:'0px'}}>Showing 3 results</p>
+            <p className='px-18 mtm-5 pb-3' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px',padding:'0px'}}>Memperlihatkan 3 hasil</p>
             {
                 this.state.tickets.map( (e , index) => {
                 return(

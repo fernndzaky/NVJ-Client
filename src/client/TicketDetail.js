@@ -1,6 +1,7 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import NumberFormat from 'react-number-format';
 
 import '../css/index.css';
 
@@ -133,7 +134,7 @@ class TicketDetail extends React.Component {
               <a href="javascript:history.back()" className='px-18 btn-outline-grey mb-2 mt-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block'}}>
                     <FontAwesomeIcon icon="chevron-left" className='px-18 me-2' />
 
-                    Back</a>
+                    Kembali</a>
             </div>
         </div>
         <div className='row page-container mtm-5 ' style={{background: `url('/assets/images/BG_Image.png') no-repeat center`,
@@ -143,7 +144,10 @@ class TicketDetail extends React.Component {
 
                 <p className='px-36 mt-3 mtm-5' style={{color:'#333333',fontFamily:'Nunito Bold'}}>{this.state.title}</p>
                 {this.state.purchaseAble &&                
-                <p className='px-28' style={{color:'#333333',fontFamily:'Nunito Bold'}}>Rp{this.state.price}</p>
+                <p className='px-28' style={{color:'#333333',fontFamily:'Nunito Bold'}}>
+                  <NumberFormat value={this.state.price} displayType={'text'} thousandSeparator={true} prefix={'Rp'} />
+                </p>
+
                 }
                 {/* START OF CONTACT US */}
                 {!this.state.purchaseAble &&                
@@ -162,7 +166,7 @@ class TicketDetail extends React.Component {
                 </div>
                 }
                 {/* END OF CONTACT US */}
-                <p className='px-18 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Roboto Regular',whiteSpace:'pre-wrap'}}>{this.state.description}
+                <p className='px-18 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Roboto Regular',whiteSpace:'pre-wrap',textAlign:'justify'}}>{this.state.description}
                 </p>
 
             </div>
@@ -177,7 +181,7 @@ class TicketDetail extends React.Component {
               <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
                 <button onClick={()=> this.addToCart(this.state.ticket_id)}  className='px-18 btn-outline-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',background:'#FFFFFF'}}>
                     <FontAwesomeIcon icon="plus" className='px-18 me-2' />
-                    Add to cart</button>
+                    Keranjang</button>
                 <BuyNowButton></BuyNowButton>
               </div>
         </div>
@@ -191,7 +195,7 @@ class TicketDetail extends React.Component {
                 <button onClick={()=> window.open("https://api.whatsapp.com/send?phone="+this.state.phoneNumber+"&text=Hello%2C%20World!", "_blank")} className='btn-green-to-white' style={{width:'100%'}}>
                     <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>
                     <FontAwesomeIcon icon="phone" className='px-18 me-2' />
-                    Contact Via Whatsapp
+                    Kontak Via Whatsapp
                     </p>
                 </button>
               </div>

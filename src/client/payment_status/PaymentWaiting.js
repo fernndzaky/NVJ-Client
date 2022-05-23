@@ -59,7 +59,7 @@ class PaymentWaiting extends React.Component {
       <div className="">
         <Helmet>
             <title>
-            Payment Completed - Dusun Butuh Nepal Van Java
+            Menunggu Pembayaran - Dusun Butuh Nepal Van Java
             </title>
             <meta
                 name="description"
@@ -73,11 +73,11 @@ class PaymentWaiting extends React.Component {
             <div className='col-12' style={{textAlign:'center'}}>
               <img className="img-fluid payment_status_icon" style={{width:'25vw',height:'25vw',objectFit:'contain'}} src="/assets/images/Payment_Waiting.png" alt="Payment Waiting" />
 
-              <p className='px-28 mt-5 mtm-4' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Waiting for payment..</p>
+              <p className='px-28 mt-5 mtm-4' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Menunggu pembayaran..</p>
               <a href="/payment-waiting" className='px-18 btn-outline-grey w-100 mtm-5 mt-4' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',backgroundColor:'#FFFFFF'}}>
               Refresh payment status
               </a>
-              <p className='px-18 mtm-5 mt-4' style={{color:'#ED4747',fontFamily:'Roboto Bold'}}>Please do not close this page until you complete the payment.</p>
+              <p className='px-18 mtm-5 mt-4' style={{color:'#ED4747',fontFamily:'Roboto Bold'}}>Harap jangan tutup halaman ini sampai anda menyelesaikan pembayaran.</p>
 
             </div>
         </div>
@@ -86,9 +86,9 @@ class PaymentWaiting extends React.Component {
         {/* START OF PAYMENT INSTRUCTION SECTION*/}
         <div className='row page-container mt-5'>
           <div className='col-12 ps-0 pe-0'>
-            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>The payment details and instruction has been sent to the email</p>
+            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Detail pembayaran dan instruksi telah dikirim ke email:</p>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold'}}>fernandhadzaky@hotmail.com</p>
-            <p className='px-18 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Please complete the payment to the bank details down below :</p>
+            <p className='px-18 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Silakan selesaikan pembayaran ke detail bank di bawah ini:</p>
             <div className='p-0 mt-4' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
               <p className='px-24' style={{color:'#1BC47D',fontFamily:'Nunito Semi Bold'}}>Grand Total</p>
               <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Rp30,000</p>
@@ -109,13 +109,13 @@ class PaymentWaiting extends React.Component {
         {/* START OF BOOKINNG DETAILS SECTION*/}
         <div className='row page-container upper-page-padding-small' style={{borderBottom:'0.5vw solid #DBE2E9'}}>
           <div className='col-12 ps-0 pe-0'>
-            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Booking Details</p>
+            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Detail Pemesanan</p>
 
             <table className="table mt-4 mtm-5">
               <thead>
                 <tr>
-                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold'}}>Ticket</th>
-                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold',textAlign:'right'}}>Price</th>
+                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold'}}>Tiket</th>
+                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold',textAlign:'right'}}>Harga</th>
                 </tr>
               </thead>
               <tbody>
@@ -156,7 +156,7 @@ class PaymentWaiting extends React.Component {
           </div>
 
           <div className='p-0'>
-            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Visit Date</p>
+            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Tanggal Kunjungan</p>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold'}}>17 Agustus 1945</p>
           </div>
 
@@ -166,10 +166,10 @@ class PaymentWaiting extends React.Component {
         {/* START OF RESEND EMAIL SECTION*/}
         <div className='row page-container pb-5 mt-5'>
           <div className='col-12 ps-0 pe-0'>
-            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Have not received any email? </p>
-            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Click the button down below to resend to the previously filled email</p>
+            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Belum menerima email?</p>
+            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Klik tombol di bawah untuk mengirim ulang ke email yang telah diisi sebelumnya.</p>
             <button className='px-18 btn-outline-grey w-100 mt-4' style={{fontFamily:'Roboto Bold',backgroundColor:'#FFFFFF'}}>
-            Resend Email
+            Kirim Ulang Email
             </button>
           </div>
 

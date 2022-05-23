@@ -59,7 +59,7 @@ class PaymentExpired extends React.Component {
       <div className="">
         <Helmet>
             <title>
-            Payment Expired - Dusun Butuh Nepal Van Java
+            Pemesanan Kadaluarsa - Dusun Butuh Nepal Van Java
             </title>
             <meta
                 name="description"
@@ -73,9 +73,9 @@ class PaymentExpired extends React.Component {
             <div className='col-12' style={{textAlign:'center'}}>
               <img className="img-fluid payment_status_icon" style={{width:'25vw',height:'25vw',objectFit:'contain'}} src="/assets/images/Payment_Expired.png" alt="Payment Expired" />
 
-              <p className='px-28 mtm-5 m-4' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>Order Expired..</p>
+              <p className='px-28 mtm-5 m-4' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>Pemesanan Kadaluarsa..</p>
               <a href="/tickets" className='px-18 btn-outline-grey w-100' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',backgroundColor:'#FFFFFF'}}>
-              Back to Tiket List
+              Kembali ke Halaman Tiket
               </a>
             </div>
         </div>
@@ -84,13 +84,13 @@ class PaymentExpired extends React.Component {
         {/* START OF BOOKINNG DETAILS SECTION*/}
         <div className='row page-container upper-page-padding-small pb-5'>
           <div className='col-12 ps-0 pe-0'>
-            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Booking Details</p>
+            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Detail Pemesanan</p>
 
             <table className="table mt-4">
               <thead>
                 <tr>
-                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold'}}>Ticket</th>
-                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold',textAlign:'right'}}>Price</th>
+                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold'}}>Tiket</th>
+                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold',textAlign:'right'}}>Harga</th>
                 </tr>
               </thead>
               <tbody>
@@ -131,7 +131,7 @@ class PaymentExpired extends React.Component {
           </div>
 
           <div className='p-0'>
-            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Visit Date</p>
+            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Tanggal Kunjungan</p>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold'}}>17 Agustus 1945</p>
           </div>
 

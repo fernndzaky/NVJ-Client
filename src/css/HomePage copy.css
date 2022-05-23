@@ -22,7 +22,8 @@
 #clamped-content-paragraph-about-us-text{
     color:#333333;
     font-family:Roboto Regular;
-    margin-bottom:6vw
+    margin-bottom:6vw;
+    text-align: justify !important
 }
 .clamp-lines__button{
     display: none;

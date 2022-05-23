@@ -30,12 +30,12 @@ export default class FreeTicketCard extends Component {
                         
                     />
                     <a  className='px-14 pt-2 pb-2 pe-4 ps-4' style={{color:'#333333',fontFamily:'Roboto Bold',backgroundColor:'#1D8ECE',borderRadius:'5px',color:'#FFFFFF',textDecoration:'none'}}>
-                        Tourism Package
+                        Paket Wisata
                     </a>
 
                 </div>
                 <button  onClick={()=> window.open("/ticket/"+this.props.ticket_id, "_self")} className='btn-green-to-white' style={{width:'100%'}}>
-                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>View Detail</p>
+                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Lihat Lebih Lanjut</p>
                 </button>
             </div>
           </div>

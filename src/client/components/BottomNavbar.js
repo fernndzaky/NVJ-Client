@@ -58,14 +58,14 @@ export default class BottomNavbar extends Component {
                 <div id="bottom-navbar-item"  className="bottom-navbar-item-active">
                     <a href="/experiences" style={{textDecoration:'none'}}>
                         <FontAwesomeIcon icon="campground" className='px-24' />
-                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Experiences</p>
+                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Wisata</p>
                     </a>
                 </div>
                 :
                 <div id="bottom-navbar-item">
                     <a href="/experiences" style={{textDecoration:'none'}}>
                         <FontAwesomeIcon icon="campground" className='px-24' />
-                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Experiences</p>
+                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Wisata</p>
                     </a>
                 </div>
                 }
@@ -76,14 +76,14 @@ export default class BottomNavbar extends Component {
                 <div id="bottom-navbar-item" className="bottom-navbar-item-active">
                     <a href="/tickets" style={{textDecoration:'none'}}>
                         <FontAwesomeIcon icon="ticket-alt" className='px-24' />
-                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Tickets</p>
+                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Tiket</p>
                     </a>
                 </div>
                 :
                 <div id="bottom-navbar-item" >
                     <a href="/tickets" style={{textDecoration:'none'}}>
                         <FontAwesomeIcon icon="ticket-alt" className='px-24' />
-                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Tickets</p>
+                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Tiket</p>
                     </a>
                 </div>
                 }
@@ -94,14 +94,14 @@ export default class BottomNavbar extends Component {
                 <div id="bottom-navbar-item" className="bottom-navbar-item-active">
                     <a href="/cart" style={{textDecoration:'none'}}>
                         <FontAwesomeIcon icon="shopping-cart" className='px-24' />
-                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Cart</p>
+                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Keranjang</p>
                     </a>
                 </div>
                 :
                 <div id="bottom-navbar-item" >
                     <a href="/cart" style={{textDecoration:'none'}}>
                         <FontAwesomeIcon icon="shopping-cart" className='px-24' />
-                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Cart</p>
+                        <p className='px-14' style={{fontFamily:'Roboto Regular',marginBottom:'0px',color:'#333333'}}>Keranjang</p>
                     </a>
                 </div>
                 }

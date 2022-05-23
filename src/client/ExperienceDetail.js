@@ -211,7 +211,7 @@ class ExperienceDetail extends React.Component {
         </div>
         <div className='row page-container mtm-5 mt-5'>
             <div className='col-12 ps-0 pe-0'>
-                <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',whiteSpace:'pre-wrap'}}>Lorem Ipsum is simply dummy text of 
+                <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',whiteSpace:'pre-wrap',textAlign:'justify'}}>Lorem Ipsum is simply dummy text of 
                     {this.state.experience_description}
                 </p>
 
@@ -222,7 +222,7 @@ class ExperienceDetail extends React.Component {
         {/* START OF AVAILABLE TICKETS */}
         <div className='row upper-page-padding-small page-container'>
             <div className='col-12 p-0'>
-                <p className='px-36 ' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Available Tickets</p>
+                <p className='px-36 ' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Tiket Dusun Butuh</p>
             </div>
             <div className='mt-3 mtm-5'>
 
@@ -255,7 +255,7 @@ class ExperienceDetail extends React.Component {
                 })              
             } 
             <div className='mtm-5 mt-5' style={{padding:'0'}}>
-                <a href="/" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All Tickets</a>
+                <a href="/" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Semua Tiket</a>
             </div>
         </div>
         {/* END OF AVAILABLE TICKETS */}
@@ -263,7 +263,7 @@ class ExperienceDetail extends React.Component {
         {/* START OF OTHER EXPERIENCES */}
         <div className='row upper-page-padding-small page-container'>
             <div className='col-12 p-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Other On-Site Experiences</p>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Daftar Wisata Lainnya</p>
             </div>
             <div className='mt-3 mtm-5'>
 
@@ -283,7 +283,7 @@ class ExperienceDetail extends React.Component {
             } 
           
             <div className='mtm-5 mt-5' style={{padding:'0'}}>
-                <a href="/experiences" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All On-Site List</a>
+                <a href="/experiences" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Semua Wisata</a>
             </div>
         </div>
         {/* END OF OTHER EXPERIENCES */}

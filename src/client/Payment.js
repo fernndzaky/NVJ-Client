@@ -86,9 +86,9 @@ class TicketDetail extends React.Component {
               <a href="javascript:history.back()" className='px-18 btn-outline-grey mb-2 mt-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block'}}>
                     <FontAwesomeIcon icon="chevron-left" className='px-18 me-2' />
 
-                    Back</a>
+                    Kembali</a>
 
-                <p className='px-28 mt-5 mtm-5' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Booking Details</p>
+                <p className='px-28 mt-5 mtm-5' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Detail Pemesanan</p>
 
             </div>
         </div>
@@ -99,8 +99,8 @@ class TicketDetail extends React.Component {
             <table className="table">
               <thead>
                 <tr>
-                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold'}}>Ticket</th>
-                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold',textAlign:'right'}}>Price</th>
+                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold'}}>Tiket</th>
+                  <th scope="col" className='px-18' style={{fontFamily:'Roboto Bold',textAlign:'right'}}>Harga</th>
                 </tr>
               </thead>
               <tbody>
@@ -146,7 +146,7 @@ class TicketDetail extends React.Component {
           </div>
 
         </div>
-        {/* END OF BOOKING DETAILS SECTION*/}
+        {/* END OF Detal Pemesanan SECTION*/}
 
 
 
@@ -154,13 +154,13 @@ class TicketDetail extends React.Component {
         <div className='page-container upper-page-padding-small'>  
   
           <div className='cart-wrapper' style={{padding:'5vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw'}}>
-            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Personal Information</p>
+            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Informasi Pribadi</p>
             <div className='row mt-4'>
               <div className='col-6 ps-0 '>
-                  <input  name="full_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Full Name" />
+                  <input  name="full_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Nama Lengkap" />
               </div> 
               <div className='col-6 pe-0 '>
-                  <input  name="phone_number" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Phone Number" />
+                  <input  name="phone_number" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Nomor Telepon" />
               </div> 
               <div className='col-12 pe-0 ps-0 mtm-5 mt-4'>
                   <input  name="email" type="email" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Email" />
@@ -170,7 +170,7 @@ class TicketDetail extends React.Component {
           </div>    
           
           <div className='mtm-5 mt-3' style={{display:'flex',alignItems:'center'}}>
-            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px',width:'50%'}}>Visit Date</p>
+            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px',width:'50%'}}>Tanggal Kunjungan</p>
             <input  name="visit_date" type="date" class="px-18 input_field_text" style={{marginLeft:'2vw',height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Email" />
 
 
@@ -179,7 +179,7 @@ class TicketDetail extends React.Component {
         {/* END OF PERSONAL INFORMATION SECTION*/}
 
         <div className='row page-container mtm-5 mt-5 pb-5'>
-          <button  className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Confirm Order</button>
+          <button  className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Konfirmasi Pemesanan</button>
           <button id="pay-button">Pay!</button>
         </div>
 

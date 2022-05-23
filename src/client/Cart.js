@@ -191,7 +191,7 @@ class Cart extends React.Component {
         <Navbar></Navbar>
         <div className='row page-container mtm-5 mt-3'>
             <div className='col-md-6 col-xs-12 ps-0 pe-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Your Cart</p>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Keranjang</p>
             </div>
         </div>
 
@@ -226,7 +226,7 @@ class Cart extends React.Component {
                                 </a >
                                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                                     <div className='btn-red px-18' style={{fontFamily:'Roboto Bold',cursor:'pointer'}}>
-                                        Delete
+                                        Hapus
                                     </div>
                                     <div className='cart-qty-wrapper' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                                         <div onClick={()=> this.handleQtyChange('minus',e.ticket_id,e.qty-1,e.price)} className='btn-circle-white' style={{cursor:'pointer'}}>

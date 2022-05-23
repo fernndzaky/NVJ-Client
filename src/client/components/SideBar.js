@@ -14,16 +14,16 @@ export default class SideBar extends Component {
                 <a className="navbar-item" href="/" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >Home</a>    
               </div>
               <div>
-                <a className="navbar-item mtm-5" href="/experiences" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >Experiences</a>    
+                <a className="navbar-item mtm-5" href="/experiences" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >Wisata</a>    
               </div>
               <div>
-                <a className="navbar-item mtm-5" href="/tickets" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >Tickets</a>    
+                <a className="navbar-item mtm-5" href="/tickets" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >Tiket</a>    
               </div>
               <div>
-                <a className="navbar-item mtm-5" href="/cart" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >My Cart</a>    
+                <a className="navbar-item mtm-5" href="/cart" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >Keranjang</a>    
               </div>
               <div>
-                <a className="navbar-item mtm-5" href="/about" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >About Us</a>    
+                <a className="navbar-item mtm-5" href="/about" style={{fontFamily:'Nunito Semi Bold',color:'#000000',marginBottom:'0px',textDecoration:'none',display:'inline-block'}} >Tentang Kami</a>    
               </div>
             </Menu>
           )

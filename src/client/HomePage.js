@@ -189,13 +189,13 @@ class HomePage extends React.Component {
                 </ol>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_1.png" alt="First slide" />
+                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Background-1.png" alt="First slide" />
                     </div>
                     <div className="carousel-item">
-                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_2.png" alt="Second slide" />
+                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Background-2.png" alt="Second slide" />
                     </div>
                     <div className="carousel-item">
-                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_1.png" alt="Third slide" />
+                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Background-3.png" alt="Third slide" />
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#banner_carousel" role="button" data-slide="prev">
@@ -208,13 +208,12 @@ class HomePage extends React.Component {
             {/* END OF TOP CAROUSEL */}
             <div className='row page-container upper-page-padding-small'>
                 <div className='col-xs-12 ps-0 pe-0'>
-                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Dusun Butuh
-                    On-Site Experience</p>
+                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Dusun Butuh Nepal Van Java</p>
                 </div>
                 <div className='col-xs-12 ps-0 pe-0 mt-3 mtm-5' >
-                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </p>
-                    <div className='mtm-5 mt-5' style={{padding:'0'}}>
-                        <a href="/experiences" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All Experiences</a>
+                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',textAlign:'justify'}}>Butuh adalah sebuah Dusun yang berada di ujung barat Kabupaten Magelang terletak di ketinggian 1.750 mdpl tepatnya di Desa Temanggung Kecamatan Kaliangkrik Kabupaten Magelang Provinsi Jawa Tengah, bisa disebut juga sebuah perkampungan tertinggi di Kabupaten Magelang dengan tata ruang alami atau posisi perumahan yang berjajar rapi menghadap selatan lereng Gunung Sumbing.</p>
+                    <div className='mtm-5 mt-4' style={{padding:'0'}}>
+                        <a href="/experiences" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Semua Wisata</a>
                     </div>
                 </div>
             </div>
@@ -227,14 +226,14 @@ class HomePage extends React.Component {
 
         <div className='row upper-page-padding-small page-container'>
             <div className='col-12 p-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Available Tickets</p>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Tiket Dusun Butuh</p>
                 {/* START OF TOGGLE */}
                 <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
                     <div onClick={()=> this.changeTicketType("tickets")} className={this.state.ticketType === 'tickets' ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"}  style={{borderRadius:'10px 0px 0px 10px',width:'50%'}}>
-                        <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Tickets</p>
+                        <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Tiket</p>
                     </div>
                     <div onClick={()=> this.changeTicketType("packages")} className={this.state.ticketType === 'packages' ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"} style={{borderRadius:'0px 10px 10px 0px',width:'50%'}}>
-                        <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Packages</p>
+                        <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Paket</p>
                     </div>
                 </div>
                 {/* END OF TOGGLE */}
@@ -272,7 +271,7 @@ class HomePage extends React.Component {
             } 
 
             <div className='mtm-5 mt-5' style={{padding:'0'}}>
-                <a href="/tickets" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View All Tickets</a>
+                <a href="/tickets" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Semua Tiket</a>
             </div>
         </div>
 
@@ -282,7 +281,7 @@ class HomePage extends React.Component {
         {/* START OF GALLERIES */}
         <div className='row upper-page-padding page-container'>
             <div className='col-12 p-0'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Galleries</p>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Galeri Foto</p>
             </div>
         </div>
         {/* START OF GALLERY CAROUSEL */}
@@ -291,16 +290,28 @@ class HomePage extends React.Component {
                 <li data-target="#gallery_carousel" data-slide-to={0} className="active" />
                 <li data-target="#gallery_carousel" data-slide-to={1} />
                 <li data-target="#gallery_carousel" data-slide-to={2} />
+                <li data-target="#gallery_carousel" data-slide-to={3} />
+                <li data-target="#gallery_carousel" data-slide-to={4} />
+                <li data-target="#gallery_carousel" data-slide-to={5} />
             </ol>
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_2.png" alt="First slide" />
+                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-1.JPG" alt="First slide" />
                 </div>
                 <div className="carousel-item">
-                <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_1.png" alt="Second slide" />
+                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-2.JPG" alt="Second slide" />
                 </div>
                 <div className="carousel-item">
-                <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Dummy_Image_2.png" alt="Third slide" />
+                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-3.JPG" alt="Third slide" />
+                </div>
+                <div className="carousel-item">
+                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-4.JPG" alt="Third slide" />
+                </div>
+                <div className="carousel-item">
+                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-5.JPG" alt="Third slide" />
+                </div>
+                <div className="carousel-item">
+                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-6.JPG" alt="Third slide" />
                 </div>
             </div>
             <a className="carousel-control-prev" href="#gallery_carousel" role="button" data-slide="prev">
@@ -317,7 +328,7 @@ class HomePage extends React.Component {
         {/* START OF TESTIMONIES */}
         <div className='row upper-page-padding'>
                 <div className='col-12 page-container'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Testimonies</p>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Apa kata mereka?</p>
                 </div>
             <div className='col-12 page-container-left pe-0 mt-4 mtm-5'>
                 <Swiper
@@ -329,50 +340,75 @@ class HomePage extends React.Component {
                     modules={[Pagination]}
                     className="mySwiper"
                 >
+               
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/Dummy_Testimony_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
+                            <img className='img-fluid' src="/assets/images/testimonies/Testimony-1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
-                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Lorem Ipsum is simply dummy text of the printing and typeset industry. Lorem Ipsum has been the industry's standard.”</p>
-                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Fernandha Dzaky Saputra Aziz</p>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Negeri di atas awan. Desa yang unik. Rumah-rumah dibangun memeluk tebing, satu di atas yang lain. Jalan-jalan desa sangat terjal. Ada ojek dari parkiran mobil untuk keliling dusun Butuh sampai ke bawah base camp Gunung Sumbing.”</p>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Brasukra G Sudjana</p>
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/Dummy_Image_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
+                            <img className='img-fluid' src="/assets/images/testimonies/Testimony-5.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
-                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Lorem Ipsum is simply dummy text of the printing and typeset industry. Lorem Ipsum has been the industry's standard.”</p>
-                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Fernandha Dzaky Saputra Aziz</p>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Wow. Pas lihat lokasi ini di postingan orang” kagum asli. Dan gak nyangka ternyata punya teman daerah sini, daannn rumahnya yng jadi spot foto itu. Asli. Butuh, kaliangkrik. Kalau pakai google maps ambil jalur paling kiri atau lurus aja terus dari pasar kaliangkrik.
+                            <br></br> 
+                            <br></br> 
+                            Jalannya bagus, aspal sampai atas, parkir mobil ada dan nyaman. Untuk lokasi penginapan diatas kurang tahu. Masjidnya bagus banget dan megah. Ini salah satu tempat untuk kalian yang ingin merefresh otak dan bersantai. 
+                            <br></br> 
+                            <br></br> 
+                            Kalian bisa jalan” menelusuri kampung ini. Penduduknya ruuuaaaamah banget. Sering ditawarin mampir sekedar minum teh. Debest untuk desa ini. Dan alhamdulillah pas kesana pemandangannyaaaaa. Bagus banget parah”</p>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Rizal zm</p>
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/Dummy_Testimony_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
+                            <img className='img-fluid' src="/assets/images/testimonies/Testimony-2.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
-                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Lorem Ipsum is simply dummy text of the printing and typeset industry. Lorem Ipsum has been the industry's standard.”</p>
-                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Fernandha Dzaky Saputra Aziz</p>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Fix tempatnya wonderfull view banget 😅 iseng2 kesini dari semarang ke dusun butuh perjalanan lumayan 2jam 30menitan , tiket masuk 2 orang 1 motor 10k. Banyak spot buat foto sih disini cuman jalanannya naik2 ke puncak gunung banget bun 😂. Dan sekedar info aja nih gaes tgl 19 Oktober Nepal Van Java tutup sementara sampai batas waktu yg belum ditentukan 😔”</p>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Hernita Dwi Nugraheni</p>
                         </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/Dummy_Testimony_1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}}  alt="Testimony"/>
+                            <img className='img-fluid' src="/assets/images/testimonies/Testimony-3.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
-                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Lorem Ipsum is simply dummy text of the printing and typeset industry. Lorem Ipsum has been the industry's standard.”</p>
-                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Fernandha Dzaky Saputra Aziz</p>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Kalau ga salah sih untuk sampai kemarin (30 Oktober 2020) Lokasi masih di tutup, tidak tau alasan pastinya, kalau dengar-dengar untuk waktu bersih-bersih. Untuk pemandangannya sendiri memang indah seperti di negara nepal hanya saja yang ini versi di Indonesia tepatnya Dusun butuh, Kabupaten Magelang.
+                            <br></br> 
+                            <br></br> 
+                            Disarankan untuk menuju lokasi pagi hari, melihat info cuaca, dan pastinya pastikan kondisi kendaraan baik/fit terutama cek kampas rem karena untuk perjalanan pulang harus extra hati-hati di khususkan para pengguna motor matic. Karena rawan rem blong. Terimakasih.”</p>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Cendikiawan Aditama</p>
                         </div>
                     </div>
                 </SwiperSlide>
+                <SwiperSlide>
+                    <div>
+                        <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
+                            <img className='img-fluid' src="/assets/images/testimonies/Testimony-4.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
+                        </div>
+                        <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Ini nepal van java yang bener” lagi viral dusun butuh desa tertinggi paling mentok dengan gunung sumbing. Dan disini adalah wisata dengan pemandangan bagus yang juga super murah karna cuma bayar parkir 3k dan stiker desa 5k sangat” murah dan udha bisa bikin pikiran fresh.
+                            <br></br> 
+                            <br></br> 
+                            Jalan kesini juga udah halus mobil juga bisa sampe lokasi cuma emg agak jauh. Jajanan disini juga murah” kemaren beli nasgos sama soto udah minum jan kletikan juga cuma 25rb. Sangat cocok buat wisata di tanggal tua yang belom kesini buruan kesini ya.. Jalan pemandangan kesini juga sangat bagus”</p>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Septi Nila</p>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                
                 <SwiperSlide>
                     <div>
                     </div>
@@ -387,9 +423,9 @@ class HomePage extends React.Component {
         {/* START OF ABOUT US */}
         <div  className='row upper-page-padding page-container' >
             <div className='col-12 ps-0 prm-0'  >
-                <p className={isMobile ? 'px-36' : 'px-36 mb-4'} style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>About Us</p>
+                <p className={isMobile ? 'px-36' : 'px-36 mb-4'} style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Tentang Kami</p>
                 <ClampLines
-                    text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text of something Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text of something "
+                    text="Kenapa dinamakan Butuh?, sejarah singkat asal muasal Dusun Butuh adalah pada masa penjajahan Belanda waktu itu moyang atau leluhur yang berasal dari wilayah Yogyakarta karena dikejar penjajah terus melarikan diri dan menetap disebuah wilayah hutan waktu itu (Brajan)"
                     id="paragraph-about-us-text"
                     lines={4}
                     ellipsis="..."
@@ -399,26 +435,26 @@ class HomePage extends React.Component {
                     className="px-18 mtm-5"
                 />
                 <div className='mtm-5 mt-5' style={{padding:'0'}}>
-                    <a href="/about" className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View More</a>
+                    <a href="/about" className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Lebih Lanjut</a>
                 </div>
             </div>
             {/* START OF CONTACT US */}
             <div className='col-12 pe-0 plm-0 upper-page-padding-small mt-4'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Contact Us</p>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Hubungi Kami</p>
                 <div className='contact-us-wrapper mtm-5' style={{padding:'5vw',boxShadow: '1px 1px 4px rgba(0, 0, 0, 0.25)',borderRadius:'4vw'}}>
                     <div style={{display:'flex',alignItems:'flex-start'}}>
                         <FontAwesomeIcon icon="envelope" className='px-24' style={{color:'#9FADBB'}} />
-                        <p className='px-18 ms-3' style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>nepalvanjava@gmail.com</p>
+                        <p className='px-18 ms-3' style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>pesonadusunbutuh@gmail.com</p>
                     </div>
                     <div id="contact-us-item-wrapper" style={{display:'flex',alignItems:'flex-start',marginTop:'8vw'}}>
                         <FontAwesomeIcon icon="phone" className='px-24' style={{color:'#9FADBB'}} />
-                        <p className='px-18 ms-3' style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>+628111377893</p>
+                        <p className='px-18 ms-3' style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>(Pak Lilik) +62 823-2356-7878</p>
                     </div>
                     <div id="contact-us-item-wrapper" style={{display:'flex',alignItems:'flex-start',marginTop:'8vw'}}>
                         <FontAwesomeIcon icon="search-location" className='px-24' style={{color:'#9FADBB'}} />
                         <div className='ms-3'>
                             <p className={isMobile ?'px-18':'px-18 mb-3'} style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>Dusun, Butuh, Temanggung, Kec. Kaliangkrik, Kabupaten Magelang, Jawa Tengah 56153</p>
-                            <a className='px-18 pt-3' target="_blank" rel="noreferrer" href="https://goo.gl/maps/NS7WP7hdqjAH1cNdA" style={{fontFamily:'Roboto Regular',marginBottom:'0px',textDecoration:'none',color:'#0D51D6',display:'inline-block'}}>View in Google Map</a>
+                            <a className='px-18 pt-3' target="_blank" rel="noreferrer" href="https://goo.gl/maps/NS7WP7hdqjAH1cNdA" style={{fontFamily:'Roboto Regular',marginBottom:'0px',textDecoration:'none',color:'#0D51D6',display:'inline-block'}}>Lihat di Google Map</a>
 
                         </div>
                     </div>

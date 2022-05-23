@@ -149,7 +149,7 @@ class Experiences extends React.Component {
         {/* START OF TOP SECTION*/}
         <div className='row page-container'>
             <div className='col-12 ps-0 pe-0 mtm-5'>
-                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold'}}>On-Site <br></br> Experience List </p>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold'}}>Daftar Wisata di <br></br>Dusun Butuh </p>
             </div>
         </div>
         {/* END OF TOP SECTION */}
@@ -271,7 +271,7 @@ class Experiences extends React.Component {
                     className="px-18"
                 />
             </div>
-            <a href="/experience/1" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>View More</a>
+            <a href="/experience/1" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Lebih Lanjut</a>
 
         </div>
         {/*  END OF EXPERIENCE DETAIL SECTION*/}
