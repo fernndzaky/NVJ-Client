@@ -238,7 +238,7 @@ class HomePage extends React.Component {
                 </div>
                 {/* END OF TOGGLE */}
             </div>
-            <div className='mt-5 mtm-5'>
+            <div className='mt-5'>
 
             </div>
 
