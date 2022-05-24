@@ -138,7 +138,7 @@ class Experiences extends React.Component {
       <div className="">
         <Helmet>
             <title>
-            Experiences - Dusun Butuh Nepal Van Java
+            Daftar Wisata - Dusun Butuh Nepal Van Java
             </title>
             <meta
                 name="description"

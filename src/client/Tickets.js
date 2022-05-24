@@ -173,7 +173,7 @@ class Tickets extends React.Component {
       <div className="">
         <Helmet>
             <title>
-            Ticket List - Dusun Butuh Nepal Van Java
+            Daftar Tiket - Dusun Butuh Nepal Van Java
             </title>
             <meta
                 name="description"
