@@ -190,22 +190,22 @@ body{
 
 .ticket-blue-btn{
     background-color: #ffffff;
-    border: 1px solid #1BC47D;
+    border: 1px solid #1D8ECE;
     padding:10px 1vw;
     width: 18vw;
     transition: 0.3s ease-in-out;
-    color: #1BC47D !important;
+    color: #1D8ECE !important;
     cursor: pointer;
     text-align: center;
 }
 
 .ticket-blue-btn:hover{
-    background-color: #1BC47D !important;
+    background-color: #1D8ECE !important;
     color: #FFFFFF !important;
 }
 .ticket-blue-btn-active {
     color: #FFFFFF !important;
-    background-color: #1BC47D !important;
+    background-color: #1D8ECE !important;
 
 }
 

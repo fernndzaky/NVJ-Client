@@ -83,7 +83,7 @@ class TicketDetail extends React.Component {
         {/* START OF TOP SECTION*/}
         <div className='row page-container' style={{marginTop:'4vw'}}>
             <div className='col-12 ps-0 pe-0'>
-              <a href="javascript:history.back()" className='px-18 btn-outline-grey mb-2 mt-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block'}}>
+              <a href="javascript:history.back()" className='px-18 btn-outline-grey mb-2 mt-5 mb-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block'}}>
                     <FontAwesomeIcon icon="chevron-left" className='px-18 me-2' />
 
                     Kembali</a>
@@ -151,6 +151,7 @@ class TicketDetail extends React.Component {
 
 
         {/* START OF PERSONAL INFORMATION SECTION*/}
+        {/* 
         <div className='page-container upper-page-padding-small'>  
   
           <div className='cart-wrapper' style={{padding:'5vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw'}}>
@@ -176,10 +177,39 @@ class TicketDetail extends React.Component {
 
           </div>  
         </div>
+      */}
+      <div className='page-container upper-page-padding-small'>  
+        <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Informasi Pengunjung</p>
+        {/*START OF ONE INPUT */}
+        <div className='mt-4'>
+          <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Tanggal Kunjungan</p>
+          <input  name="visit_date" type="date" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukan tanggal kunjungan" />
+        </div>  
+        {/*END OF ONE INPUT */}
+        {/*START OF ONE INPUT */}
+        <div className='mt-4'>
+          <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nama Pengunjung</p>
+          <input  name="full_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukkan nama lengkap" />
+        </div>  
+        {/*END OF ONE INPUT */}
+        {/*START OF ONE INPUT */}
+        <div className='mt-4'>
+          <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nomor Kontak</p>
+          <input  name="phone_number" type="number" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukkan nomor telepon" />
+        </div>  
+        {/*END OF ONE INPUT */}
+        {/*START OF ONE INPUT */}
+        <div className='mt-4'>
+          <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Email</p>
+          <input  name="email" type="email" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukkan email pengunjung" />
+        </div>  
+        {/*END OF ONE INPUT */}
+
+      </div>
         {/* END OF PERSONAL INFORMATION SECTION*/}
 
         <div className='row page-container mtm-5 mt-5 pb-5'>
-          <button  className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Konfirmasi Pemesanan</button>
+          <button  className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Pilih Metode Pembayaran</button>
           <button id="pay-button">Pay!</button>
         </div>
 

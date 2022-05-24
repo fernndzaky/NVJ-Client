@@ -36,7 +36,7 @@ export default class TicketCard extends Component {
             }          
         }
         localStorage.setItem("cart", JSON.stringify(current_cart));
-      }
+    }
 
 
 
@@ -129,7 +129,7 @@ export default class TicketCard extends Component {
                     <ClampLines
                         text={this.props.title}
                         id="cart-title-text"
-                        lines={1}
+                        lines={2}
                         ellipsis="..."
                         moreText="Expand"
                         lessText="Collapse"

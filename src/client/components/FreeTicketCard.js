@@ -21,7 +21,7 @@ export default class FreeTicketCard extends Component {
                     <ClampLines
                         text={this.props.title}
                         id="cart-title-text"
-                        lines={1}
+                        lines={2}
                         ellipsis="..."
                         moreText="Expand"
                         lessText="Collapse"
@@ -35,7 +35,7 @@ export default class FreeTicketCard extends Component {
 
                 </div>
                 <button  onClick={()=> window.open("/ticket/"+this.props.ticket_id, "_self")} className='btn-green-to-white' style={{width:'100%'}}>
-                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Lihat Lebih Lanjut</p>
+                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Pesan Paket</p>
                 </button>
             </div>
           </div>

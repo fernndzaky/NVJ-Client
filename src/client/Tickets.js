@@ -140,7 +140,7 @@ class Tickets extends React.Component {
             tickets : [
                 {
                     ticket_id    : 4,
-                    title        : 'Home Stay at Dusun Butuh',
+                    title        : 'Paket Wisata Agrikultur (5 Hari 4 Malam)',
                     price        : 10000,
                     qty          : 0,
                     purchaseAble : false
@@ -185,6 +185,8 @@ class Tickets extends React.Component {
         {/* START OF TOP CONTENT */}
         <div >
              {/* START OF TOP CAROUSEL */}
+
+             {/* 
              <div id="banner_carousel" className="carousel slide" data-ride="carousel">
                 <ol className="carousel-indicators">
                     <li data-target="#banner_carousel" data-slide-to={0} className="active" />
@@ -221,17 +223,13 @@ class Tickets extends React.Component {
                     <span className="carousel-control-next-icon" aria-hidden="true" />
                 </a>
             </div>
+            */}
             {/* END OF TOP CAROUSEL */}
 
             <div className='row page-container mt-5 mtm-5'>
                 <div className='col-12 ps-0 pe-0'>
-                {this.state.ticketType === 'tickets' ?
-                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Tiket Dusun Butuh</p>
-                    :
-                    <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Paket Wisata</p>
-                }
                     {/* START OF TOGGLE */}
-                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                    <div className='mb-5' style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
                         <div onClick={()=> this.changeTicketType("tickets")} className={this.state.ticketType === 'tickets' ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"}  style={{borderRadius:'10px 0px 0px 10px',width:'50%'}}>
                             <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Tiket</p>
                         </div>
@@ -240,6 +238,11 @@ class Tickets extends React.Component {
                         </div>
                     </div>
                     {/* END OF TOGGLE */}
+                    {this.state.ticketType === 'tickets' ?
+                        <p className='px-36 mt-4' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Daftar Tiket <br></br> Dusun Butuh</p>
+                        :
+                        <p className='px-36 mt-4' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Daftar Paket Wisata</p>
+                    }
                 </div>
                 <div className='col-12 ps-0 pe-0 mt-4 mtm-5' >
                     <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',textAlign:'justify'}}>Ingin memesan tiket untuk wisata-wisata di Dusun Butuh? Silahkan jelajhi halamann ini untuk melihat semua tiket dan juga paket wisata yang ditawarkan oleh Dusun Butuh Nepal Van Java</p>
