@@ -11,7 +11,12 @@ export default class ExperienceCard extends Component {
         return(
           <div style={{padding:'0px'}} className="mtm-5 mt-4">
             <div className='experience-card-wrapper' style={{padding:'0px',cursor:'pointer'}} onClick={()=> window.open("/experience/"+this.props.experience_id, "_self")}>
-                <img className="d-block w-100" style={{objectFit:'cover',borderRadius:'3vw 3vw 0vw 0vw',height:'50vw'}} src={this.props.image} alt="Experience" />
+                <img 
+                onError={({ currentTarget }) => {
+                    currentTarget.onerror = null; // prevents looping
+                    currentTarget.src='/assets/images/Background-1.png';
+                }} 
+                className="d-block w-100" style={{objectFit:'cover',borderRadius:'3vw 3vw 0vw 0vw',height:'50vw'}} src={this.props.image} alt="Experience" />
                 <div className='experience-card-bottom-section' style={{backgroundColor:'#E8F9F2',padding:'4vw',borderRadius:'0vw 0vw 3vw 3vw'}}>
                     <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
                         <div style={{width:'75%'}}>

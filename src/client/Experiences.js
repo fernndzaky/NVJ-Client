@@ -111,7 +111,7 @@ class Experiences extends React.Component {
       .catch((error) => {
           console.log(error)
       })
-      if(this.state.experiences.length != 0)
+      if(this.state.experiences.length !== 0)
         await this.changeExperience(this.state.experiences[0].id,this.state.experiences[0].title,this.state.experiences[0].thumbnail,this.state.experiences[0].images,this.state.experiences[0].description)
 
   }
@@ -174,7 +174,12 @@ class Experiences extends React.Component {
                                     <div  onClick={()=> this.changeExperience(e.id, e.title, e.thumbnail, e.images, e.description)}
                                      className={e.id === this.state.active_experience_id ? 'experience_detail_container experience_detail_container_active' : 'experience_detail_container' } >
                                         <div className={e.id === this.state.active_experience_id ? 'experience_detail experience_detail_active': 'experience_detail'} style={{width:'100%',height:'22vw'}}>
-                                            <img src={e.thumbnail} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
+                                            <img 
+                                            onError={({ currentTarget }) => {
+                                                currentTarget.onerror = null; // prevents looping
+                                                currentTarget.src='/assets/images/Background-1.png';
+                                            }} 
+                                            src={e.thumbnail} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
                                         </div> 
                                         <div className='mt-2' style={{textAlign:'center'}}>
                                             <ClampLines
@@ -236,10 +241,18 @@ class Experiences extends React.Component {
                 this.state.active_experience_images &&
                     this.state.active_experience_images.map( (e , index) => {
                     return(
+
+                    
                         <React.Fragment>
                             {
                                 <div className={index === 0 ? "carousel-item active" : "carousel-item"}>
-                                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src={e.image_carousel} alt="Carousel Image" />
+                                    
+                                    <img 
+                                    onError={({ currentTarget }) => {
+                                        currentTarget.onerror = null; // prevents looping
+                                        currentTarget.src='/assets/images/Background-1.png';
+                                    }} 
+                                    className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src={e} alt='Carousel Image' />
                                 </div>
                             }
                             </React.Fragment>
