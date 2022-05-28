@@ -22,6 +22,7 @@
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-html-parser": "^2.0.2",
+    "react-loading-ui": "^1.2.3",
     "react-modal": "^3.14.3",
     "react-moment": "^1.1.1",
     "react-number-format": "^4.7.3",

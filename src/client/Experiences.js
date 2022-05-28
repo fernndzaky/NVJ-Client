@@ -1,9 +1,12 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
 import ClampLines from 'react-clamp-lines';
+import {Loading} from 'react-loading-ui';
 
 import '../css/index.css';
 import '../css/Experiences.css';
+import api from "../helpers/api";
+
 
 // import Swiper core and required modules
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -65,56 +68,34 @@ class Experiences extends React.Component {
   }
   
   getAllExperiences = async() =>{
-    await this.setState({
-        experiences : [
-            {
-                experience_id   : 1,
-                thumbnail       : '/assets/images/Dummy_Image_2.png',
-                images          : [
-                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
-                                    {image_carousel :  '/assets/images/Dummy_Image_1.png'},
-                                    {image_carousel :  '/assets/images/Navbar.png'},
-                                  ],
-                title           : 'Entrance Gate',
-                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-            },
-            {
-                experience_id   : 2,
-                thumbnail       : '/assets/images/Dummy_Image_1.png',
-                images          : [
-                                    {image_carousel :  '/assets/images/Dummy_Image_1.png'},
-                                    {image_carousel :  '/assets/images/Navbar.png'},
-                                  ],             
-                title           : 'Saung Jawa',
-                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-            },
-            {
-                experience_id   : 3,
-                thumbnail       : '/assets/images/Navbar.png',
-                images          : [
-                                    {image_carousel :  '/assets/images/Navbar.png'},
-                                    {image_carousel :  '/assets/images/Dummy_Image_1.png'},
-                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
-                                  ],                    
-                title           : 'Jembatan Kaca',
-                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-            },
-            {
-                experience_id   : 4,
-                thumbnail       : '/assets/images/Dummy_Image_2.png',
-                images          : [
-                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
-                                    {image_carousel :  '/assets/images/Navbar.png'},
-                                  ],                 
-                title           : 'Masjid Umum',
-                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-            },
-        ]
-    })
 
-    if(this.state.experiences)
-        await this.changeExperience(this.state.experiences[0].experience_id,this.state.experiences[0].title,this.state.experiences[0].thumbnail,this.state.experiences[0].images,this.state.experiences[0].description)
+      /* Show loading-ui */
+      Loading({title:'Memuat Halaman', text:'Memuat konten, harap menunggu..',theme:'dark'});
+      
+      const headers = {
+          'accept': '*/*',
+      }
 
+      
+      await api.post('/client/experiences/findAll', {
+          headers: headers
+      })
+      
+      .then((response) => {
+          if(response.data.success){
+            this.setState({
+                experiences : response.data.content
+            })
+            /* Hide loading-ui */
+            Loading();
+          }
+
+      })
+      .catch((error) => {
+          console.log(error)
+      })
+      if(this.state.experiences.length != 0)
+        await this.changeExperience(this.state.experiences[0].id,this.state.experiences[0].title,this.state.experiences[0].thumbnail,this.state.experiences[0].images,this.state.experiences[0].description)
 
   }
 
@@ -173,9 +154,9 @@ class Experiences extends React.Component {
                         <React.Fragment>
                             {
                                 <SwiperSlide>
-                                    <div  onClick={()=> this.changeExperience(e.experience_id, e.title, e.thumbnail, e.images, e.description)}
-                                     className={e.experience_id === this.state.active_experience_id ? 'experience_detail_container experience_detail_container_active' : 'experience_detail_container' } >
-                                        <div className={e.experience_id === this.state.active_experience_id ? 'experience_detail experience_detail_active': 'experience_detail'} style={{width:'100%',height:'22vw'}}>
+                                    <div  onClick={()=> this.changeExperience(e.id, e.title, e.thumbnail, e.images, e.description)}
+                                     className={e.id === this.state.active_experience_id ? 'experience_detail_container experience_detail_container_active' : 'experience_detail_container' } >
+                                        <div className={e.id === this.state.active_experience_id ? 'experience_detail experience_detail_active': 'experience_detail'} style={{width:'100%',height:'22vw'}}>
                                             <img src={e.thumbnail} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
                                         </div> 
                                         <div className='mt-2' style={{textAlign:'center'}}>
@@ -241,7 +222,7 @@ class Experiences extends React.Component {
                         <React.Fragment>
                             {
                                 <div className={index === 0 ? "carousel-item active" : "carousel-item"}>
-                                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src={e.image_carousel} alt="First slide" />
+                                    <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src={e.image_carousel} alt="Carousel Image" />
                                 </div>
                             }
                             </React.Fragment>
@@ -271,7 +252,7 @@ class Experiences extends React.Component {
                     className="px-18"
                 />
             </div>
-            <a href="/experience/1" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Lebih Lanjut</a>
+            <a href={'/experience/'+this.state.active_experience_id} className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Lebih Lanjut</a>
 
         </div>
         {/*  END OF EXPERIENCE DETAIL SECTION*/}

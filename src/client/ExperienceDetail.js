@@ -1,8 +1,11 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
+import {Loading} from 'react-loading-ui';
 
 import '../css/index.css';
 import '../css/ExperienceDetail.css';
+import api from "../helpers/api"
+
 
 // Components Import
 import Navbar from './components/Navbar';
@@ -60,47 +63,65 @@ class ExperienceDetail extends React.Component {
 
 
   getExperienceDetail = async() =>{
-    await this.setState({
-        experience_id           : 1,
-        experience_title        : 'Teras Nepal',
-        experience_thumbnail    : '/assets/images/Dummy_Image_1.png',
-        experience_images       : [
-                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
-                                    {image_carousel :  '/assets/images/Dummy_Image_1.png'},
-                                    {image_carousel :  '/assets/images/Navbar.png'},
-                                  ],
-        experience_description  : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-        
+
+    /* Show loading-ui */
+    Loading({title:'Memuat Halaman', text:'Memuat konten, harap menunggu..',theme:'dark'});
+
+    const headers = {
+        'accept': '*/*',
+    }
+
+    
+    await api.post('/client/experiences/findById?id='+this.props.match.params.id, {
+        headers: headers
     })
+    
+    .then((response) => {
+        if(response.data.success){
+          this.setState({
+            experience_id           : response.data.content.id,
+            experience_title        : response.data.content.title,
+            experience_thumbnail    : response.data.content.thumbnail,
+            experience_images       : response.data.content.images,
+            experience_description  : response.data.content.description,
+          })
+          /* Hide loading-ui */
+          Loading();
+          
+        }
+
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
   }
 
+
   getOtherExperiences = async() =>{
-    await this.setState({
-        other_experiences : [
-            {
-                experience_id   : 1,
-                thumbnail       : '/assets/images/Dummy_Image_2.png',
-                images          : [
-                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
-                                    {image_carousel :  '/assets/images/Dummy_Image_1.png'},
-                                    {image_carousel :  '/assets/images/Navbar.png'},
-                                  ],
-                title           : 'Entrance Gate',
-                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-            },
-            {
-                experience_id   : 2,
-                thumbnail       : '/assets/images/Navbar.png',
-                images          : [
-                                    {image_carousel :  '/assets/images/Navbar.png'},
-                                    {image_carousel :  '/assets/images/Dummy_Image_2.png'},
-                                  ],             
-                title           : 'Saung Jawa',
-                description     : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,  when an unknown printer took a galley of type and scrambled it to make a type specimen book',
-            },
-        ]
+
+
+    const headers = {
+        'accept': '*/*',
+    }
+
+    
+    await api.post('/client/experiences/findAll', {
+        headers: headers
     })
-  }
+    
+    .then((response) => {
+        if(response.data.success){
+          this.setState({
+            other_experiences : response.data.content
+          })
+        }
+
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}
 
   updateTicketStateQty = async(ticket_id,new_qty) =>{  
     // 1. Make a shallow copy of the items
@@ -211,7 +232,7 @@ class ExperienceDetail extends React.Component {
         </div>
         <div className='row page-container mtm-5 mt-5'>
             <div className='col-12 ps-0 pe-0'>
-                <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',whiteSpace:'pre-wrap',textAlign:'justify'}}>Lorem Ipsum is simply dummy text of 
+                <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',whiteSpace:'pre-wrap',textAlign:'justify'}}>
                     {this.state.experience_description}
                 </p>
 
@@ -272,9 +293,10 @@ class ExperienceDetail extends React.Component {
                 this.state.other_experiences &&
                     this.state.other_experiences.map( (e , index) => {
                     return(
+                        index < 2 &&
                         <React.Fragment>
                             {
-                                <ExperienceCard experience_id={e.experience_id} title={e.title} image={e.thumbnail} ></ExperienceCard>
+                                <ExperienceCard experience_id={e.id} title={e.title} image={e.thumbnail} ></ExperienceCard>
                             }
                             </React.Fragment>
 
