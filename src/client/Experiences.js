@@ -1,7 +1,7 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
 import ClampLines from 'react-clamp-lines';
-import {Loading} from 'react-loading-ui';
+import { Loading, Progress } from "react-loading-ui";
 
 import '../css/index.css';
 import '../css/Experiences.css';
@@ -33,6 +33,7 @@ class Experiences extends React.Component {
         active_experience_thumbnail : null,
         active_experience_images : null,
         active_experience_description : null,
+        progress : 1,
     }
   }
 
@@ -66,12 +67,30 @@ class Experiences extends React.Component {
 
   componentDidUpdate(){
   }
+
+  showLoading(){
+      /* Show loading-ui */
+      Loading({title:'Loading', text:'Memuat konten, harap menunggu..',theme:'dark',progress:true,progressedClose :true});
+      let interval = null;
+
+      interval = setInterval(() => {
+        this.setState({ progress: this.state.progress + 4 }, () => {
+          // Set Progress Value
+          Progress(this.state.progress);
+  
+          if (this.state.progress >= 100) {
+            this.setState({ progress: 0 });
+            clearInterval(interval);
+          }
+        });
+      }, 100);
+  }
   
   getAllExperiences = async() =>{
 
-      /* Show loading-ui */
-      Loading({title:'Memuat Halaman', text:'Memuat konten, harap menunggu..',theme:'dark'});
-      
+      this.showLoading()
+
+
       const headers = {
           'accept': '*/*',
       }
@@ -86,8 +105,6 @@ class Experiences extends React.Component {
             this.setState({
                 experiences : response.data.content
             })
-            /* Hide loading-ui */
-            Loading();
           }
 
       })
