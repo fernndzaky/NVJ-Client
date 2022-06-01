@@ -86,20 +86,6 @@ class Tickets extends React.Component {
     }, 100);
   }
 
-  addQtyToTickets = async() =>{  
-    // 1. Make a shallow copy of the items
-    let tickets = [...this.state.tickets];
-    // 3. Make a shallow copy of the item you want to mutate
-    for (let i = 0; i < tickets.length; i++) {
-        tickets[i].qty = 0
-      }
-    // 4. Replace the property you're intested in
-    //ticket.qty = 0
-    // 6. Set the state to our new copy
-    await this.setState({tickets});
-
-  }
-  
   updateTicketStateQty = async(ticket_id,new_qty) =>{  
     // 1. Make a shallow copy of the items
     let tickets = [...this.state.tickets]
@@ -153,8 +139,6 @@ class Tickets extends React.Component {
         console.log(error.response.data.errorMessage)
     })
 
-    await this.addQtyToTickets()
-
     //update the qty based on local storage
     let current_cart = JSON.parse(localStorage.getItem('cart')) || [];
     for(var x in current_cart){
@@ -162,23 +146,14 @@ class Tickets extends React.Component {
     }
   }
 
+  
   changeTicketType = async(purchaseAble) =>{
-    if(purchaseAble){
-        await this.setState({            
-            ticketPurchasable : true,
-            ticket_name : null
-        })
-        this.getAllTickets(this.state.ticketPurchasable,this.state.ticket_name)
-    }
-    else if(!purchaseAble){
-        await this.setState({
-            ticketPurchasable : false,
-            ticket_name : null
-
-        })
-        this.getAllTickets(this.state.ticketPurchasable,this.state.ticket_name)
-    }  
-  }
+    await this.setState({            
+        ticketPurchasable : purchaseAble,
+        ticket_name : null
+    })
+    this.getAllTickets(this.state.ticketPurchasable)
+}
 
 
   render(){

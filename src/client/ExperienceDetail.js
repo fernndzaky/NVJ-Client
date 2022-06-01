@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 import BottomNavbar from './components/BottomNavbar';
 import ExperienceCard from './components/ExperienceCard';
 import TicketCard from './components/TicketCard';
+import FreeTicketCard from './components/FreeTicketCard';
 
 
 class ExperienceDetail extends React.Component {
@@ -19,13 +20,14 @@ class ExperienceDetail extends React.Component {
     super()
     this.state = {
         tickets : [],
-        other_experiences : [],
-        experience_id : null,
-        experience_title : null,
-        experience_thumbnail : null,
-        experience_images : null,
-        experience_description : null,
-        progress : 1,
+        other_experiences       : [],
+        experience_id           : null,
+       experience_title        : null,
+        experience_thumbnail    : null,
+        experience_images       : null,
+        experience_description  : null,
+        ticketPurchasable       : true,
+        progress                : 1 
     }
   }
 
@@ -54,7 +56,7 @@ class ExperienceDetail extends React.Component {
 
   componentDidMount(){
     this.addNavbarBorder()
-    this.getAllTickets()
+    this.getAllTickets(this.state.ticketPurchasable)
     this.getExperienceDetail()
     this.getOtherExperiences()
   }
@@ -62,23 +64,6 @@ class ExperienceDetail extends React.Component {
   componentDidUpdate(){
   }
 
-  showLoading(){
-    /* Show loading-ui */
-    Loading({title:'Loading', text:'Memuat konten, harap menunggu..',theme:'dark',progress:true,progressedClose :true});
-    let interval = null;
-
-    interval = setInterval(() => {
-      this.setState({ progress: this.state.progress + 4 }, () => {
-        // Set Progress Value
-        Progress(this.state.progress);
-
-        if (this.state.progress >= 100) {
-          this.setState({ progress: 0 });
-          clearInterval(interval);
-        }
-      });
-    }, 100);
-}
   getExperienceDetail = async() =>{
 
     this.showLoading()
@@ -133,40 +118,72 @@ class ExperienceDetail extends React.Component {
     .catch((error) => {
         console.log(error)
     })
-}
+  }
+
+  showLoading(){
+    /* Show loading-ui */
+    Loading({title:'Loading', text:'Memuat konten, harap menunggu..',theme:'dark',progress:true,progressedClose :true});
+    let interval = null;
+
+    interval = setInterval(() => {
+      this.setState({ progress: this.state.progress + 4 }, () => {
+        // Set Progress Value
+        Progress(this.state.progress);
+
+        if (this.state.progress >= 100) {
+          this.setState({ progress: 0 });
+          clearInterval(interval);
+        }
+      });
+    }, 100);
+  }
+  
 
   updateTicketStateQty = async(ticket_id,new_qty) =>{  
     // 1. Make a shallow copy of the items
-    let tickets = [...this.state.tickets];
+    let tickets = [...this.state.tickets]
     // 2. find the index from the state tickets
-    var index = tickets.findIndex(p => p.ticket_id === ticket_id);
+    var index = tickets.findIndex(p => p.id === ticket_id)
     // 3. Make a shallow copy of the item you want to mutate
     let ticket = {...tickets[index]}
     // 4. Replace the property you're intested in
     ticket.qty = new_qty
     // 5. Put it back into our array
-    tickets[index] = ticket;
+    tickets[index] = ticket
     // 6. Set the state to our new copy
-    await this.setState({tickets});
+    await this.setState({tickets})
 
   }
 
-  getAllTickets = async() =>{
-    await this.setState({
-        tickets : [
-            {
-                ticket_id   : 1,
-                title       : 'Entrance Ticket to Dusun Butuh',
-                price       : 10000,
-                qty         : 0
-            },
-            {
-                ticket_id   : 2,
-                title       : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
-                price       : 15000,
-                qty         : 0
-            }
-        ]
+  getAllTickets = async(purchasable) =>{
+    
+
+    const headers = {
+        'accept': '*/*',
+    }
+
+    const data = {
+        "purchasable": purchasable,
+    }
+
+
+    
+    let api_url = '/client/tickets/findByFilter'
+
+    await api.post(api_url, data, {
+        headers: headers
+    })
+    
+    .then((response) => {
+        if(response.data.success){
+          this.setState({
+              tickets : response.data.content
+          })
+        }
+
+    })
+    .catch((error) => {
+        console.log(error.response.data.errorMessage)
     })
 
     //update the qty based on local storage
@@ -174,7 +191,21 @@ class ExperienceDetail extends React.Component {
     for(var x in current_cart){
         this.updateTicketStateQty(current_cart[x]['ticket_id'], current_cart[x]['qty'] )
     }
+
   }
+
+
+  
+  changeTicketType = async(purchaseAble) =>{
+    this.showLoading()
+
+    await this.setState({            
+        ticketPurchasable : purchaseAble,
+        ticket_name : null
+    })
+    this.getAllTickets(this.state.ticketPurchasable)
+}
+
 
   render(){
     return(
@@ -258,32 +289,36 @@ class ExperienceDetail extends React.Component {
         {/* END OF TOP SECTION */}
 
         {/* START OF AVAILABLE TICKETS */}
+
         <div className='row upper-page-padding-small page-container'>
             <div className='col-12 p-0'>
-                <p className='px-36 ' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Tiket Dusun Butuh</p>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Tiket Dusun Butuh</p>
+                {/* START OF TOGGLE */}
+                <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                    <div onClick={()=> this.changeTicketType(true)} className={this.state.ticketPurchasable ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"}  style={{borderRadius:'10px 0px 0px 10px',width:'50%'}}>
+                        <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Tiket</p>
+                    </div>
+                    <div onClick={()=> this.changeTicketType(false)} className={!this.state.ticketPurchasable ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"} style={{borderRadius:'0px 10px 10px 0px',width:'50%'}}>
+                        <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Paket Wisata</p>
+                    </div>
+                </div>
+                {/* END OF TOGGLE */}
             </div>
-            <div className='mt-3 mtm-5'>
+            <div className='mt-5'>
 
             </div>
+
             {
                 this.state.tickets.map( (e , index) => {
                 return(
                     <React.Fragment>
                         {
-                        index === 0 ?
-                        <div  className='p-0'>
-                            {e.qty === 0 ?
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty} ></TicketCard>
-                            :
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
-                            }
-                        </div>
-                        :
-                        <div  className='p-0 mtm-5 mt-4'>
-                            {e.qty === 0 ?
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty} ></TicketCard>
-                            :
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
+                        index < 2 &&
+                        <div  className={index === 0 ? 'p-0' : 'p-0 mtm-5 mt-4'}>
+                            {!e.purchasable ?
+                            <FreeTicketCard ticket_id={e.id} title={e.title} ></FreeTicketCard>
+                                :
+                            <TicketCard ticket_id={e.id} title={e.title} price={e.price} qty={e.qty} ></TicketCard>
                             }
                         </div>
                         }
@@ -292,11 +327,19 @@ class ExperienceDetail extends React.Component {
                     )
                 })              
             } 
+
             <div className='mtm-5 mt-5' style={{padding:'0'}}>
-                <a href="/" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Semua Tiket</a>
+                {this.state.ticketPurchasable ?
+                <a href="/tickets" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Semua Tiket</a>
+                :
+                <a href="/tickets" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Semua Paket</a>
+                }
             </div>
         </div>
+
+
         {/* END OF AVAILABLE TICKETS */}
+
 
         {/* START OF OTHER EXPERIENCES */}
         <div className='row upper-page-padding-small page-container'>
