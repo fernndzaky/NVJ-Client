@@ -1,7 +1,9 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
+import { Loading, Progress } from "react-loading-ui";
 
 import '../css/index.css';
+import api from "../helpers/api";
 
 // Components Import
 import Navbar from './components/Navbar';
@@ -16,7 +18,11 @@ class Tickets extends React.Component {
     super()
     this.state = {
         tickets     : [],
-        ticketType  : 'tickets'
+        ticketPurchasable  : true,
+        progress : 1,
+        ticket_name : null,
+        sort_by : null,
+
 
     }
   }
@@ -46,56 +52,108 @@ class Tickets extends React.Component {
 
   componentDidMount(){
     this.addNavbarBorder()
-    this.getAllTickets()
+    this.getAllTickets(this.state.ticketPurchasable,this.state.ticket_name)
   }
 
-  componentDidUpdate(){
+  onChange = (e) =>{
+    this.setState({
+    [e.target.name] : e.target.value
+    })
+  }
+  onSelectChange = async(e) =>{
+    await this.setState({
+        [e.target.name] : e.target.value
+    })
+    this.getAllTickets(this.state.ticketPurchasable,this.state.ticket_name,this.state.sort_by)
+
   }
 
-  updateTicketStateQty = async(ticket_id,new_qty) =>{  
+  showLoading(){
+    /* Show loading-ui */
+    Loading({title:'Loading', text:'Memuat konten, harap menunggu..',theme:'dark',progress:true,progressedClose :true});
+    let interval = null;
+
+    interval = setInterval(() => {
+      this.setState({ progress: this.state.progress + 4 }, () => {
+        // Set Progress Value
+        Progress(this.state.progress);
+
+        if (this.state.progress >= 100) {
+          this.setState({ progress: 0 });
+          clearInterval(interval);
+        }
+      });
+    }, 100);
+  }
+
+  addQtyToTickets = async() =>{  
     // 1. Make a shallow copy of the items
     let tickets = [...this.state.tickets];
+    // 3. Make a shallow copy of the item you want to mutate
+    for (let i = 0; i < tickets.length; i++) {
+        tickets[i].qty = 0
+      }
+    // 4. Replace the property you're intested in
+    //ticket.qty = 0
+    // 6. Set the state to our new copy
+    await this.setState({tickets});
+
+  }
+  
+  updateTicketStateQty = async(ticket_id,new_qty) =>{  
+    // 1. Make a shallow copy of the items
+    let tickets = [...this.state.tickets]
     // 2. find the index from the state tickets
-    var index = tickets.findIndex(p => p.ticket_id === ticket_id);
+    var index = tickets.findIndex(p => p.id === ticket_id)
     // 3. Make a shallow copy of the item you want to mutate
     let ticket = {...tickets[index]}
     // 4. Replace the property you're intested in
     ticket.qty = new_qty
     // 5. Put it back into our array
-    tickets[index] = ticket;
+    tickets[index] = ticket
     // 6. Set the state to our new copy
-    await this.setState({tickets});
+    await this.setState({tickets})
 
   }
 
-  getAllTickets = async() =>{
-    await this.setState({
-        tickets : [
-            {
-                ticket_id    : 1,
-                title        : 'Entrance Ticket to Dusun Butuh',
-                price        : 10000,
-                qty          : 0,
-                purchaseAble : true
-            },
-            {
-                ticket_id    : 2,
-                title        : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
-                price        : 15000,
-                qty          : 0,
-                purchaseAble : true
 
-            },
-            {
-                ticket_id    : 3,
-                title        : 'Exit Ticket from NVJ',
-                price        : 30000,
-                qty          : 0,
-                purchaseAble : true
 
-            }
-        ]
+  getAllTickets = async(purchasable, title,sort_by) =>{
+    
+    this.showLoading()
+
+    const headers = {
+        'accept': '*/*',
+    }
+
+    const data = {
+        "purchasable": purchasable,
+    }
+
+    if(title)
+        data["title"] = title
+    
+    let api_url = '/client/tickets/findByFilter'
+    if(sort_by && sort_by !== 'all')
+        api_url = '/client/tickets/findByFilter?orderBy=price&sortBy='+this.state.sort_by
+    
+    await api.post(api_url, data, {
+        headers: headers
     })
+    
+    .then((response) => {
+        if(response.data.success){
+          this.setState({
+              tickets : response.data.content
+          })
+        }
+
+    })
+    .catch((error) => {
+        console.log(error.response.data.errorMessage)
+    })
+
+    await this.addQtyToTickets()
 
     //update the qty based on local storage
     let current_cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -104,68 +162,23 @@ class Tickets extends React.Component {
     }
   }
 
-  changeTicketType = async(type) =>{
-    if(type === 'tickets'){
-        await this.setState({
-            tickets : [
-                {
-                    ticket_id    : 1,
-                    title        : 'Entrance Ticket to Dusun Butuh',
-                    price        : 10000,
-                    qty          : 0,
-                    purchaseAble : true
-                },
-                {
-                    ticket_id    : 2,
-                    title        : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
-                    price        : 15000,
-                    qty          : 0,
-                    purchaseAble : true
-    
-                },
-                {
-                    ticket_id    : 3,
-                    title        : 'Exit Ticket from NVJ',
-                    price        : 30000,
-                    qty          : 0,
-                    purchaseAble : true
-    
-                }
-            ],
-            ticketType : 'tickets'
+  changeTicketType = async(purchaseAble) =>{
+    if(purchaseAble){
+        await this.setState({            
+            ticketPurchasable : true,
+            ticket_name : null
         })
+        this.getAllTickets(this.state.ticketPurchasable,this.state.ticket_name)
     }
-    else if(type === 'packages'){
+    else if(!purchaseAble){
         await this.setState({
-            tickets : [
-                {
-                    ticket_id    : 4,
-                    title        : 'Paket Wisata Agrikultur (5 Hari 4 Malam)',
-                    price        : 10000,
-                    qty          : 0,
-                    purchaseAble : false
-                },
-                {
-                    ticket_id    : 5,
-                    title        : 'Agri Culture at Teras Nepal',
-                    price        : 15000,
-                    qty          : 0,
-                    purchaseAble : false
-    
-                },
-                {
-                    ticket_id    : 6,
-                    title        : 'Menari nari di atas Teras Nepal',
-                    price        : 30000,
-                    qty          : 0,
-                    purchaseAble : false
-    
-                },
-            ],
-            ticketType : 'packages'
+            ticketPurchasable : false,
+            ticket_name : null
+
         })
-    }
-}
+        this.getAllTickets(this.state.ticketPurchasable,this.state.ticket_name)
+    }  
+  }
 
 
   render(){
@@ -230,10 +243,10 @@ class Tickets extends React.Component {
                 <div className='col-12 ps-0 pe-0'>
                     {/* START OF TOGGLE */}
                     <div className='mb-5' style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-                        <div onClick={()=> this.changeTicketType("tickets")} className={this.state.ticketType === 'tickets' ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"}  style={{borderRadius:'10px 0px 0px 10px',width:'50%'}}>
+                        <div onClick={()=> this.changeTicketType(true)} className={this.state.ticketPurchasable ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"}  style={{borderRadius:'10px 0px 0px 10px',width:'50%'}}>
                             <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Tiket</p>
                         </div>
-                        <div onClick={()=> this.changeTicketType("packages")} className={this.state.ticketType === 'packages' ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"} style={{borderRadius:'0px 10px 10px 0px',width:'50%'}}>
+                        <div onClick={()=> this.changeTicketType(false)} className={!this.state.ticketPurchasable ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"} style={{borderRadius:'0px 10px 10px 0px',width:'50%'}}>
                             <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Paket Wisata</p>
                         </div>
                     </div>
@@ -245,7 +258,7 @@ class Tickets extends React.Component {
                     }
                 </div>
                 <div className='col-12 ps-0 pe-0 mt-4 mtm-5' >
-                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',textAlign:'justify'}}>Ingin memesan tiket untuk wisata-wisata di Dusun Butuh? Silahkan jelajhi halamann ini untuk melihat semua tiket dan juga paket wisata yang ditawarkan oleh Dusun Butuh Nepal Van Java</p>
+                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',textAlign:'justify'}}>Ingin memesan tiket untuk wisata-wisata di Dusun Butuh? Silahkan jelajahi halamann ini untuk melihat semua tiket dan juga paket wisata yang ditawarkan oleh Dusun Butuh Nepal Van Java.</p>
                 </div>
             </div>
 
@@ -254,21 +267,23 @@ class Tickets extends React.Component {
 
         {/* START OF FILTER SECTION */}
         <div className='row page-container mt-3 mtm-5 ticket-filter-wrapper' style={{paddingBottom:'6vw',borderBottom:'1vw solid #9FADBB'}}>
-            <div className='col-6 ps-0 '>
-                <input name="ticket_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Cari Tiket" />
-            </div>            
-            <div className='col-6 pe-0'>
-                <select name="filter"  className="px-18 input_field_text"  style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}}>
-                    <option value="" disabled selected>Semua</option>
-                    <option value="SMP">Harga Termurah</option>
-                    <option value="SMA">Harga Termahal</option>
-                </select>   
-            </div>            
+            <div className={this.state.ticketPurchasable ? 'col-6 ps-0' :  'col-12 ps-0 pe-0' }>
+                    <input name="ticket_name" onKeyPress={(e) => {(e.key === 'Enter' && this.getAllTickets(this.state.ticketPurchasable,this.state.ticket_name))}}  onChange={this.onChange} defaultValue="" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder={this.state.ticketPurchasable ? "Cari Tiket" : "Cari Paket Wisata"} />
+            </div>     
+            {this.state.ticketPurchasable &&
+                <div className='col-6 pe-0'>
+                    <select name="sort_by"  onChange={this.onSelectChange}  className="px-18 input_field_text"  style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}}>
+                        <option value="all" selected>Semua</option>
+                        <option value="ASC">Harga Termurah</option>
+                        <option value="DESC">Harga Termahal</option>
+                    </select>   
+                </div>            
+            }       
         </div>
         {/* END OF FILTER SECTION */}
         {/* START OF AVAILABLE TICKETS */}
         <div className='row page-container mt-5 mtm-5'>
-            <p className='px-18 mtm-5 pb-3' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px',padding:'0px'}}>Memperlihatkan 3 hasil</p>
+            <p className='px-18 mtm-5 pb-3' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px',padding:'0px'}}>Memperlihatkan {this.state.tickets.length} hasil</p>
             {
                 this.state.tickets.map( (e , index) => {
                 return(
@@ -276,18 +291,18 @@ class Tickets extends React.Component {
                         {
                         index === 0 ?
                         <div  className='p-0'>
-                            {!e.purchaseAble ?
-                            <FreeTicketCard ticket_id={e.ticket_id} title={e.title} ></FreeTicketCard>
+                            {!e.purchasable ?
+                            <FreeTicketCard ticket_id={e.id} title={e.title} ></FreeTicketCard>
                             :
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
+                            <TicketCard ticket_id={e.id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
                             }
                         </div>
                         :
                         <div  className='p-0 mtm-5 mt-4'>
-                            {!e.purchaseAble ?
-                            <FreeTicketCard ticket_id={e.ticket_id} title={e.title} ></FreeTicketCard>
+                            {!e.purchasable ?
+                            <FreeTicketCard ticket_id={e.id} title={e.title} ></FreeTicketCard>
                             :
-                            <TicketCard ticket_id={e.ticket_id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
+                            <TicketCard ticket_id={e.id} title={e.title} price={e.price} qty={e.qty}></TicketCard>
                             }
                         </div>
                         }

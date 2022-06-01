@@ -2,8 +2,10 @@ import React from 'react';
 import {Helmet} from 'react-helmet';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import NumberFormat from 'react-number-format';
+import { Loading, Progress } from "react-loading-ui";
 
 import '../css/index.css';
+import api from "../helpers/api";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,7 +31,8 @@ class TicketDetail extends React.Component {
       contactName         : null,
       openIncrementWidget : 0,
       qty                 : 0,
-      notYetOpened        : true
+      notYetOpened        : true,
+      progress            : 1
     }
   }
 
@@ -61,17 +64,55 @@ class TicketDetail extends React.Component {
   componentDidUpdate(){
   }
 
+  showLoading(){
+    /* Show loading-ui */
+    Loading({title:'Loading', text:'Memuat konten, harap menunggu..',theme:'dark',progress:true,progressedClose :true});
+    let interval = null;
+
+    interval = setInterval(() => {
+      this.setState({ progress: this.state.progress + 4 }, () => {
+        // Set Progress Value
+        Progress(this.state.progress);
+
+        if (this.state.progress >= 100) {
+          this.setState({ progress: 0 });
+          clearInterval(interval);
+        }
+      });
+    }, 100);
+  }
+
   getTicketDetail = async() =>{
-    await this.setState({
-      title         : 'Entrance Ticket to Dusun Butuh',
-      price         : 10000,
-      description   : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text.',
-      ticket_id     : 1,
-      purchaseAble  : false,
-      phoneNumber   : '+628111377893',
-      contactName   : 'Pak Lilik Setiyawan',
-      qty           : 0
+
+    this.showLoading()
+    const headers = {
+        'accept': '*/*',
+    }
+
+    
+    await api.post('/client/tickets/findByIds?id='+this.props.match.params.id, {
+        headers: headers
     })
+    
+    .then((response) => {
+        if(response.data.success){
+          this.setState({
+            title         : response.data.content[0].title,
+            price         : response.data.content[0].price,
+            description   : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text.',
+            ticket_id     : response.data.content[0].id,
+            purchaseAble  : response.data.content[0].purchasable,
+            phoneNumber   : '+628111377893',
+            contactName   : 'Pak Lilik Setiyawan',
+            qty           : 0
+          })
+        }
+
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+
     let current_cart = JSON.parse(localStorage.getItem('cart')) || [];
     for(var x in current_cart){
       if(this.state.ticket_id == current_cart[x]['ticket_id']){
@@ -117,7 +158,7 @@ class TicketDetail extends React.Component {
     localStorage.setItem("cart", JSON.stringify(current_cart));
 
 
-    this.notify('Succesfully added to cart!')
+    this.notify('Berhasil ditambahkan ke keranjang!')
 
   }
 

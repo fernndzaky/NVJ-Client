@@ -109,7 +109,7 @@ class Experiences extends React.Component {
 
       })
       .catch((error) => {
-          console.log(error)
+          console.log(error.response.data.errorMessage)
       })
       if(this.state.experiences.length !== 0)
         await this.changeExperience(this.state.experiences[0].id,this.state.experiences[0].title,this.state.experiences[0].thumbnail,this.state.experiences[0].images,this.state.experiences[0].description)
