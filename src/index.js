@@ -34,6 +34,7 @@ ReactDOM.render(
       <Route path="/payment-expired" exact={true} component={PaymentExpired} />
       <Route path="/payment-waiting" exact={true} component={PaymentWaiting} />
       <Route path="/404" exact={true} component={PageNotFound} />
+      <Route path="*" component={PageNotFound} />
 
     </Switch>
   </Router>,

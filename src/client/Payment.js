@@ -1,8 +1,13 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { Loading, Progress } from "react-loading-ui";
+import NumberFormat from 'react-number-format';
+
 
 import '../css/index.css';
+import api from "../helpers/api";
+
 
 // Components Import
 import Navbar from './components/Navbar';
@@ -13,20 +18,72 @@ class TicketDetail extends React.Component {
   constructor(){
     super()
     this.state = {
+      totalPrice    : 0,
+      progress      : 1,
+      tickets       : [],
+      visit_date    : null,
+      first_name    : null,
+      last_name     : null,
+      phone_number  : null,
+      email         : null,
     }
   }
 
-  listenerMidtransSnap = () => {
-      // For example trigger on button clicked, or any time you need
-      var payButton = document.getElementById('pay-button');
-      console.log('pay button', payButton)
-      payButton.addEventListener('click', function () {
-        // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-        window.snap.pay('50b31b3d-eb9b-4dbf-a756-5fbceaf67187');
-        // customer will be redirected after completing payment pop-up
-      }); 
+  listenerMidtransSnap = (token) => {
+      // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+      window.snap.pay(token);
+      // customer will be redirected after completing payment pop-up
+      
   }
 
+
+  onChange = (e) =>{
+    this.setState({
+      [e.target.name] : e.target.value
+    })
+  }
+
+  createOrder = async() =>{
+
+    const orderItems = []
+
+    await this.state.tickets.map( (e , index) => {
+      const tempItem = {
+        "quantity" : e.qty,
+        "ticketId" : e.id,
+      }
+      orderItems.push(tempItem)
+    })
+
+    const data = {
+      "email"     : this.state.email,
+      "firstname" : this.state.first_name,
+      "lastname"  : this.state.last_name,
+      "orderItems": orderItems,
+      "visitDate" : this.state.visit_date,
+    }
+
+    const headers = {
+      'accept': '*/*',
+    }
+
+    await api.post('/client/orders/create', data, {
+      headers: headers
+    })
+    
+    .then((response) => {
+        if(response.data.success){
+          this.listenerMidtransSnap(response.data.content.midtrans.token)
+
+        }
+
+    })
+    .catch((error) => {
+        
+    })
+
+
+  }
 
 
 
@@ -56,13 +113,106 @@ class TicketDetail extends React.Component {
 
   componentDidMount(){
     this.addNavbarBorder()
-    this.listenerMidtransSnap()
+    //this.listenerMidtransSnap()
+    this.getTicketsFromCart()
   }
 
-  componentDidUpdate(){
+  showLoading(){
+    /* Show loading-ui */
+    Loading({title:'Loading', text:'Memuat konten, harap menunggu..',theme:'dark',progress:true,progressedClose :true});
+    let interval = null;
+
+    interval = setInterval(() => {
+      this.setState({ progress: this.state.progress + 4 }, () => {
+        // Set Progress Value
+        Progress(this.state.progress);
+
+        if (this.state.progress >= 100) {
+          this.setState({ progress: 0 });
+          clearInterval(interval);
+        }
+      });
+    }, 100);
   }
 
+  updateTicketStateQty = async(ticket_id,new_qty) =>{  
+    // 1. Make a shallow copy of the items
+    let tickets = [...this.state.tickets]
+    // 2. find the index from the state tickets
+    var index = tickets.findIndex(p => p.id === ticket_id)
+    // 3. Make a shallow copy of the item you want to mutate
+    let ticket = {...tickets[index]}
+    // 4. Replace the property you're intested in
+    ticket.qty = new_qty
+    // 5. Put it back into our array
+    tickets[index] = ticket
+    // 6. Set the state to our new copy
+    await this.setState({tickets})
 
+  }
+
+  getTotalPrice = async() =>{
+    for(var i in this.state.tickets){
+        let price = this.state.tickets[i].price * this.state.tickets[i].qty
+        await this.setState({
+          totalPrice : this.state.totalPrice + price
+        })
+    }
+  }
+
+  getTicketsFromCart = async()=>{
+
+    //get all ticket id from local storage
+    let ticket_ids = JSON.parse(localStorage.getItem('cart')) || [];
+
+    let queryString = ""
+    for(var i in ticket_ids){
+        queryString += "id="+ticket_ids[i]['ticket_id']
+        if(ticket_ids.length > 1)
+            queryString += "&"
+    }
+
+    const headers = {
+        'accept': '*/*',
+    }
+    
+    //if theres an item inside the cart
+    if(ticket_ids.length > 0){
+
+        this.showLoading()
+
+        await api.post('/client/tickets/findByIds?'+queryString, {
+            headers: headers
+        })
+            
+        .then((response) => {
+            if(response.data.success){
+                this.setState({
+                    tickets : response.data.content
+                })
+            }
+    
+        })
+        .catch((error) => {
+            if(error.response.data.errorMessage === 'The requested ticket does not exists')
+            window.location.href = '/404'
+        })
+        
+        //update the qty based on local storage
+        let current_cart = JSON.parse(localStorage.getItem('cart')) || [];
+        for(var x in current_cart){
+            await this.updateTicketStateQty(current_cart[x]['ticket_id'], current_cart[x]['qty'] )
+        }
+    
+        this.getTotalPrice()
+
+    }
+    else{
+      window.location.href = '/cart'
+
+    }
+    
+  }
 
 
 
@@ -104,36 +254,33 @@ class TicketDetail extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {/* START OF ONE ITEM */}
-                <tr>
-                  <td style={{verticalAlign:'middle',paddingRight:'5vw'}}>
-                    <p className='px-18' style={{fontFamily:'Roboto Regular'}}>
-                      <span style={{fontFamily:'Roboto Bold'}}>x1 </span>
-                    Entrance Ticket to Dusun Butuh Nepal Van Java Di Magelang
-                    </p>
-                  </td>
-                  <td style={{verticalAlign:'middle'}}>
-                    <p className='px-18' style={{fontFamily:'Roboto Regular'}}>
-                    Rp10,000
-                    </p>
-                  </td>
-                </tr>
-                {/* END OF ONE ITEM */}
-                {/* START OF ONE ITEM */}
-                <tr>
-                  <td style={{verticalAlign:'middle',paddingRight:'5vw'}}>
-                    <p className='px-18' style={{fontFamily:'Roboto Regular'}}>
-                      <span style={{fontFamily:'Roboto Bold'}}>x2 </span>
-                    Entrance Ticket to Dusun Butuh
-                    </p>
-                  </td>
-                  <td style={{verticalAlign:'middle'}}>
-                    <p className='px-18' style={{fontFamily:'Roboto Regular'}}>
-                    Rp10,000
-                    </p>
-                  </td>
-                </tr>
-                {/* END OF ONE ITEM */}
+              {
+                this.state.tickets.map( (e , index) => {
+                
+                return(
+                    <React.Fragment>
+                        {/* START OF ONE ITEM */}
+                        {
+                          <tr>
+                            <td style={{verticalAlign:'middle',paddingRight:'5vw'}}>
+                              <p className='px-18' style={{fontFamily:'Roboto Regular'}}>
+                                <span style={{fontFamily:'Roboto Bold'}}>x{e.qty} </span>
+                              {e.title}
+                              </p>
+                            </td>
+                            <td style={{verticalAlign:'middle',textAlign:'right'}}>
+                              <p className='px-18' style={{fontFamily:'Roboto Regular'}}>
+                                <NumberFormat value={e.price} displayType={'text'} thousandSeparator={true} prefix={'Rp'} />
+                              </p>
+                            </td>
+                          </tr>
+                         }
+                         {/* END OF ONE ITEM */}
+                     </React.Fragment>
+ 
+                     )
+                 })              
+                } 
 
               </tbody>
             </table>
@@ -141,7 +288,9 @@ class TicketDetail extends React.Component {
           </div>
           <div className='p-0' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
             <p className='px-24' style={{color:'#1BC47D',fontFamily:'Nunito Semi Bold'}}>Grand Total</p>
-            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Rp30,000</p>
+            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>
+              <NumberFormat value={this.state.totalPrice} displayType={'text'} thousandSeparator={true} prefix={'Rp'} />
+            </p>
 
           </div>
 
@@ -178,40 +327,47 @@ class TicketDetail extends React.Component {
           </div>  
         </div>
       */}
-      <div className='page-container upper-page-padding-small'>  
-        <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Informasi Pengunjung</p>
-        {/*START OF ONE INPUT */}
-        <div className='mt-4'>
-          <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Tanggal Kunjungan</p>
-          <input  name="visit_date" type="date" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukan tanggal kunjungan" />
-        </div>  
-        {/*END OF ONE INPUT */}
-        {/*START OF ONE INPUT */}
-        <div className='mt-4'>
-          <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nama Pengunjung</p>
-          <input  name="full_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukkan nama lengkap" />
-        </div>  
-        {/*END OF ONE INPUT */}
-        {/*START OF ONE INPUT */}
-        <div className='mt-4'>
-          <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nomor Kontak</p>
-          <input  name="phone_number" type="number" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukkan nomor telepon" />
-        </div>  
-        {/*END OF ONE INPUT */}
-        {/*START OF ONE INPUT */}
-        <div className='mt-4'>
-          <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Email</p>
-          <input  name="email" type="email" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukkan email pengunjung" />
-        </div>  
-        {/*END OF ONE INPUT */}
+        <div className='page-container upper-page-padding-small'>  
+          <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Informasi Pengunjung</p>
+          {/*START OF ONE INPUT */}
+          <div className='mt-4'>
+            <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Tanggal Kunjungan</p>
+            <input required name="visit_date" value={this.state.visit_date} onChange={this.onChange} type="date" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukan tanggal kunjungan" />
+          </div>  
+          {/*END OF ONE INPUT */}
+          {/*START OF ONE INPUT */}
+          <div className='mt-4' style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+            <div className='pe-2'>
+              <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nama Depan</p>
+              <input required name="first_name" value={this.state.first_name} onChange={this.onChange} type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="John" />
+            </div>
+            <div className='ps-2'>
+              <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nama Keluarga</p>
+              <input required name="last_name" value={this.state.last_name} onChange={this.onChange} type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Doe" />
+            </div>
+          </div>  
+          {/*END OF ONE INPUT */}
+          {/*START OF ONE INPUT */}
+          <div className='mt-4'>
+            <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nomor Kontak</p>
+            <input required name="phone_number" value={this.state.phone_number} onChange={this.onChange} type="number" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="+628111344759" />
+          </div>  
+          {/*END OF ONE INPUT */}
+          {/*START OF ONE INPUT */}
+          <div className='mt-4'>
+            <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Email</p>
+            <input required name="email" value={this.state.email} onChange={this.onChange} type="email" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="john@doe.com" />
+          </div>  
+          {/*END OF ONE INPUT */}
 
-      </div>
+        </div>
         {/* END OF PERSONAL INFORMATION SECTION*/}
 
         <div className='row page-container mtm-5 mt-5 pb-5'>
-          <button  className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Pilih Metode Pembayaran</button>
+          <button onClick={() => this.createOrder()} className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Pilih Metode Pembayaran</button>
           <button id="pay-button">Pay!</button>
         </div>
+        
 
 
 

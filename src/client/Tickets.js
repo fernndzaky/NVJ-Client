@@ -147,9 +147,9 @@ class Tickets extends React.Component {
   }
 
   
-  changeTicketType = async(purchaseAble) =>{
+  changeTicketType = async(purchasable) =>{
     await this.setState({            
-        ticketPurchasable : purchaseAble,
+        ticketPurchasable : purchasable,
         ticket_name : null
     })
     this.getAllTickets(this.state.ticketPurchasable)
