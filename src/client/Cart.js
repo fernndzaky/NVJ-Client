@@ -3,9 +3,15 @@ import {Helmet} from 'react-helmet';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import ClampLines from 'react-clamp-lines';
 import NumberFormat from 'react-number-format';
+import { Loading, Progress } from "react-loading-ui";
 
 
 import '../css/index.css';
+import api from "../helpers/api";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 // Components Import
 import Navbar from './components/Navbar';
@@ -16,8 +22,9 @@ class Cart extends React.Component {
   constructor(){
     super()
     this.state = {
-        tickets : [],
-        totalPrice : 0
+        tickets     : [],
+        totalPrice  : 0,
+        progress    : 1 
     }
   }
 
@@ -58,6 +65,24 @@ class Cart extends React.Component {
   componentDidUpdate(){
   }
 
+  showLoading(){
+    /* Show loading-ui */
+    Loading({title:'Loading', text:'Memuat konten, harap menunggu..',theme:'dark',progress:true,progressedClose :true});
+    let interval = null;
+
+    interval = setInterval(() => {
+      this.setState({ progress: this.state.progress + 4 }, () => {
+        // Set Progress Value
+        Progress(this.state.progress);
+
+        if (this.state.progress >= 100) {
+          this.setState({ progress: 0 });
+          clearInterval(interval);
+        }
+      });
+    }, 100);
+  }
+
 
   getUserCart(){
     //get the current cart
@@ -66,6 +91,16 @@ class Cart extends React.Component {
 
     for(var i in current_cart)
         ticket_ids.push(current_cart[i]['ticket_id'])
+  }
+
+  getTotalPrice = async() =>{
+    await this.setState({
+        totalPrice : 0
+    })
+    for(var i in this.state.tickets){
+        let price = this.state.tickets[i].price * this.state.tickets[i].qty
+        await this.updateTotalPrice('plus',price)
+    }
   }
 
   updateTotalPrice = (action,amount) =>{
@@ -83,61 +118,80 @@ class Cart extends React.Component {
 
   updateTicketStateQty = async(ticket_id,new_qty) =>{  
     // 1. Make a shallow copy of the items
-    let tickets = [...this.state.tickets];
+    let tickets = [...this.state.tickets]
     // 2. find the index from the state tickets
-    var index = tickets.findIndex(p => p.ticket_id === ticket_id);
+    var index = tickets.findIndex(p => p.id === ticket_id)
     // 3. Make a shallow copy of the item you want to mutate
     let ticket = {...tickets[index]}
     // 4. Replace the property you're intested in
     ticket.qty = new_qty
     // 5. Put it back into our array
-    tickets[index] = ticket;
+    tickets[index] = ticket
     // 6. Set the state to our new copy
-    await this.setState({tickets});
-    
+    await this.setState({tickets})
+
   }
 
   getTicketsFromCart = async()=>{
-    await this.setState({
-        tickets : [
-            {
-                ticket_id   : 1,
-                title       : 'Entrance Ticket to Dusun Butuh',
-                price       : 10000,
-                qty         : 0
-            },
-            {
-                ticket_id   : 2,
-                title       : 'Entrance Ticket to Dusun Butuh Nepal Van Java',
-                price       : 15000,
-                qty         : 0
-            },
-            {
-                ticket_id   : 3,
-                title       : 'Exit Ticket from NVJ',
-                price       : 30000,
-                qty         : 0
-            },
-        ]
-    })
 
 
-    //update the qty based on local storage
-    let current_cart = JSON.parse(localStorage.getItem('cart')) || [];
-    for(var x in current_cart){
-        this.updateTicketStateQty(current_cart[x]['ticket_id'], current_cart[x]['qty'] )
+    //get all ticket id from local storage
+    let ticket_ids = JSON.parse(localStorage.getItem('cart')) || [];
+    let queryString = ""
+    for(var i in ticket_ids){
+        queryString += "id="+ticket_ids[i]['ticket_id']
+        if(ticket_ids.length > 1)
+            queryString += "&"
     }
 
-    for(var i in this.state.tickets){
-        let price = this.state.tickets[i].price * this.state.tickets[i].qty
-        this.updateTotalPrice('plus',price)
+    const headers = {
+        'accept': '*/*',
+    }
+    
+    //if theres an item inside the cart
+    if(queryString){
+
+        this.showLoading()
+
+        await api.post('/client/tickets/findByIds?'+queryString, {
+            headers: headers
+        })
+            
+        .then((response) => {
+            if(response.data.success){
+                this.setState({
+                    tickets : response.data.content
+                })
+            }
+    
+        })
+        .catch((error) => {
+            if(error.response.data.errorMessage === 'The requested ticket does not exists')
+            window.location.href = '/404'
+        })
+        
+        //update the qty based on local storage
+        let current_cart = JSON.parse(localStorage.getItem('cart')) || [];
+        for(var x in current_cart){
+            await this.updateTicketStateQty(current_cart[x]['ticket_id'], current_cart[x]['qty'] )
+        }
+    
+        this.getTotalPrice()
+        
+    }
+    else{
+        await this.setState({
+            tickets     : [],
+            totalPrice  : 0
+        })
     }
     
   }
-  
-  
 
-  removeFromCart = async (ticket_id) =>{
+
+
+
+  removeFromCart = async (ticket_id,price) =>{
     //remove from local storage
     let current_cart = JSON.parse(localStorage.getItem('cart')) || [];
     for(var i in current_cart){
@@ -150,7 +204,10 @@ class Cart extends React.Component {
     localStorage.setItem("cart", JSON.stringify(current_cart));
 
     //get new tickets based on newly updated local storage
-    this.getTicketsFromCart()
+    await this.getTicketsFromCart()
+    
+    this.notify('Item berhasil dihapus!')
+
   }
 
   handleQtyChange(action,ticket_id, new_qty, ticket_price){
@@ -174,6 +231,7 @@ class Cart extends React.Component {
 
 
 
+  notify = (message) => toast(message);
 
 
   render(){
@@ -197,7 +255,6 @@ class Cart extends React.Component {
 
         {/* START OF CART SECTION*/}
 
-        <form action='/checkout'>
         <div className='row page-container'>
             <div className='col-12 ps-0 pe-0'>
             {
@@ -208,7 +265,7 @@ class Cart extends React.Component {
                         {/* START OF ONE ITEM */}
                         {
                             <div  className='cart-wrapper mtm-5 mt-4' style={{padding:'4vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw',display:'flex',flexDirection:'column',justifyContent:'space-between',width:'100%'}}>
-                                <a href={'/ticket/'+1} style={{textDecoration:'none'}}>
+                                <a href={'/ticket/'+e.id} style={{textDecoration:'none'}}>
                                     <ClampLines
                                         text={e.title}
                                         id="cart-title-text"
@@ -225,15 +282,15 @@ class Cart extends React.Component {
 
                                 </a >
                                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-                                    <div className='btn-red px-18' style={{fontFamily:'Roboto Bold',cursor:'pointer'}}>
+                                    <div onClick={()=> this.removeFromCart(e.id,e.price)}  className='btn-red px-18' style={{fontFamily:'Roboto Bold',cursor:'pointer'}}>
                                         Hapus
                                     </div>
                                     <div className='cart-qty-wrapper' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-                                        <div onClick={()=> this.handleQtyChange('minus',e.ticket_id,e.qty-1,e.price)} className='btn-circle-white' style={{cursor:'pointer'}}>
+                                        <div onClick={()=> this.handleQtyChange('minus',e.id,e.qty-1,e.price)} className='btn-circle-white' style={{cursor:'pointer'}}>
                                             <FontAwesomeIcon icon="minus" className='px-24' style={{cursor:'pointer'}} />
                                         </div>
                                         <p className='px-24' style={{color:'#333333',fontFamily:'Nunito Semi Bold',marginBottom:'0px',padding:'0vw 4vw'}}>{e.qty}</p>
-                                        <div onClick={()=> this.handleQtyChange('plus',e.ticket_id,e.qty+1,e.price)} className='btn-circle-green' style={{cursor:'pointer'}}>
+                                        <div onClick={()=> this.handleQtyChange('plus',e.id,e.qty+1,e.price)} className='btn-circle-green' style={{cursor:'pointer'}}>
                                             <FontAwesomeIcon icon="plus" className='px-24' style={{cursor:'pointer'}} />
                                         </div>
                                     </div>
@@ -252,24 +309,49 @@ class Cart extends React.Component {
         </div>
         {/* END OF CART SECTION*/}
         {/* START OF BOTTOM SECTION*/}
-        <div className='row page-container mtm-5 mt-5'>
-            <div className='col-12 ps-0 pe-0'>
-                <p className='px-24' style={{color:'#333333',fontFamily:'Nunito Semi Bold'}}>Total:
-                <span className='px-28'style={{fontFamily:'Roboto Bold',marginLeft:'2vw'}} >
-                    <NumberFormat value={this.state.totalPrice} displayType={'text'} thousandSeparator={true} prefix={'Rp'} />
-                </span>
-                </p>
 
-                <button type="submit" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Checkout</button>
-
-
+        {this.state.tickets.length > 0 ?
+            <div className='row page-container mtm-5 mt-5'>
+                <div className='col-12 ps-0 pe-0'>
+                    <p className='px-24' style={{color:'#333333',fontFamily:'Nunito Semi Bold'}}>Total:
+                    <span className='px-28'style={{fontFamily:'Roboto Bold',marginLeft:'2vw'}} >
+                        <NumberFormat value={this.state.totalPrice} displayType={'text'} thousandSeparator={true} prefix={'Rp'} />
+                    </span>
+                    </p>
+                    <div className='mtm-5 mt-4' style={{padding:'0'}}>
+                        <a href="/checkout" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Checkout</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        </form>
+            :
+            <div className='row page-container mtm-5 mt-5'>
+                <div className='col-12 ps-0 pe-0'>
+                    <p className='px-24' style={{color:'#333333',fontFamily:'Nunito Semi Bold'}}>Belum ada tiket di dalam keranjang anda..
+                    </p>
+
+                    <div className='mtm-5 mt-4' style={{padding:'0'}}>
+                        <a href="/tickets" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Semua Tiket</a>
+                    </div>
+
+                </div>
+            </div>
+            }
         {/* END OF BOTTOM SECTION*/}
         <BottomNavbar></BottomNavbar>
 
-
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={true}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          />
+          {/* Same as */}
+          <ToastContainer />
 
       </div>
       )
