@@ -157,7 +157,10 @@ export default class TicketCard extends Component {
                         <AtcButton></AtcButton>
                     </div>
                     }
+                    <div onClick={()=> this.addToCart(this.props.ticket_id)}>
                     <BuyNowButton></BuyNowButton>
+
+                    </div>
                 </div>
             </div>
           </div>

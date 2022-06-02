@@ -67,7 +67,7 @@ class PageNotFound extends React.Component {
         <Navbar></Navbar>
         {/* START OF TOP SECTION*/}
         <div className='row page-container mt-4' style={{display:'flex',flexDirection:'column',alignItems:'center',width:'100%'}}>
-            <div className='col-12 ps-0 pe-0' style={{textAlign:'center',marginTop:'50vw'}}>
+            <div className='col-12 ps-0 pe-0' style={{textAlign:'center',marginTop:'20vw'}}>
                 <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Halaman Tidak Ditemukan..</p>
             </div>
             <div className='col-12 ps-0 pe-0 mt-4 mtm-5' >
