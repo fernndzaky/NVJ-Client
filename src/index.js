@@ -17,6 +17,7 @@ import Payment from './client/Payment';
 import PaymentCompleted from './client/payment_status/PaymentCompleted';
 import PaymentExpired from './client/payment_status/PaymentExpired';
 import PaymentWaiting from './client/payment_status/PaymentWaiting';
+import PageNotFound from './client/PageNotFound';
 
 ReactDOM.render(
   <Router>
@@ -32,6 +33,7 @@ ReactDOM.render(
       <Route path="/payment-completed" exact={true} component={PaymentCompleted} />
       <Route path="/payment-expired" exact={true} component={PaymentExpired} />
       <Route path="/payment-waiting" exact={true} component={PaymentWaiting} />
+      <Route path="/404" exact={true} component={PageNotFound} />
 
     </Switch>
   </Router>,

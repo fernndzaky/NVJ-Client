@@ -110,7 +110,8 @@ class TicketDetail extends React.Component {
 
     })
     .catch((error) => {
-        console.log(error)
+      if(error.response.data.errorMessage === 'The requested ticket does not exists')
+        window.location.href = '/404'
     })
 
     let current_cart = JSON.parse(localStorage.getItem('cart')) || [];

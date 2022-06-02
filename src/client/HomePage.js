@@ -231,6 +231,10 @@ class HomePage extends React.Component {
 
             </div>
 
+            {this.state.tickets.length == 0 && 
+                <p className='px-18 mtm-5 pb-3' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px',padding:'0px'}}>Belum ada tiket tersedia..</p>
+            }
+
             {
                 this.state.tickets.map( (e , index) => {
                 return(
@@ -329,7 +333,7 @@ class HomePage extends React.Component {
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/testimonies/Testimony-1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
+                            <img className='img-fluid' src="/assets/images/Testimonies/Testimony-1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
                             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Negeri di atas awan. Desa yang unik. Rumah-rumah dibangun memeluk tebing, satu di atas yang lain. Jalan-jalan desa sangat terjal. Ada ojek dari parkiran mobil untuk keliling dusun Butuh sampai ke bawah base camp Gunung Sumbing.”</p>
@@ -340,7 +344,7 @@ class HomePage extends React.Component {
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/testimonies/Testimony-5.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
+                            <img className='img-fluid' src="/assets/images/Testimonies/Testimony-5.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
                             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Wow. Pas lihat lokasi ini di postingan orang” kagum asli. Dan gak nyangka ternyata punya teman daerah sini, daannn rumahnya yng jadi spot foto itu. Asli. Butuh, kaliangkrik. Kalau pakai google maps ambil jalur paling kiri atau lurus aja terus dari pasar kaliangkrik.
@@ -357,7 +361,7 @@ class HomePage extends React.Component {
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/testimonies/Testimony-2.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
+                            <img className='img-fluid' src="/assets/images/Testimonies/Testimony-2.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
                             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Fix tempatnya wonderfull view banget 😅 iseng2 kesini dari semarang ke dusun butuh perjalanan lumayan 2jam 30menitan , tiket masuk 2 orang 1 motor 10k. Banyak spot buat foto sih disini cuman jalanannya naik2 ke puncak gunung banget bun 😂. Dan sekedar info aja nih gaes tgl 19 Oktober Nepal Van Java tutup sementara sampai batas waktu yg belum ditentukan 😔”</p>
@@ -368,7 +372,7 @@ class HomePage extends React.Component {
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/testimonies/Testimony-3.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
+                            <img className='img-fluid' src="/assets/images/Testimonies/Testimony-3.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
                             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Kalau ga salah sih untuk sampai kemarin (30 Oktober 2020) Lokasi masih di tutup, tidak tau alasan pastinya, kalau dengar-dengar untuk waktu bersih-bersih. Untuk pemandangannya sendiri memang indah seperti di negara nepal hanya saja yang ini versi di Indonesia tepatnya Dusun butuh, Kabupaten Magelang.
@@ -382,7 +386,7 @@ class HomePage extends React.Component {
                 <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/testimonies/Testimony-4.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
+                            <img className='img-fluid' src="/assets/images/Testimonies/Testimony-4.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
                         </div>
                         <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
                             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Ini nepal van java yang bener” lagi viral dusun butuh desa tertinggi paling mentok dengan gunung sumbing. Dan disini adalah wisata dengan pemandangan bagus yang juga super murah karna cuma bayar parkir 3k dan stiker desa 5k sangat” murah dan udha bisa bikin pikiran fresh.

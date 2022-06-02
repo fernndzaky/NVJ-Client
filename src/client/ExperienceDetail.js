@@ -89,7 +89,9 @@ class ExperienceDetail extends React.Component {
 
     })
     .catch((error) => {
-        console.log(error)
+        console.log(error.response.data)
+        if(error.response.data.errorMessage === 'The requested on-site experience does not exists')
+            window.location.href = '/404'
     })
 
   }
@@ -307,6 +309,9 @@ class ExperienceDetail extends React.Component {
             <div className='mt-5'>
 
             </div>
+            {this.state.tickets.length == 0 && 
+                <p className='px-18 mtm-5 pb-3' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px',padding:'0px'}}>Belum ada tiket tersedia..</p>
+            }
 
             {
                 this.state.tickets.map( (e , index) => {
