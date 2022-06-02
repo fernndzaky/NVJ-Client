@@ -149,7 +149,7 @@ class Cart extends React.Component {
     }
     
     //if theres an item inside the cart
-    if(queryString){
+    if(ticket_ids.length > 0){
 
         this.showLoading()
 
