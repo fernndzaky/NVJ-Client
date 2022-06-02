@@ -315,7 +315,9 @@ class TicketDetail extends React.Component {
                   </div>
                   }
 
-                <BuyNowButton></BuyNowButton>
+                  <div onClick={()=> this.addToCart(this.state.ticket_id)}>
+                    <BuyNowButton></BuyNowButton>
+                  </div>
               </div>
         </div>
 
