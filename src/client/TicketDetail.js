@@ -102,8 +102,8 @@ class TicketDetail extends React.Component {
             description   : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text.',
             ticket_id     : response.data.content[0].id,
             purchaseAble  : response.data.content[0].purchasable,
-            phoneNumber   : '+628111377893',
-            contactName   : 'Pak Lilik Setiyawan',
+            phoneNumber   : response.data.content[0].phoneNumber,
+            contactName   : response.data.content[0].contactName,
             qty           : 0
           })
         }

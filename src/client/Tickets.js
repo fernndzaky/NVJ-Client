@@ -22,6 +22,8 @@ class Tickets extends React.Component {
         progress : 1,
         ticket_name : null,
         sort_by : null,
+        total_pages : [],
+        pagination : 1
 
 
     }
@@ -52,7 +54,7 @@ class Tickets extends React.Component {
 
   componentDidMount(){
     this.addNavbarBorder()
-    this.getAllTickets(this.state.ticketPurchasable,this.state.ticket_name)
+    this.getAllTickets(this.state.pagination-1,this.state.ticketPurchasable,this.state.ticket_name)
   }
 
   onChange = (e) =>{
@@ -64,7 +66,7 @@ class Tickets extends React.Component {
     await this.setState({
         [e.target.name] : e.target.value
     })
-    this.getAllTickets(this.state.ticketPurchasable,this.state.ticket_name,this.state.sort_by)
+    this.getAllTickets(this.state.pagination-1,this.state.ticketPurchasable,this.state.ticket_name,this.state.sort_by)
 
   }
 
@@ -104,8 +106,9 @@ class Tickets extends React.Component {
 
 
 
-  getAllTickets = async(purchasable, title,sort_by) =>{
-    
+  getAllTickets = async(page,purchasable, title,sort_by) =>{
+
+
     this.showLoading()
 
     const headers = {
@@ -116,12 +119,14 @@ class Tickets extends React.Component {
         "purchasable": purchasable,
     }
 
+    console.log('data',data)
+
     if(title)
         data["title"] = title
     
-    let api_url = '/client/tickets/findByFilter'
+    let api_url = '/client/tickets/findByFilter?page='+page
     if(sort_by && sort_by !== 'all')
-        api_url = '/client/tickets/findByFilter?orderBy=price&sortBy='+this.state.sort_by
+        api_url = '/client/tickets/findByFilter?page='+page+'&orderBy=price&sortBy='+this.state.sort_by
     
     await api.post(api_url, data, {
         headers: headers
@@ -130,8 +135,15 @@ class Tickets extends React.Component {
     .then((response) => {
         if(response.data.success){
           this.setState({
-              tickets : response.data.content
+              tickets : response.data.content,
+              total_pages : [],
+              pagination :page +1,
           })
+          for (var i = 0; i < response.data.pageMetaData.totalPages; i++) {
+            var joined = this.state.total_pages.concat(i);
+            this.setState({ total_pages: joined })
+
+        }
         }
 
     })
@@ -152,7 +164,7 @@ class Tickets extends React.Component {
         ticketPurchasable : purchasable,
         ticket_name : null
     })
-    this.getAllTickets(this.state.ticketPurchasable)
+    this.getAllTickets(this.state.pagination-1,this.state.ticketPurchasable)
 }
 
 
@@ -243,7 +255,7 @@ class Tickets extends React.Component {
         {/* START OF FILTER SECTION */}
         <div className='row page-container mt-3 mtm-5 ticket-filter-wrapper' style={{paddingBottom:'6vw',borderBottom:'1vw solid #9FADBB'}}>
             <div className={this.state.ticketPurchasable ? 'col-6 ps-0' :  'col-12 ps-0 pe-0' }>
-                    <input name="ticket_name" onKeyPress={(e) => {(e.key === 'Enter' && this.getAllTickets(this.state.ticketPurchasable,this.state.ticket_name))}}  onChange={this.onChange} defaultValue="" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder={this.state.ticketPurchasable ? "Cari Tiket" : "Cari Paket Wisata"} />
+                    <input name="ticket_name" onKeyPress={(e) => {(e.key === 'Enter' && this.getAllTickets(0,this.state.ticketPurchasable,this.state.ticket_name))}}  onChange={this.onChange} defaultValue="" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder={this.state.ticketPurchasable ? "Cari Tiket" : "Cari Paket Wisata"} />
             </div>     
             {this.state.ticketPurchasable &&
                 <div className='col-6 pe-0'>
@@ -286,6 +298,29 @@ class Tickets extends React.Component {
                     )
                 })              
             } 
+        </div>
+        <div className='pb-5 mt-3' style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <div className="pagination-client">
+            {
+            this.state.total_pages.map( (e , index) => {
+                return(
+                <React.Fragment>
+                    {
+                    this.state.pagination == e+1 ?
+                    <a style={{cursor:'pointer'}} onClick={() => this.getAllTickets(e,this.state.ticketPurchasable)}  className="active">{e+1}</a>
+                    :
+                    <a style={{cursor:'pointer'}} onClick={() => this.getAllTickets(e,this.state.ticketPurchasable)}  >{e+1}</a>
+
+                
+                        }
+
+                        </React.Fragment>
+
+                    )
+                })              
+                } 
+                {/*<a href="">Next</a>*/}
+            </div>
         </div>
         {/* END OF AVAILABLE TICKETS */}
         

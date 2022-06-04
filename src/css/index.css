@@ -1029,3 +1029,28 @@ body{
 
 /* end of side bar styling*/
 
+
+
+/* START OF PAGINATION */
+.pagination-client {
+    display: inline-block;
+}
+  
+  .pagination-client a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination-client a.active {
+    background-color: #1D8ECE;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .pagination-client a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+  }
+/* END OF PAGINATION */
