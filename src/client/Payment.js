@@ -21,11 +21,18 @@ class TicketDetail extends React.Component {
       totalPrice    : 0,
       progress      : 1,
       tickets       : [],
-      visit_date    : null,
-      first_name    : null,
-      last_name     : null,
-      phone_number  : null,
+      visitDate    : null,
+      firstname    : null,
+      lastname     : null,
+      phoneNumber  : null,
       email         : null,
+      isLoading     : false,
+      visitDateError  : null,
+      firstnameError  : null,
+      lastnameError  : null,
+      phoneNumberError  : null,
+      emailError  : null,
+      errorMessage : null
     }
   }
 
@@ -36,6 +43,11 @@ class TicketDetail extends React.Component {
       
   }
 
+  disabledPreviousDate (){
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("visitDate")[0].setAttribute('min', today);
+  }
+
 
   onChange = (e) =>{
     this.setState({
@@ -43,7 +55,11 @@ class TicketDetail extends React.Component {
     })
   }
 
-  createOrder = async() =>{
+  createOrder = async(event) =>{
+
+    event.preventDefault();
+    
+    this.showLoading()
 
     const orderItems = []
 
@@ -57,10 +73,11 @@ class TicketDetail extends React.Component {
 
     const data = {
       "email"     : this.state.email,
-      "firstname" : this.state.first_name,
-      "lastname"  : this.state.last_name,
+      "firstname" : this.state.firstname,
+      "lastname"  : this.state.lastname,
+      "phoneNumber"  : this.state.phoneNumber,
       "orderItems": orderItems,
-      "visitDate" : this.state.visit_date,
+      "visitDate" : this.state.visitDate,
     }
 
     const headers = {
@@ -73,12 +90,65 @@ class TicketDetail extends React.Component {
     
     .then((response) => {
         if(response.data.success){
+          this.setState({
+            isLoading : true
+            })
           this.listenerMidtransSnap(response.data.content.midtrans.token)
+          window.localStorage.removeItem('cart');
+
 
         }
 
     })
     .catch((error) => {
+
+       
+        this.setState({
+          visitDateError  : null,
+          firstnameError  : null,
+          lastnameError  : null,
+          phoneNumberError  : null,
+          emailError  : null,
+          errorMessage : null
+        })
+        if(error.response.data.errorMessage){
+          this.setState({
+            errorMessage : error.response.data.errorMessage
+          })
+        }
+        else{
+          for(let i = 0;i < error.response.data.errorFieldList.length ; i++){
+
+            //nge check apakah ada error related field
+            let obj = error.response.data.errorFieldList.find(o => o.relatedField === error.response.data.errorFieldList[i].relatedField)
+            if(obj){
+              console.log('obj', obj.relatedField)
+              switch(obj.relatedField){
+                case 'email':
+                  this.setState({emailError : obj.message})
+                  break
+                case 'lastname':
+                  this.setState({lastnameError : obj.message})
+                  break
+  
+                case 'visitDate':
+                  this.setState({visitDateError : obj.message})
+                  break
+  
+                case 'firstname':
+                  this.setState({firstnameError : obj.message})
+                  break
+  
+                case 'phoneNumber':
+                  this.setState({phoneNumberError : obj.message})
+                  break
+  
+              }
+            }
+          }
+
+        }
+        
         
     })
 
@@ -101,7 +171,8 @@ class TicketDetail extends React.Component {
             myNav.classList.add("nav-transparent");
             myNav.classList.remove("nav-colored");
             myNav.classList.remove("nav-scroll-padding");
-            burgerButton[0].classList.remove("burger-scroll-top");
+            if(burgerButton[0])
+              burgerButton[0].classList.remove("burger-scroll-top");
 
         }
     };
@@ -112,9 +183,9 @@ class TicketDetail extends React.Component {
 
 
   componentDidMount(){
-    this.addNavbarBorder()
-    //this.listenerMidtransSnap()
     this.getTicketsFromCart()
+    this.addNavbarBorder()
+    this.disabledPreviousDate()
   }
 
   showLoading(){
@@ -217,6 +288,18 @@ class TicketDetail extends React.Component {
 
 
   render(){
+    if(this.state.isLoading){
+      return (
+        <div className='row page-container mt-4' style={{display:'flex',flexDirection:'column',alignItems:'center',width:'100%'}}>
+            <div className='col-12 ps-0 pe-0' style={{textAlign:'center',marginTop:'20vw'}}>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Sedang membuat transaksi...</p>
+            </div>
+        </div>
+      )
+    }
+    else{
+
+    
     return(
       <div className="">
         <Helmet>
@@ -307,10 +390,10 @@ class TicketDetail extends React.Component {
             <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Informasi Pribadi</p>
             <div className='row mt-4'>
               <div className='col-6 ps-0 '>
-                  <input  name="full_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Nama Lengkap" />
+                  <input required  name="full_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Nama Lengkap" />
               </div> 
               <div className='col-6 pe-0 '>
-                  <input  name="phone_number" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Nomor Telepon" />
+                  <input  name="phoneNumber" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Nomor Telepon" />
               </div> 
               <div className='col-12 pe-0 ps-0 mtm-5 mt-4'>
                   <input  name="email" type="email" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Email" />
@@ -321,42 +404,54 @@ class TicketDetail extends React.Component {
           
           <div className='mtm-5 mt-3' style={{display:'flex',alignItems:'center'}}>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px',width:'50%'}}>Tanggal Kunjungan</p>
-            <input  name="visit_date" type="date" class="px-18 input_field_text" style={{marginLeft:'2vw',height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Email" />
+            <input  name="visitDate" type="date" class="px-18 input_field_text" style={{marginLeft:'2vw',height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Email" />
 
 
           </div>  
         </div>
       */}
+        <form onSubmit={this.createOrder}>
+
+       
         <div className='page-container upper-page-padding-small'>  
           <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Informasi Pengunjung</p>
+          <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.errorMessage}</p>
+
           {/*START OF ONE INPUT */}
           <div className='mt-4'>
             <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Tanggal Kunjungan</p>
-            <input required name="visit_date" value={this.state.visit_date} onChange={this.onChange} type="date" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukan tanggal kunjungan" />
+            <input required name="visitDate" value={this.state.visitDate} onChange={this.onChange} type="date" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukan tanggal kunjungan" />
+            <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.visitDateError}</p>
+
           </div>  
           {/*END OF ONE INPUT */}
           {/*START OF ONE INPUT */}
           <div className='mt-4' style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
             <div className='pe-2'>
               <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nama Depan</p>
-              <input required name="first_name" value={this.state.first_name} onChange={this.onChange} type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="John" />
+              <input required name="firstname" value={this.state.firstname} onChange={this.onChange} type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="John" />
+              <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.firstnameError}</p>
             </div>
             <div className='ps-2'>
               <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nama Keluarga</p>
-              <input required name="last_name" value={this.state.last_name} onChange={this.onChange} type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Doe" />
+              <input required name="lastname" value={this.state.lastname} onChange={this.onChange} type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Doe" />
+              <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.lastnameError}</p>
             </div>
           </div>  
           {/*END OF ONE INPUT */}
           {/*START OF ONE INPUT */}
           <div className='mt-4'>
             <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nomor Kontak</p>
-            <input required name="phone_number" value={this.state.phone_number} onChange={this.onChange} type="number" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="+628111344759" />
+            <input required name="phoneNumber" value={this.state.phoneNumber} onChange={this.onChange} type="number" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="+628111344759" />
+            <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.phoneNumberError}</p>
           </div>  
           {/*END OF ONE INPUT */}
           {/*START OF ONE INPUT */}
           <div className='mt-4'>
             <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Email</p>
             <input required name="email" value={this.state.email} onChange={this.onChange} type="email" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="john@doe.com" />
+            <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.emailError}</p>
+            
           </div>  
           {/*END OF ONE INPUT */}
 
@@ -364,16 +459,16 @@ class TicketDetail extends React.Component {
         {/* END OF PERSONAL INFORMATION SECTION*/}
 
         <div className='row page-container mtm-5 mt-5 pb-5'>
-          <button onClick={() => this.createOrder()} className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Pilih Metode Pembayaran</button>
-          <button id="pay-button">Pay!</button>
+          <button type="submit" className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Pilih Metode Pembayaran</button>
         </div>
-        
+        </form>
 
 
 
        
       </div>
       )
+    }
   }
 }
 

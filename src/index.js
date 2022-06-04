@@ -18,6 +18,7 @@ import PaymentCompleted from './client/payment_status/PaymentCompleted';
 import PaymentExpired from './client/payment_status/PaymentExpired';
 import PaymentWaiting from './client/payment_status/PaymentWaiting';
 import PageNotFound from './client/PageNotFound';
+import PaymentStatus from './client/payment_status/PaymentStatus';
 
 ReactDOM.render(
   <Router>
@@ -30,6 +31,7 @@ ReactDOM.render(
       <Route path="/tickets" exact={true} component={Tickets} />
       <Route path="/cart" exact={true} component={Cart} />
       <Route path="/checkout" exact={true} component={Payment} />
+      <Route path="/payment-status" exact={true} component={PaymentStatus} />
       <Route path="/payment-completed" exact={true} component={PaymentCompleted} />
       <Route path="/payment-expired" exact={true} component={PaymentExpired} />
       <Route path="/payment-waiting" exact={true} component={PaymentWaiting} />

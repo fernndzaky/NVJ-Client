@@ -1,5 +1,6 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
+import {useLocation} from "react-router-dom";
 
 import '../../css/index.css';
 
@@ -45,9 +46,18 @@ class PaymentCompleted extends React.Component {
 
   componentDidMount(){
     this.addNavbarBorder()
+    this.getTransactionDetail()
   }
 
   componentDidUpdate(){
+  }
+
+  getTransactionDetail = () => {
+    const search = this.props.location.search;
+    const order_id = new URLSearchParams(search).get("order_id");
+    const transaction_status = new URLSearchParams(search).get("transaction_status");
+    console.log(order_id)
+    console.log(transaction_status)
   }
 
 
