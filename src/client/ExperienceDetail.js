@@ -225,7 +225,10 @@ class ExperienceDetail extends React.Component {
         {/* START OF TOP SECTION*/}
         <div className='row'>
             <div className='col-12 ps-0 pe-0' style={{textAlign:'center'}}>
+                <div className='page-container'>
                 <p className='px-36 mt-4 mtm-5' style={{color:'#333333',fontFamily:'Nunito Bold'}}>{this.state.experience_title}</p>
+
+                </div>
                 {/* START OF TOP CAROUSEL */}
                 <div id="banner_carousel" className="carousel slide ps-0 pe-0 mt-5 mtm-5" data-ride="carousel">
                     <ol className="carousel-indicators">

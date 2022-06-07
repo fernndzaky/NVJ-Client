@@ -383,85 +383,58 @@ class TicketDetail extends React.Component {
 
 
         {/* START OF PERSONAL INFORMATION SECTION*/}
-        {/* 
-        <div className='page-container upper-page-padding-small'>  
-  
-          <div className='cart-wrapper' style={{padding:'5vw',boxShadow: '1px 1px 4px #D4D4D4',borderRadius:'3vw'}}>
-            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Informasi Pribadi</p>
-            <div className='row mt-4'>
-              <div className='col-6 ps-0 '>
-                  <input required  name="full_name" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Nama Lengkap" />
-              </div> 
-              <div className='col-6 pe-0 '>
-                  <input  name="phoneNumber" type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Nomor Telepon" />
-              </div> 
-              <div className='col-12 pe-0 ps-0 mtm-5 mt-4'>
-                  <input  name="email" type="email" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Email" />
-              </div> 
-
-            </div>
-          </div>    
-          
-          <div className='mtm-5 mt-3' style={{display:'flex',alignItems:'center'}}>
-            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px',width:'50%'}}>Tanggal Kunjungan</p>
-            <input  name="visitDate" type="date" class="px-18 input_field_text" style={{marginLeft:'2vw',height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Email" />
-
-
-          </div>  
-        </div>
-      */}
+        
         <form onSubmit={this.createOrder}>
-
        
-        <div className='page-container upper-page-padding-small'>  
-          <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Informasi Pengunjung</p>
-          <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.errorMessage}</p>
+          <div className='page-container upper-page-padding-small'>  
+            <p className='px-28' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Informasi Pengunjung</p>
+            <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.errorMessage}</p>
 
-          {/*START OF ONE INPUT */}
-          <div className='mt-4'>
-            <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Tanggal Kunjungan</p>
-            <input required name="visitDate" value={this.state.visitDate} onChange={this.onChange} type="date" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukan tanggal kunjungan" />
-            <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.visitDateError}</p>
+            {/*START OF ONE INPUT */}
+            <div className='mt-4'>
+              <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Tanggal Kunjungan</p>
+              <input required name="visitDate" value={this.state.visitDate} onChange={this.onChange} type="date" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Masukan tanggal kunjungan" />
+              <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.visitDateError}</p>
 
-          </div>  
-          {/*END OF ONE INPUT */}
-          {/*START OF ONE INPUT */}
-          <div className='mt-4' style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-            <div className='pe-2'>
-              <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nama Depan</p>
-              <input required name="firstname" value={this.state.firstname} onChange={this.onChange} type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="John" />
-              <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.firstnameError}</p>
-            </div>
-            <div className='ps-2'>
-              <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nama Keluarga</p>
-              <input required name="lastname" value={this.state.lastname} onChange={this.onChange} type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Doe" />
-              <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.lastnameError}</p>
-            </div>
-          </div>  
-          {/*END OF ONE INPUT */}
-          {/*START OF ONE INPUT */}
-          <div className='mt-4'>
-            <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nomor Kontak</p>
-            <input required name="phoneNumber" value={this.state.phoneNumber} onChange={this.onChange} type="number" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="+628111344759" />
-            <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.phoneNumberError}</p>
-          </div>  
-          {/*END OF ONE INPUT */}
-          {/*START OF ONE INPUT */}
-          <div className='mt-4'>
-            <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Email</p>
-            <input required name="email" value={this.state.email} onChange={this.onChange} type="email" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="john@doe.com" />
-            <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.emailError}</p>
-            
-          </div>  
-          {/*END OF ONE INPUT */}
+            </div>  
+            {/*END OF ONE INPUT */}
+            {/*START OF ONE INPUT */}
+            <div className='mt-4' style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+              <div className='pe-2'>
+                <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nama Depan</p>
+                <input required name="firstname" value={this.state.firstname} onChange={this.onChange} type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="John" />
+                <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.firstnameError}</p>
+              </div>
+              <div className='ps-2'>
+                <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nama Keluarga</p>
+                <input required name="lastname" value={this.state.lastname} onChange={this.onChange} type="text" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="Doe" />
+                <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.lastnameError}</p>
+              </div>
+            </div>  
+            {/*END OF ONE INPUT */}
+            {/*START OF ONE INPUT */}
+            <div className='mt-4'>
+              <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nomor Kontak</p>
+              <input required name="phoneNumber" value={this.state.phoneNumber} onChange={this.onChange} type="number" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="+628111344759" />
+              <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.phoneNumberError}</p>
+            </div>  
+            {/*END OF ONE INPUT */}
+            {/*START OF ONE INPUT */}
+            <div className='mt-4'>
+              <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Email</p>
+              <input required name="email" value={this.state.email} onChange={this.onChange} type="email" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="john@doe.com" />
+              <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.emailError}</p>
+              
+            </div>  
+            {/*END OF ONE INPUT */}
 
-        </div>
-        {/* END OF PERSONAL INFORMATION SECTION*/}
+          </div>
 
-        <div className='row page-container mtm-5 mt-5 pb-5'>
-          <button type="submit" className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Pilih Metode Pembayaran</button>
-        </div>
+          <div className='row page-container mtm-5 mt-5 pb-5'>
+            <button type="submit" className='px-18 btn-grey mtm-5' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%',border:'none'}}>Pilih Metode Pembayaran</button>
+          </div>
         </form>
+        {/* END OF PERSONAL INFORMATION SECTION*/}
 
 
 

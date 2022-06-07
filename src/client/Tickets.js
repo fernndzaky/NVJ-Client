@@ -183,73 +183,29 @@ class Tickets extends React.Component {
         <Navbar></Navbar>
         
         {/* START OF TOP CONTENT */}
-        <div >
-             {/* START OF TOP CAROUSEL */}
-
-             {/* 
-             <div id="banner_carousel" className="carousel slide" data-ride="carousel">
-                <ol className="carousel-indicators">
-                    <li data-target="#banner_carousel" data-slide-to={0} className="active" />
-                    <li data-target="#banner_carousel" data-slide-to={1} />
-                    <li data-target="#banner_carousel" data-slide-to={2} />
-                    <li data-target="#banner_carousel" data-slide-to={3} />
-                    <li data-target="#banner_carousel" data-slide-to={4} />
-                    <li data-target="#banner_carousel" data-slide-to={5} />
-                </ol>
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-1.JPG" alt="First slide" />
+        <div className='row page-container mt-5 mtm-5'>
+            <div className='col-12 ps-0 pe-0'>
+                {/* START OF TOGGLE */}
+                <div className='mb-5' style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                    <div onClick={()=> this.changeTicketType(true)} className={this.state.ticketPurchasable ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"}  style={{borderRadius:'10px 0px 0px 10px',width:'50%'}}>
+                        <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Tiket</p>
                     </div>
-                    <div className="carousel-item">
-                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-2.JPG" alt="Second slide" />
-                    </div>
-                    <div className="carousel-item">
-                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-3.JPG" alt="Third slide" />
-                    </div>
-                    <div className="carousel-item">
-                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-4.JPG" alt="Third slide" />
-                    </div>
-                    <div className="carousel-item">
-                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-5.JPG" alt="Third slide" />
-                    </div>
-                    <div className="carousel-item">
-                        <img className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src="/assets/images/Galleries/Galeri-6.JPG" alt="Third slide" />
+                    <div onClick={()=> this.changeTicketType(false)} className={!this.state.ticketPurchasable ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"} style={{borderRadius:'0px 10px 10px 0px',width:'50%'}}>
+                        <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Paket Wisata</p>
                     </div>
                 </div>
-                <a className="carousel-control-prev" href="#banner_carousel" role="button" data-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true" />
-                </a>
-                <a className="carousel-control-next" href="#banner_carousel" role="button" data-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true" />
-                </a>
+                {/* END OF TOGGLE */}
+                {this.state.ticketType === 'tickets' ?
+                    <p className='px-36 mt-4' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Daftar Tiket <br></br> Dusun Butuh</p>
+                    :
+                    <p className='px-36 mt-4' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Daftar Paket Wisata</p>
+                }
             </div>
-            */}
-            {/* END OF TOP CAROUSEL */}
-
-            <div className='row page-container mt-5 mtm-5'>
-                <div className='col-12 ps-0 pe-0'>
-                    {/* START OF TOGGLE */}
-                    <div className='mb-5' style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
-                        <div onClick={()=> this.changeTicketType(true)} className={this.state.ticketPurchasable ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"}  style={{borderRadius:'10px 0px 0px 10px',width:'50%'}}>
-                            <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Tiket</p>
-                        </div>
-                        <div onClick={()=> this.changeTicketType(false)} className={!this.state.ticketPurchasable ? "ticket-blue-btn ticket-blue-btn-active" : "ticket-blue-btn"} style={{borderRadius:'0px 10px 10px 0px',width:'50%'}}>
-                            <p className="px-18" style={{fontFamily: 'Roboto Bold',marginBottom:'0px'}}>Paket Wisata</p>
-                        </div>
-                    </div>
-                    {/* END OF TOGGLE */}
-                    {this.state.ticketType === 'tickets' ?
-                        <p className='px-36 mt-4' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Daftar Tiket <br></br> Dusun Butuh</p>
-                        :
-                        <p className='px-36 mt-4' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Daftar Paket Wisata</p>
-                    }
-                </div>
-                <div className='col-12 ps-0 pe-0 mt-4 mtm-5' >
-                    <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',textAlign:'justify'}}>Ingin memesan tiket untuk wisata-wisata di Dusun Butuh? Silahkan jelajahi halamann ini untuk melihat semua tiket dan juga paket wisata yang ditawarkan oleh Dusun Butuh Nepal Van Java.</p>
-                </div>
+            <div className='col-12 ps-0 pe-0 mt-4 mtm-5' >
+                <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',textAlign:'justify'}}>Ingin memesan tiket untuk wisata-wisata di Dusun Butuh? Silahkan jelajahi halamann ini untuk melihat semua tiket dan juga paket wisata yang ditawarkan oleh Dusun Butuh Nepal Van Java.</p>
             </div>
-
         </div>
+
         {/* END OF TOP CONTENT */}
 
         {/* START OF FILTER SECTION */}

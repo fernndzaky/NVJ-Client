@@ -57,7 +57,7 @@ class PageNotFound extends React.Component {
       <div className="">
         <Helmet>
             <title>
-            Tentang Kami - Dusun Butuh Nepal Van Java
+            Halaman Tidak Ditemukan - Dusun Butuh Nepal Van Java
             </title>
             <meta
                 name="description"
