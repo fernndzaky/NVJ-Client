@@ -48,7 +48,8 @@ class ExperienceDetail extends React.Component {
             myNav.classList.add("nav-transparent");
             myNav.classList.remove("nav-colored");
             myNav.classList.remove("nav-scroll-padding");
-            burgerButton[0].classList.remove("burger-scroll-top");
+            if(burgerButton[0])
+                burgerButton[0].classList.remove("burger-scroll-top");
 
         }
     };
