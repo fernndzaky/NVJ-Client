@@ -17,7 +17,7 @@ class PaymentStatus extends React.Component {
     this.state = {
       progress : 1,
       orderDetail : {},
-      paymentStatus : 'settlement',
+      paymentStatus : null,
       orderItems : [],
       visitDate : null,
       orderId : null
@@ -72,7 +72,6 @@ class PaymentStatus extends React.Component {
   componentDidMount(){
     this.addNavbarBorder()
     this.getTransactionDetail()
-    console.log(this.state.orderDetail)
   }
 
   componentDidUpdate(){
@@ -101,8 +100,10 @@ class PaymentStatus extends React.Component {
                 orderDetail : response.data.content,
                 orderItems : response.data.content.orderItems,
                 visitDate : response.data.content.visitDate.split('T')[0],
-                orderId   : response.data.content.midtrans.orderId
+                orderId       : response.data.content.midtrans.orderId,
+                paymentStatus : response.data.content.midtrans.transactionStatus
             })
+
         }
 
     })

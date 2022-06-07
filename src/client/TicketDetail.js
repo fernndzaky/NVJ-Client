@@ -99,7 +99,7 @@ class TicketDetail extends React.Component {
           this.setState({
             title         : response.data.content[0].title,
             price         : response.data.content[0].price,
-            description   : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text.',
+            description   : response.data.content[0].description,
             ticket_id     : response.data.content[0].id,
             purchaseAble  : response.data.content[0].purchasable,
             phoneNumber   : response.data.content[0].phoneNumber,
