@@ -196,7 +196,7 @@ class Tickets extends React.Component {
                     </div>
                 </div>
                 {/* END OF TOGGLE */}
-                {this.state.ticketType === 'tickets' ?
+                {this.state.ticketPurchasable ?
                     <p className='px-36 mt-4' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Daftar Tiket <br></br> Dusun Butuh</p>
                     :
                     <p className='px-36 mt-4' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Daftar Paket Wisata</p>

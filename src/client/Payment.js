@@ -63,6 +63,11 @@ class TicketDetail extends React.Component {
 
     const orderItems = []
 
+    this.setState({
+      isLoading : true
+      })
+
+
     await this.state.tickets.map( (e , index) => {
       const tempItem = {
         "quantity" : e.qty,
@@ -84,6 +89,7 @@ class TicketDetail extends React.Component {
       'accept': '*/*',
     }
 
+   
     await api.post('/client/orders/create', data, {
       headers: headers
     })
@@ -91,7 +97,7 @@ class TicketDetail extends React.Component {
     .then((response) => {
         if(response.data.success){
           this.setState({
-            isLoading : true
+            isLoading : false
             })
           this.listenerMidtransSnap(response.data.content.midtrans.token)
           window.localStorage.removeItem('cart');
