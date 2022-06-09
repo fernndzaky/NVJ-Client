@@ -196,7 +196,8 @@ class HomePage extends React.Component {
                 </a>
             </div>
             {/* END OF TOP CAROUSEL */}
-            <div className='row page-container upper-page-padding-small'>
+            <div className='row page-container upper-page-padding-small ' style={{background: `url('/assets/images/BG_Image.png') no-repeat center`,
+                                                    backgroundSize: '90%'}}>
                 <div className='col-xs-12 ps-0 pe-0'>
                     <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Dusun Butuh Nepal Van Java</p>
                 </div>
@@ -330,19 +331,7 @@ class HomePage extends React.Component {
                     modules={[Pagination]}
                     className="mySwiper"
                 >
-               
-                <SwiperSlide>
-                    <div>
-                        <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
-                            <img className='img-fluid' src="/assets/images/Testimonies/Testimony-1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
-                        </div>
-                        <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
-                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Negeri di atas awan. Desa yang unik. Rumah-rumah dibangun memeluk tebing, satu di atas yang lain. Jalan-jalan desa sangat terjal. Ada ojek dari parkiran mobil untuk keliling dusun Butuh sampai ke bawah base camp Gunung Sumbing.”</p>
-                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Brasukra G Sudjana</p>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
+               <SwiperSlide>
                     <div>
                         <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
                             <img className='img-fluid' src="/assets/images/Testimonies/Testimony-5.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
@@ -356,6 +345,17 @@ class HomePage extends React.Component {
                             <br></br> 
                             Kalian bisa jalan” menelusuri kampung ini. Penduduknya ruuuaaaamah banget. Sering ditawarin mampir sekedar minum teh. Debest untuk desa ini. Dan alhamdulillah pas kesana pemandangannyaaaaa. Bagus banget parah”</p>
                             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Rizal zm</p>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div>
+                        <div className='testimony-outline-wrapper' style={{width:'25vw',height:'25vw',borderRadius:'50%',marginLeft:'5vw',border:'1vw solid #FFFFFF'}}>
+                            <img className='img-fluid' src="/assets/images/Testimonies/Testimony-1.png" style={{width:'100%',borderRadius:'50%',height:'100%',objectFit:'cover'}} alt="Testimony" />
+                        </div>
+                        <div className='testimony-content-wrapper' style={{padding:'17vw 5vw 5vw 5vw',borderRadius:'4vw',marginTop:'-13vw',boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.15)'}}>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'5vw'}}>“Negeri di atas awan. Desa yang unik. Rumah-rumah dibangun memeluk tebing, satu di atas yang lain. Jalan-jalan desa sangat terjal. Ada ojek dari parkiran mobil untuk keliling dusun Butuh sampai ke bawah base camp Gunung Sumbing.”</p>
+                            <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>Brasukra G Sudjana</p>
                         </div>
                     </div>
                 </SwiperSlide>
