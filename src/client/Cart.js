@@ -202,7 +202,7 @@ class Cart extends React.Component {
         }          
     }
 
-    localStorage.setItem("cart", JSON.stringify(current_cart));
+    await localStorage.setItem("cart", JSON.stringify(current_cart));
 
     //get new tickets based on newly updated local storage
     await this.getTicketsFromCart()
