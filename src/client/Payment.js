@@ -76,6 +76,7 @@ class TicketDetail extends React.Component {
       orderItems.push(tempItem)
     })
 
+
     const data = {
       "email"     : this.state.email,
       "firstname" : this.state.firstname,
@@ -115,7 +116,8 @@ class TicketDetail extends React.Component {
           lastnameError  : null,
           phoneNumberError  : null,
           emailError  : null,
-          errorMessage : null
+          errorMessage : null,
+          isLoading : false
         })
         if(error.response.data.errorMessage){
           this.setState({

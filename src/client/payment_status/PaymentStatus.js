@@ -20,7 +20,8 @@ class PaymentStatus extends React.Component {
       paymentStatus : null,
       orderItems : [],
       visitDate : null,
-      orderId : null
+      orderId : null,
+      emailResent : false,
     }
   }
 
@@ -102,6 +103,39 @@ class PaymentStatus extends React.Component {
                 visitDate : response.data.content.visitDate.split('T')[0],
                 orderId       : response.data.content.midtrans.orderId,
                 paymentStatus : response.data.content.midtrans.transactionStatus
+            })
+
+        }
+
+    })
+    .catch((error) => {
+        if(error.response.data.errorMessage === 'The requested midtrans-orderId does not exists')
+          window.location.href = '/404'
+    })
+  }
+
+
+  resendEmail = async() => {
+    this.setState({
+      emailResent : false
+    })
+    const search = this.props.location.search;
+    const order_id = new URLSearchParams(search).get("order_id");
+
+    const headers = {
+      'accept': '*/*',
+    }
+
+    this.showLoading()
+
+    await api.post('/client/orders/resendEmailByMidtransOrderId?midtransOrderId='+order_id, {
+      headers: headers
+    })
+        
+    .then((response) => {
+        if(response.data.success){
+            this.setState({
+              emailResent : true
             })
 
         }
@@ -199,9 +233,14 @@ class PaymentStatus extends React.Component {
           <div className='col-12 ps-0 pe-0'>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Belum menerima email?</p>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Klik tombol di bawah untuk mengirim ulang ke email yang telah diisi sebelumnya.</p>
-            <button className='px-18 btn-outline-grey w-100 mt-3' style={{fontFamily:'Roboto Bold',backgroundColor:'#FFFFFF'}}>
+            <button onClick={this.resendEmail}  className='px-18 btn-outline-grey w-100 mt-3' style={{fontFamily:'Roboto Bold',backgroundColor:'#FFFFFF'}}>
             Kirim Ulang Email
             </button>
+            {this.state.emailResent &&
+              <div style={{textAlign:'center'}}>
+                <p className='px-18 mt-2' style={{color:'#1D8ECE',fontFamily:'Roboto Regular'}}>Berhasil kirim ulang email!</p>
+              </div> 
+            }
           </div>
 
         </div>
@@ -275,9 +314,14 @@ class PaymentStatus extends React.Component {
           <div className='col-12 ps-0 pe-0'>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold'}}>Belum menerima email?</p>
             <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Regular'}}>Klik tombol di bawah untuk mengirim ulang ke email yang telah diisi sebelumnya.</p>
-            <button className='px-18 btn-outline-grey w-100 mt-4' style={{fontFamily:'Roboto Bold',backgroundColor:'#FFFFFF'}}>
+            <button onClick={this.resendEmail} className='px-18 btn-outline-grey w-100 mt-4' style={{fontFamily:'Roboto Bold',backgroundColor:'#FFFFFF'}}>
             Kirim Ulang Email
             </button>
+            {this.state.emailResent &&
+              <div style={{textAlign:'center'}}>
+                <p className='px-18 mt-2' style={{color:'#1D8ECE',fontFamily:'Roboto Regular'}}>Berhasil kirim ulang email!</p>
+              </div>
+          }
           </div>
 
         </div>
