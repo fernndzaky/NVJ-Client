@@ -1,5 +1,7 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {isMobile} from 'react-device-detect';
 import '../css/index.css';
 
 // Components Import
@@ -171,7 +173,34 @@ class AboutUs extends React.Component {
                     <a href="/experiences" className='px-18 btn-grey' style={{fontFamily:'Roboto Bold',textDecoration:'none',display:'inline-block',width:'100%'}}>Lihat Semua Wisata</a>
                 </div>
             </div>
+
+            {/* START OF CONTACT US */}
+            <div className='col-12 pe-0 plm-0 upper-page-padding-small mt-4'>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Hubungi Kami</p>
+                <div className='contact-us-wrapper mtm-5' style={{padding:'5vw',boxShadow: '1px 1px 4px rgba(0, 0, 0, 0.25)',borderRadius:'4vw'}}>
+                    <div style={{display:'flex',alignItems:'flex-start'}}>
+                        <FontAwesomeIcon icon="envelope" className='px-24' style={{color:'#9FADBB'}} />
+                        <p className='px-18 ms-3' style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>pesonadusunbutuh@gmail.com</p>
+                    </div>
+                    <div id="contact-us-item-wrapper" style={{display:'flex',alignItems:'flex-start',marginTop:'8vw'}}>
+                        <FontAwesomeIcon icon="phone" className='px-24' style={{color:'#9FADBB'}} />
+                        <p className='px-18 ms-3' style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>(Pak Lilik) +62 823-2356-7878</p>
+                    </div>
+                    <div id="contact-us-item-wrapper" style={{display:'flex',alignItems:'flex-start',marginTop:'8vw'}}>
+                        <FontAwesomeIcon icon="search-location" className='px-24' style={{color:'#9FADBB'}} />
+                        <div className='ms-3'>
+                            <p className={isMobile ?'px-18':'px-18 mb-3'} style={{fontFamily:'Roboto Regular',marginBottom:'0px'}}>Dusun, Butuh, Temanggung, Kec. Kaliangkrik, Kabupaten Magelang, Jawa Tengah 56153</p>
+                            <a className='px-18 pt-3' target="_blank" rel="noreferrer" href="https://goo.gl/maps/NS7WP7hdqjAH1cNdA" style={{fontFamily:'Roboto Regular',marginBottom:'0px',textDecoration:'none',color:'#0D51D6',display:'inline-block'}}>Lihat di Google Map</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {/* END OF CONTACT US */}
         </div>
+
+        
         
             <BottomNavbar></BottomNavbar>
 
