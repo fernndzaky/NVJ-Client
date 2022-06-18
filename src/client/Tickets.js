@@ -120,8 +120,6 @@ class Tickets extends React.Component {
         "purchasable": purchasable,
     }
 
-    console.log('data',data)
-
     if(title)
         data["title"] = title
     
