@@ -180,7 +180,7 @@ class Experiences extends React.Component {
                                                 currentTarget.onerror = null; // prevents looping
                                                 currentTarget.src='/assets/images/Background-1.png';
                                             }} 
-                                            src={e.thumbnail} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
+                                            src={e.thumbnail} style={{width:'100%',height:'100%',objectFit:'contain',borderRadius:'50%'}} alt="First Testimony" />
                                         </div> 
                                         <div className='mt-2' style={{textAlign:'center'}}>
                                             <ClampLines

@@ -263,7 +263,7 @@ class ExperienceDetail extends React.Component {
                                             currentTarget.onerror = null; // prevents looping
                                             currentTarget.src='/assets/images/Background-1.png';
                                         }} 
-                                        className="d-block w-100 extra-big-image-carousel" style={{objectFit:'cover'}} src={e} alt="Carousel Image" />
+                                        className="d-block w-100 extra-big-image-carousel" style={{objectFit:'contain'}} src={e} alt="Carousel Image" />
                                     </div>
                                 }
                             </React.Fragment>
