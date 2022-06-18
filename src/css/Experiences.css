@@ -84,3 +84,9 @@
         border: 0.5vw solid #1BC47D !important;
     }
 }
+
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  filter: invert(1);
+}
