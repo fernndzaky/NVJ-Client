@@ -180,7 +180,7 @@ class Experiences extends React.Component {
                                                 currentTarget.onerror = null; // prevents looping
                                                 currentTarget.src='/assets/images/Background-1.png';
                                             }} 
-                                            src={e.thumbnail} style={{width:'100%',height:'100%',objectFit:'contain',borderRadius:'50%'}} alt="First Testimony" />
+                                            src={e.thumbnail} style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}} alt="First Testimony" />
                                         </div> 
                                         <div className='mt-2' style={{textAlign:'center'}}>
                                             <ClampLines
@@ -253,7 +253,7 @@ class Experiences extends React.Component {
                                         currentTarget.onerror = null; // prevents looping
                                         currentTarget.src='/assets/images/Background-1.png';
                                     }} 
-                                    className="d-block w-100 big-image-carousel" style={{objectFit:'cover'}} src={e} alt='Carousel Image' />
+                                    className="d-block w-100 big-image-carousel" style={{objectFit:'contain'}} src={e} alt='Carousel Image' />
                                 </div>
                             }
                             </React.Fragment>
