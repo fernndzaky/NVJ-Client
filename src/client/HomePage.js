@@ -318,9 +318,17 @@ class HomePage extends React.Component {
 
         {/* START OF TESTIMONIES */}
         <div className='row upper-page-padding'>
-                <div className='col-12 page-container'>
+            <div className='col-12 page-container'>
+                <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Video dari <br></br> <span className='px-28'>  Instagram: <span style={{color:'#1BC47D'}}>@zakyarsy</span></span> </p>
+                <video width="100%" controls >
+                    <source src="/assets/videos/video-1.mp4" type="video/mp4"/>
+                </video>
+            </div>
+        </div>
+        <div className='row upper-page-padding'>
+            <div className='col-12 page-container'>
                 <p className='px-36' style={{color:'#333333',fontFamily:'Nunito Bold',whiteSpace:'pre-line'}}>Apa kata mereka?</p>
-                </div>
+            </div>
             <div className='col-12 page-container-left pe-0 mt-4 mtm-5'>
                 <Swiper
                     slidesPerView={1.3}
