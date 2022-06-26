@@ -423,7 +423,7 @@ class TicketDetail extends React.Component {
             {/*START OF ONE INPUT */}
             <div className='mt-4'>
               <p className='px-18' style={{color:'#1D8ECE',fontFamily:'Roboto Regular',marginBottom:'0px'}}>Nomor Kontak</p>
-              <input required name="phoneNumber" value={this.state.phoneNumber} onChange={this.onChange} type="number" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="+628111344759" />
+              <input required name="phoneNumber" value={this.state.phoneNumber} onChange={this.onChange} type="number" class="px-18 input_field_text" style={{height:'100%',padding:'2vw',color:'#333333',background:'none',border:'none',borderBottom:'0.5vw solid #9FADBB',width:'100%',fontFamily:'Roboto Regular'}} placeholder="08111344759" />
               <p className='px-14 mb-0' style={{color:'#DA3832',fontFamily:'Roboto Bold'}}>{this.state.phoneNumberError}</p>
             </div>  
             {/*END OF ONE INPUT */}
