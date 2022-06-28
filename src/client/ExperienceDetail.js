@@ -313,7 +313,7 @@ class ExperienceDetail extends React.Component {
             <div className='mt-5'>
 
             </div>
-            {this.state.tickets.length == 0 && 
+            {this.state.tickets.length === 0 && 
                 <p className='px-18 mtm-5 pb-3' style={{color:'#333333',fontFamily:'Roboto Regular',marginBottom:'0px',padding:'0px'}}>Belum ada tiket tersedia..</p>
             }
 

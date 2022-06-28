@@ -53,12 +53,21 @@ class TicketDetail extends React.Component {
     this.setState({
       [e.target.name] : e.target.value
     })
+
   }
 
   createOrder = async(event) =>{
 
     event.preventDefault();
+
+    if(this.state.email.length < 10){
+      await this.setState({
+        emailError : 'Format email belum benar.'
+      })
+      return true
+    }
     
+
     this.showLoading()
 
     const orderItems = []

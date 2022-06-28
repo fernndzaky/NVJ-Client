@@ -4,8 +4,6 @@ import '../css/index.css';
 
 // Components Import
 import Navbar from './components/Navbar';
-import BottomNavbar from './components/BottomNavbar';
-
 
 class PageNotFound extends React.Component {
   constructor(){
