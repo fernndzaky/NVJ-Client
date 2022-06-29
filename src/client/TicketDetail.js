@@ -328,7 +328,7 @@ class TicketDetail extends React.Component {
             borderTop: '1.5vw solid #9FADBB' }} >
               <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
                 
-                <button onClick={()=> window.open("https://api.whatsapp.com/send?phone="+this.state.phoneNumber+"&text=Hello%2C%20World!", "_blank")} className='btn-green-to-white' style={{width:'100%'}}>
+                <button onClick={()=> window.open("https://api.whatsapp.com/send?phone="+this.state.phoneNumber+"&text=Halo%2C%20Nepal%20Van%20Java", "_blank")} className='btn-green-to-white' style={{width:'100%'}}>
                     <p className='px-18' style={{color:'#333333',fontFamily:'Roboto Bold',marginBottom:'0px'}}>
                     <FontAwesomeIcon icon="phone" className='px-18 me-2' />
                     Kontak Via Whatsapp
